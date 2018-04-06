@@ -1,0 +1,21 @@
+ProjectTitle: Amtel
+
+PageList:
+- file: homepage.html
+  ready: 10
+- file: profile.html
+  ready: 0
+- file: promo.html
+  ready: 0
+- file: promo-inner.html
+  ready: 0
+- file: news.html
+  ready: 0
+- file: news-inner.html
+  ready: 0
+- file: contacts.html
+  ready: 0
+- file: products.html
+  ready: 0
+- file: equipment.html
+  ready: 0
