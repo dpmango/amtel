@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="social_instagram_circle" transform="translate(-1365 -1165)">
+    <path id="Path_331" data-name="Path 331" class="cls-1" d="M16,0A16,16,0,1,0,32,16,16,16,0,0,0,16,0ZM26,25.278a.723.723,0,0,1-.722.722H6.722A.723.723,0,0,1,6,25.278V6.722A.723.723,0,0,1,6.722,6H25.278A.723.723,0,0,1,26,6.722ZM12,16a4,4,0,1,0,4-4A4,4,0,0,0,12,16Zm8-8h4v4H20Zm1.95,8a5.95,5.95,0,1,1-11.9,0,3.941,3.941,0,0,1,.134-1H8v9H24V15H21.816A3.854,3.854,0,0,1,21.95,16Z" transform="translate(1365 1165)"/>
+  </g>
+</svg>

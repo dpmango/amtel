@@ -2,18 +2,20 @@
 header.header
   .container
     .header__wrapper
-      a(href="#").header__logo
-        +icon('ico-email')
-      ul.header__menu
-        - var list = ["Homepage", "Shop", "Blog", "Lorem"]
-          each item in list
-            li
-              a.header__menu-link(href="#")=item
-      
-      .header__cta
-        .header__cart
-          +icon('ico-email')
-      
+      .header__logo-container
+        a(href="#")
+          img(src="img/logotype.svg", alt="").header__logotype
+        img(src="icons/adv.svg", alt="").header__logo-info
+      .header__main
+        .header__main-links
+          a(href="callto:+74959830404").header__phone +7 (495) 983-04-04
+          a(href="mailto:info@amtelcom.ru").header__email info@amtelcom.ru
+        form(action="#").header__form
+          .ui-input
+            input(type="text" placeholder="Поиск")
+        a(href="#").header__prof-link Личный кабинет
+        a(href="#").header__language Eng
+
       .header__hamburger
         .hamburger.hamburger--squeeze(js-hamburger)
           .hamburger-box

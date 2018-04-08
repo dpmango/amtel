@@ -1,58 +1,232 @@
-/* HEADER
+// HEADER
 .header
-  position: absolute
-  top: 0
-  right: 0
-  left: 0
-  background: #f5f5f5
+  // padding: 20px 0
+  display: flex
   &__wrapper
     display: flex
+    width: 100%
+    justify-content: space-between
     align-items: center
-    height: 70px
-
-  &__logo
-    flex: 0 0 auto
-    font-size: 35px
-    padding-right: 30px
-
-  &__menu
-    flex: 0 1 auto
+  &__hamburger
+    display: none
+  &__logotype
+    max-width: 177px
+    height: auto
+    border-right: 1px solid #555B5F
+    padding-right: 20px
+  &__logo-container
     display: flex
     align-items: center
-    font-size: 18px
-    margin: 0 auto
-    padding: 0
-    li
-      display: inline-block
-      margin-right: 30px
+    margin: 13px 0
     a
-      transition: color .25s $ease
+      display: block
+      width: 100%
+      margin-right: 20px
+      flex: 1 0 177px
+  &__logo-info
+    max-height: 22px
+  &__main
+    display: flex
+    align-self: flex-start
+    justify-content: space-between
+    align-items: center
+    min-height: 120px
+    background: url(../../img/bg-head.svg) center bottom no-repeat
+    background-size: cover
+    padding: 20px 0 20px 70px
+    width: 73%
+    // width: 100%
+  &__main-links
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-end
+    align-self: flex-start
+    flex: 1 0 180px
+    max-width: 180px
+    a
+      display: inline-block
+      color: #fff
+      font-weight: 400
+      border-bottom: 1px solid transparent
+      text-decoration: none
+      transition: all $transitionSpeed ease-in-out
+      width: auto
       &:hover
-        color: tomato
-
-  &__cta
-    margin-left: auto
-    padding-left: 30px
-
-  &__hamburger
-    // display: none
-    padding-left: 20px
-
+        border-color: #fff
+  &__phone
+    font-size: 21px
+    width: 100%
+  &__email
+    font-size: 11px
+    margin-top: 3px
+  &__form
+    display: flex
+    align-self: center
+    margin: 0 30px
+    width: 100%
+    .ui-input
+      width: 100%
+      input
+        width: 100%
+  &__prof-link
+    font-size: 14px
+    position: relative
+    display: flex
+    align-self: flex-start
+    color: #fff
+    border-bottom: 1px solid #fff
+    text-decoration: none
+    transition: all $transitionSpeed ease-in-out
+    margin-left: 25px
+    flex: 1 0 108px
+    max-width: 108px
+    &:after
+      display: block
+      content: ''
+      position: absolute
+      left: -25px
+      top: 1px
+      background: url(../../img/case-icon.svg) center left no-repeat
+      background-size: 17px 15px
+      width: 17px
+      height: 15px
+    &:hover
+      border-color: transparent
+  &__language
+    display: flex
+    align-self: flex-start
+    transition: all $transitionSpeed ease-in-out
+    margin-left: 55px
+    min-height: 24px
+    min-width: 24px
+    background: #f4971b
+    border-radius: 50%
+    font-size: 8px
+    font-weight: 700
+    color: #fff
+    text-align: center
+    justify-content: center
+    align-items: center
+    &:hover
+      background: #db8716
 
 +r($desktop)
   .header
-    &__cta
-      display: none
+    &__main
+      flex-wrap: wrap
+      width: 60%
+      padding: 20px 0 25px 30px
+    &__form
+      order: 2
+      width: 70%
+      margin-top: 10px
+    &__language
+      margin-left: 0
+    &__prof-link
+      align-self: center
 
 +r($tablet)
   .header
-    &__menu
+    padding: 20px 0
+    border-bottom: 2px solid #E94835
+    &__logo-container
+      flex: 1 0 160px
+      margin-right: 20px
+      a
+        margin-right: 0
+        flex: 1 0 160px
+    &__logotype
+      border-right: none
+      padding-right: 0
+      max-width: 160px
+    &__logo-info
       display: none
     &__hamburger
-      margin-left: auto
       display: block
+    &__main
+      background: #fff
+      min-height: 0
+      width: 100%
+      padding: 0
+      flex-wrap: no-wrap
+      margin-top: 0
+      align-self: center
+    &__main-links
+      display: none
+    &__form
+      order: -1
+      margin-right: 20px
+      margin: 0
+      flex: 1
+      input
+        border: 2px solid #E94835
+        font-size: 13px
+    &__language
+      align-self: center
+      background: #E94835
+    &__prof-link
+      font-size: 0
+      min-height: 20px
+      max-width: 22px
+      border: none
+      padding: 0
+      margin: 0 20px
+      &:after
+        left: 0
+        background: url(../../img/case-icon-red.svg) center left no-repeat
+        width: 22px
+        height: 20px
+        background-size: 22px 20px
 
 +r($mobile)
   .header
-    &__logo
-      font-size: 30px
+    &__logo-container
+      flex: 1 0 95px
+      a
+        flex: 1 0 95px
+    &__logotype
+      max-width: 95px
+    &__form
+      order: -1
+      margin-right: 20px
+      margin: 0
+      flex: 1
+      input
+        border: 2px solid #E94835
+        font-size: 13px
+        background: url(../../img/search.svg) center right no-repeat
+        background-size: 20px 20px
+        padding: 7px 14px
+        border: none
+        max-width: 20px
+        margin-left: auto
+        color: #E94835
+        
+        transition: all $transitionSpeed ease-in-out
+        &::-webkit-input-placeholder
+          color: #fff
+        &:-moz-placeholder
+          color: #fff
+        &::-moz-placeholder
+          color: #fff
+        &:-ms-input-placeholder
+          color: #fff
+        &:focus
+          width: 100%
+          max-width: 100%
+          border: 2px solid #E94835
+          background: #fff
+
+          &::-webkit-input-placeholder
+            color: #E94835
+          &:-moz-placeholder
+            color: #E94835
+          &::-moz-placeholder
+            color: #E94835
+          &:-ms-input-placeholder
+            color: #E94835
+      
+
+
+
+
