@@ -1,0 +1,163 @@
+.main-info
+  padding: 40px 0 120px
+  &__grid
+    display: flex
+    justify-content: space-between
+  &__item
+    width: calc(33.333% - 10px)
+    a
+      h2
+        border-bottom: 1px solid #606060
+        display: inline-block
+        &:hover
+          border-bottom: 1px solid transparent
+          color: $colorRed
+    ul
+      padding: 0
+      margin: 0
+      list-style-type: disc
+      li
+        padding: 0
+        margin: 0
+        list-style-type: disc
+        margin-top: 25px
+        p
+          font-size: 13px
+          color: #737B80
+          line-height: 1.4
+
+.news
+  &__item
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    margin-top: 25px
+    *
+      transition: all $transitionSpeed ease-in-out
+    &:hover
+      .news__item-image
+        border-color: $colorRed
+      .news__item-info
+        color: $colorRed
+      .news__item-date
+        color: $colorRed
+      .news__item-title
+        color: $colorRed
+      .news__item-more-info
+        color: $colorRed
+  &__item-image
+    width: 145px
+    height: 145px
+    position: relative
+    border-radius: 20px
+    border: 3px solid #737B80
+    overflow: hidden
+    img
+      position: absolute
+      width: 108%
+      height: 108%
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+      margin: -4%
+  &__item-info
+    width: calc(100% - 165px)
+  &__item-date
+    font-family: Arial, sans-serif
+    font-size: 11px
+    line-height: 1.2
+    color: #737B80
+  &__item-title
+    font-size: 14px
+    line-height: 1.2
+    margin-top: 15px
+    color: #484848
+  &__item-more-info
+    font-family: Arial, sans-serif
+    font-size: 13px
+    color: #737B80
+    margin-top: 20px
+    line-height: 1.4
+    width: 100%
+    max-height: 53px
+    overflow: hidden
+
+.trust
+  &__item
+    margin-top: 25px
+  &__item-image
+    width: 145px
+    height: 145px
+    position: relative
+    border-radius: 20px
+    border: 3px solid #737B80
+    overflow: hidden
+    img
+      position: absolute
+      max-width: 80%
+      max-height: 80%
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+      margin: auto
+  &__title
+    margin-top: 25px
+    text-transform: uppercase
+    font-size: 14px
+    color: #484848
+  &__info
+    margin-top: 15px
+    line-height: 1.4
+    color: #737B80
+    font-size: 13px
+
++r($desktop)
+  .main-info
+    padding: 30px 0
+    &__grid
+      flex-wrap: wrap
+    &__item
+      width: 100%
+      margin-bottom: 25px
+      flex-wrap: wrap
+      display: flex
+      justify-content: space-between
+      &:nth-child(2)
+        order: -1
+      &:last-child
+        margin-bottom: 0
+      h2
+        width: 100%
+      .news__title
+        width: 100%
+        h2
+          width: auto
+  .news__item
+    width: calc(50% - 10px)
+  .trust__item
+    width: calc(50% - 10px)
+
++r($mobile)
+  .main-info
+    &__grid
+      flex-wrap: wrap
+    &__item
+      width: 100%
+      margin-bottom: 25px
+      flex-wrap: wrap
+      display: flex
+      justify-content: space-between
+      &:nth-child(2)
+        order: -1
+      &:last-child
+        margin-bottom: 0
+      h2
+        width: 100%
+      .news__title
+        width: 100%
+  .news__item
+    width: 100%
+  .trust__item
+    width: 100%

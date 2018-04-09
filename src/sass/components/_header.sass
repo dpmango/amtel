@@ -2,6 +2,8 @@
 .header
   // padding: 20px 0
   display: flex
+  padding-bottom: 40px
+  border-bottom: 2px solid $colorRed
   &__wrapper
     display: flex
     width: 100%
@@ -128,7 +130,7 @@
 +r($tablet)
   .header
     padding: 20px 0
-    border-bottom: 2px solid #E94835
+    border-bottom: 2px solid $colorRed
     &__logo-container
       flex: 1 0 160px
       margin-right: 20px
@@ -159,11 +161,11 @@
       margin: 0
       flex: 1
       input
-        border: 2px solid #E94835
+        border: 2px solid $colorRed
         font-size: 13px
     &__language
       align-self: center
-      background: #E94835
+      background: $colorRed
     &__prof-link
       font-size: 0
       min-height: 20px
@@ -199,25 +201,25 @@
         width: calc(100% - 155px)
         right: 20px
         input
-          border: 2px solid #E94835
+          border: 2px solid $colorRed
           width: 100%
           max-width: 100%
           background-image: none
           transition: all $transitionSpeed ease-in-out
           &::-webkit-input-placeholder
-            color: #E94835
+            color: $colorRed
             font-size: 13px
           &:-moz-placeholder
-            color: #E94835
+            color: $colorRed
             font-size: 13px
           &::-moz-placeholder
-            color: #E94835
+            color: $colorRed
             font-size: 13px
           &:-ms-input-placeholder
-            color: #E94835
+            color: $colorRed
             font-size: 13px
       input
-        border: 2px solid #E94835
+        border: 2px solid $colorRed
         font-size: 13px
         background: url(../../img/search.svg) center right no-repeat
         background-size: 20px 20px
@@ -225,7 +227,7 @@
         border: none
         max-width: 20px
         margin-left: auto
-        color: #E94835
+        color: $colorRed
         transition: all $transitionSpeed ease-in-out
         &::-webkit-input-placeholder
           color: #fff
@@ -243,14 +245,14 @@
         // &:focus
         //   width: 100%
         //   max-width: 100%
-        //   border: 2px solid #E94835
+        //   border: 2px solid $colorRed
         //   background: #fff
 
         //   &::-webkit-input-placeholder
-        //     color: #E94835
+        //     color: $colorRed
         //   &:-moz-placeholder
-        //     color: #E94835
+        //     color: $colorRed
         //   &::-moz-placeholder
-        //     color: #E94835
+        //     color: $colorRed
         //   &:-ms-input-placeholder
-        //     color: #E94835
+        //     color: $colorRed

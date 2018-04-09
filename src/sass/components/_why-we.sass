@@ -1,0 +1,47 @@
+.why-we
+  padding: 40px 0
+  border-bottom: 2px solid #E83E31
+  h2
+    margin-bottom: 15px
+  &__grid
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+  &__item
+    display: flex
+    align-items: flex-start
+    width: calc(33.333% - 10px)
+    margin: 20px 0px
+    img
+      height: 50px
+      width: auto
+      max-width: 73px
+      margin-right: 35px
+    p
+      font-size: 16px
+      font-family: Arial, sans-serif
+      margin: 0
+      line-height: 1.35
+
+.why-we.advantages
+  background: #F4F4F4
+
+
++r($tablet)
+  .why-we
+    h2
+      margin-bottom: 0
+    padding: 30px 0
+    &__item
+      width: calc(50% - 10px)
+      img
+        margin-right: 25px
+
+
++r($mobile)
+  .why-we
+    &__item
+      width: 100%
+      margin: 40px 0 0 0
+      img
+        margin-right: 15px
