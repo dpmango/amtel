@@ -54,6 +54,13 @@ $(document).ready(function(){
     // your functions
   })
 
+  $('#search-input').mouseover(function() {
+      $(this).parents('.header__form').addClass('is-open');
+  })
+  $('.header__form').mouseleave(function() {
+      $(this).removeClass('is-open');
+  })
+
 
   //////////
   // COMMON
@@ -171,6 +178,25 @@ $(document).ready(function(){
 
     // other individual sliders goes here
     $('[js-myCustomSlider]').slick({
+
+    })
+
+    $('.main-slider').slick({
+      dots: false,
+      infinite: false,
+      autoplay: false,
+      autoplaySpeed: 4000,
+      speed: 300,
+      slidesToShow: 1,
+      adaptiveHeight: true,
+      responsive: [
+      {
+        breakpoint: 568,
+        settings: {
+          arrows: false
+        }
+      }
+    ]
 
     })
 

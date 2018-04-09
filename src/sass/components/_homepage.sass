@@ -1,0 +1,113 @@
+// main-slider styles
+.main-slider
+  width: 100%
+  margin-bottom: 50px
+  position: relative
+  .container
+    position: relative
+  &__title
+    font-size: 54px
+    color: #fff
+    position: absolute
+    font-weight: 500
+    max-width: 410px
+    text-indent: -40px
+    text-shadow: 1px 0px 1px #909090
+    margin: 0
+  .item
+    min-height: 455px
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+    &:nth-child(1)
+      .main-slider__title
+        right: 50px
+        top: 100px
+    &:nth-child(2)
+      .main-slider__title
+        left: 120px
+        top: 190px
+    &:nth-child(3)
+      .main-slider__title
+        right: 320px
+        top: 350px
+    &:nth-child(4)
+      .main-slider__title
+        right: 150px
+        top: 260px
+  .slick-arrow
+    position: absolute
+    width: 37px
+    height: 75px
+    top: calc(50% - 34px)
+    z-index: 2
+    font-size: 0
+    color: transparent
+  .slick-next
+    background: url(../../img/arrow-right.svg) center center no-repeat
+    right: calc(50% - 570px)
+  .slick-prev
+    background: url(../../img/arrow-left.svg) center center no-repeat
+    left: calc(50% - 570px)
+
++r(1170)
+  .main-slider
+    .slick-next
+      right: 30px
+    .slick-prev
+      left: 30px
+
++r($tablet)
+  .main-slider
+    .item
+      min-height: 320px
+      &:nth-child(1)
+        .main-slider__title
+          right: 50px
+          top: 50px
+      &:nth-child(2)
+        .main-slider__title
+          left: 120px
+          top: 190px
+      &:nth-child(3)
+        .main-slider__title
+          right: 150px
+          top: 240px
+      &:nth-child(4)
+        .main-slider__title
+          right: 130px
+          top: 200px
+    .slick-next
+      right: 20px
+    .slick-prev
+      left: 20px
+    &__title
+      font-size: 40px
+      max-width: 310px
+
++r($mobile)
+  .main-slider
+    .item
+      min-height: 320px
+      &:nth-child(1)
+        background-position: center right -180px
+      &:nth-child(2)
+        background-position: center left -250px
+        .main-slider__title
+          margin-top: 180px
+      &:nth-child(3)
+      &:nth-child(4)
+        background-position: center right -280px
+        .main-slider__title
+          margin-top: 190px
+    &__title
+      position: static
+      text-indent: 0
+      text-align: center
+      width: 100%
+      font-size: 36px
+      max-width: 290px
+      margin: 30px auto
+
+
+// main-slider styles
