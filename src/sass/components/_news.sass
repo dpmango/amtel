@@ -1,0 +1,39 @@
+.news
+  padding: 15px 0 80px 0
+  &__grid
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+  &__item
+    width: 33.333%
+    margin: 10px -15px
+    padding: 15px
+  &__button
+    border-radius: 25px
+    padding: 20px 25px
+    background: #E83E31
+    transition: all $transitionSpeed ease-in-out
+    color: #fff
+    margin-top: 55px
+    display: inline-block
+    &:hover
+      background: #E96535
+
++r($desktop)
+  .news
+    padding: 10px 0 40px 0
+    &__item
+      width: 50%
+      margin: 0px -15px
+    &__button
+      margin-top: 15px
+
++r($mobile)
+  .news
+    padding: 10px 0 30px 0
+    &__item
+      width: 100%
+      margin: 0px
+      padding: 15px 0
+    &__button
+      margin-top: 15px
