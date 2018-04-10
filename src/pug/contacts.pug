@@ -1,0 +1,48 @@
+---
+title: Contacts
+bodyClass: contacts-page
+---
+extends shared/_layout
+block content
+
+    // section
+    section
+      .page-head
+        .head-bg(style="background-image: url(img/bg-contacts.jpg)")
+        .container
+          ul.breadcrumbs
+            li
+              a(href="#") Главная
+            li
+              a(href="#")
+                +icon('ico-arrow')
+            li
+              a(href="#") Контактная информация
+          h2 Контактная информация
+    // section
+    section
+      .contacts
+        .container
+          .contacts__grid
+            .contacts__item
+              img(src="img/card.svg" alt="")
+              .contacts__info
+                h3 АО «АМТЕЛ-СВЯЗЬ»
+                p
+                  strong Адрес:
+                p 125315, г. Москва, ул. Ленинградский пр-т, д. 80, корп. 37
+            .contacts__item
+              img(src="img/phone.svg" alt="")
+              .contacts__info
+                h3 Телефон/Факс:
+                p 
+                  a(href="tel:+74959830404") +7 (495) 983-04-04/29
+                p 
+                  a(href="tel:88002000429") 8 (800) 200-04-29
+                  |  (бесплатный на территории РФ)
+                p
+                  strong Электронная почта:
+                a(href="mailto:informa_amtelcom_ru") informa_amtelcom_ru
+    // section
+    section
+      #map

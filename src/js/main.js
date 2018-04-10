@@ -1,5 +1,50 @@
 $(document).ready(function(){
 
+  ymaps.ready(function () {
+    var myMap = new ymaps.Map('map', {
+            center: [55.809844, 37.513380],
+            zoom: 17
+        }, {
+            searchControlProvider: 'yandex#search'
+        }),
+
+        // Создаём макет содержимого.
+        MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+            '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+        ),
+
+        myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+            // hintContent: 'Собственный значок метки',
+            // balloonContent: 'Это красивая метка'
+        }, {
+            // Опции.
+            // Необходимо указать данный тип макета.
+            iconLayout: 'default#image',
+            // Своё изображение иконки метки.
+            iconImageHref: 'img/map.svg',
+            // Размеры метки.
+            iconImageSize: [273, 143],
+            // Смещение левого верхнего угла иконки относительно
+            // её "ножки" (точки привязки).
+            iconImageOffset: [-150, -50]
+        });
+
+    myMap.geoObjects
+        .add(myPlacemark)
+    myMap.behaviors
+        // Отключаем часть включенных по умолчанию поведений:
+        //  - drag - перемещение карты при нажатой левой кнопки мыши;
+        //  - magnifier.rightButton - увеличение области, выделенной правой кнопкой мыши.
+        .disable(['drag', 'rightMouseButtonMagnifier'])
+        // Включаем линейку.
+        .enable('ruler');
+
+      // Изменяем свойство поведения с помощью опции:
+      // изменение масштаба колесом прокрутки будет происходить медленно,
+      // на 1/2 уровня масштабирования в секунду.
+      myMap.options.set('scrollZoomSpeed', 0.5);
+});
+
   (function($) {
 
   $.fn.menumaker = function(options) {

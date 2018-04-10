@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.112 39.178">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ff432b;
+      }
+
+      .cls-2 {
+        fill: #585d61;
+      }
+    </style>
+  </defs>
+  <g id="Symbol_31_1" data-name="Symbol 31 – 1" transform="translate(-390.888 -458.264)">
+    <g id="Group_1037" data-name="Group 1037" transform="translate(403.442 465.548)">
+      <path id="Path_780" data-name="Path 780" class="cls-1" d="M51.073,37.547a5.573,5.573,0,1,1,5.573-5.573A5.593,5.593,0,0,1,51.073,37.547Zm0-7.284a1.711,1.711,0,1,0,1.711,1.711A1.719,1.719,0,0,0,51.073,30.263Z" transform="translate(-45.5 -26.4)"/>
+    </g>
+    <g id="Group_1038" data-name="Group 1038" transform="translate(398.53 477.687)">
+      <path id="Path_781" data-name="Path 781" class="cls-1" d="M48.724,80.94H44.861a6.649,6.649,0,1,0-13.3,0H27.7a10.512,10.512,0,1,1,21.024,0Z" transform="translate(-27.7 -70.4)"/>
+    </g>
+    <g id="Group_1039" data-name="Group 1039" transform="translate(423.693 471.231)">
+      <rect id="Rectangle_742" data-name="Rectangle 742" class="cls-2" width="16.471" height="3.863"/>
+    </g>
+    <g id="Group_1040" data-name="Group 1040" transform="translate(423.693 480.612)">
+      <rect id="Rectangle_743" data-name="Rectangle 743" class="cls-2" width="16.471" height="3.863"/>
+    </g>
+    <g id="Group_1041" data-name="Group 1041" transform="translate(390.888 458.264)">
+      <path id="Path_782" data-name="Path 782" class="cls-2" d="M55.181,39.178H43.427a3.848,3.848,0,0,1-2.9-1.3l-2.1-2.318-2.1,2.318a3.892,3.892,0,0,1-2.9,1.3H23.7a3.848,3.848,0,0,1-2.9-1.3l-2.1-2.318-2.1,2.318a3.892,3.892,0,0,1-2.9,1.3H1.931L0,37.247V1.931L1.931,0H55.181l1.931,1.931V37.247ZM37,31.4h2.869L43.4,35.316a.1.1,0,0,0,.055.028h9.795V3.863H3.863V35.316h9.822c.028,0,.028,0,.055-.028l3.532-3.89h2.869l3.532,3.918a.1.1,0,0,0,.055.028h9.739c.028,0,.028,0,.055-.028Z"/>
+    </g>
+  </g>
+</svg>

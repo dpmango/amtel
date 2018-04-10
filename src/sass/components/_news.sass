@@ -1,4 +1,4 @@
-.news
+.news-p
   padding: 15px 0 80px 0
   &__grid
     display: flex
@@ -19,8 +19,65 @@
     &:hover
       background: #E96535
 
+.news-p
+  &__item
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    margin-top: 25px
+    *
+      transition: all $transitionSpeed ease-in-out
+    &:hover
+      .news-p__item-image
+        border-color: $colorRed
+      .news-p__item-info
+        color: $colorRed
+      .news-p__item-date
+        color: $colorRed
+      .news-p__item-title
+        color: $colorRed
+      .news-p__item-more-info
+        color: $colorRed
+  &__item-image
+    width: 145px
+    height: 145px
+    position: relative
+    border-radius: 20px
+    border: 3px solid #737B80
+    overflow: hidden
+    img
+      position: absolute
+      width: 108%
+      height: 108%
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+      margin: -4%
+  &__item-info
+    width: calc(100% - 165px)
+  &__item-date
+    font-family: Arial, sans-serif
+    font-size: 11px
+    line-height: 1.2
+    color: #737B80
+  &__item-title
+    font-size: 14px
+    line-height: 1.2
+    margin-top: 15px
+    color: #484848
+  &__item-more-info
+    font-family: Arial, sans-serif
+    font-size: 13px
+    color: #737B80
+    margin-top: 20px
+    line-height: 1.4
+    width: 100%
+    max-height: 53px
+    overflow: hidden
+
 +r($desktop)
-  .news
+  .news-p
     padding: 10px 0 40px 0
     &__item
       width: 50%
@@ -29,7 +86,7 @@
       margin-top: 15px
 
 +r($mobile)
-  .news
+  .news-p
     padding: 10px 0 30px 0
     &__item
       width: 100%
@@ -37,3 +94,5 @@
       padding: 15px 0
     &__button
       margin-top: 15px
+  .news-p__item
+    width: 100%

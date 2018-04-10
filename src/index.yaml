@@ -2,14 +2,16 @@ ProjectTitle: Amtel
 
 PageList:
 - file: homepage.html
-  ready: 10
+  ready: 20
 - file: promotions.html
-  ready: 10
+  ready: 20
 - file: promotions-2.html
-  ready: 10
+  ready: 20
 - file: news-page.html
-  ready: 10
+  ready: 20
 - file: new-page.html
-  ready: 10
+  ready: 20
+- file: contacts.html
+  ready: 20
 - file: styleguide.html
   ready: 0

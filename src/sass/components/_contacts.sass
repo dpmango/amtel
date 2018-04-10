@@ -1,0 +1,68 @@
+#map
+  height: 360px
+  width: 100%
+  padding: 0
+  margin: 0
+
+.ymaps-2-1-62-copyrights-pane,
+.ymaps-2-1-62-controls-pane
+  display: none !important
+
+.contacts
+  padding: 40px 0 80px
+  border-bottom: 2px solid $colorRed
+  &__grid
+    display: flex
+    justify-content: space-between
+    align-items: flex-start
+  &__item
+    width: calc(50% - 20px)
+    padding: 0
+    display: flex
+    justify-content: flex-start
+    align-items: flex-start
+  img
+    max-width: 58px
+    width: 100%
+    height: auto
+    margin-right: 20px
+  h3
+    font-size: 13px
+    font-weight: 700
+    color: #737B80
+  p
+    font-size: 13px
+    color: #737B80
+    line-height: 1.8
+    a
+      font-size: 13px
+      color: #737B80
+      border-bottom: 1px solid transparent
+      &:hover
+        border-color: #737B80
+    strong
+      margin-top: 30px
+      display: block
+  a
+    font-size: 13px
+    color: $colorRed
+    border-bottom: 1px solid $colorRed
+    transition: all $transitionSpeed ease-in-out
+    &:hover
+      border-color: transparent
+
++r($tablet)
+  .contacts
+    padding: 15px 0 30px
+
+
++r($mobile)
+  .contacts
+    &__grid
+      flex-wrap: wrap
+    &__item
+      width: 100%
+      margin-bottom: 25px
+    p
+      strong
+        margin-top: 20px
