@@ -7,9 +7,9 @@ PageList:
   ready: 10
 - file: promotions-2.html
   ready: 10
-- file: news.html
-  ready: 10
 - file: news-page.html
+  ready: 10
+- file: new-page.html
   ready: 10
 - file: styleguide.html
   ready: 0
