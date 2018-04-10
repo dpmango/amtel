@@ -1,0 +1,34 @@
+---
+title: Promotions title
+bodyClass: promotions-page
+---
+extends shared/_layout
+block content
+
+    // section
+    section
+      .page-head
+        .head-bg(style="background-image: url(img/bg-promotions.jpg)")
+        .container
+          ul.breadcrumbs
+            li
+              a(href="#") Главная
+            li
+              a(href="#")
+                +icon('ico-arrow')
+            li
+              a(href="#") Акции
+          h2 Акции
+    // section
+    section
+      .promotions
+        .container
+          .promotions__grid
+            a.promotions__item(href="#") Выход в интернет
+            a.promotions__item(href="#") Звонки в центральный офис
+            a.promotions__item(href="#") Социальные сети
+            a.promotions__item(href="#") Ввебинары и удаленные совещания
+            a.promotions__item(href="#") Скачивание и отправка презентаций и графики
+            a.promotions__item(href="#") Индивидуальные каналы связи под ключ
+            a.promotions__item(href="#") Добыча полезных ископаемых
+            a.promotions__item(href="#") Системы коллективного доступа

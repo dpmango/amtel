@@ -1,0 +1,36 @@
+.promotions
+  padding: 40px 0 80px 0
+  &__grid
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    flex-wrap: wrap
+  &__item
+    display: flex
+    padding: 13px
+    line-height: 1.4
+    color: #606060
+    border: 2px solid #E83E31
+    box-sizing: border-box
+    // width: 145px
+    flex: 1 0 144px
+    max-width: 144px
+    height: 144px
+    border-radius: 25px
+    margin: -1px
+    font-size: 14px
+    transition: all $transitionSpeed ease-in-out
+    text-decoration: none
+    background: #fff
+    // word-break: break-all
+    &:hover
+      background: #E83E31
+      color: #fff
+
++r($mobile)
+  .promotions
+    padding: 15px 0 30px 0
+    &__item
+      width: 50%
+      flex: 0 1 50%
+      max-width: 50%

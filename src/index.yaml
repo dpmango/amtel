@@ -3,5 +3,7 @@ ProjectTitle: Amtel
 PageList:
 - file: homepage.html
   ready: 10
+- file: promotions.html
+  ready: 10
 - file: styleguide.html
   ready: 0

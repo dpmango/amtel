@@ -1,0 +1,40 @@
+.page-head
+  padding: 0
+  h2
+    margin-top: 30px
+
+.head-bg
+  height: 100px
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
+  border-bottom: 2px solid $colorRed
+
+.breadcrumbs
+  margin: 30px 0 0 0
+  padding: 0
+  display: flex
+  align-items: center
+  li
+    position: relative
+    margin-right: 7px
+    &:nth-child(even)
+        a
+          border-bottom: none
+    .ico
+      font-size: 5px
+
+    a
+      font-size: 12px
+      border-bottom: 1px solid #919A9F
+      transition: all $transitionSpeed ease-in-out
+      color: #919A9F
+      &:hover
+        border-color: transparent
+
++r($tablet)
+  .page-head
+    h2
+      margin-top: 15px
+  .breadcrumbs
+    margin: 15px 0 0 0

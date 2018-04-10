@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.163 3.799">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ff432b;
+      }
+
+      .cls-2 {
+        fill: #919a9f;
+      }
+    </style>
+  </defs>
+  <g id="Symbol_29_1" data-name="Symbol 29 – 1" transform="translate(-442.025 -344)">
+    <line id="Line_14" data-name="Line 14" class="cls-1" x2="11.162" transform="translate(442.025 345.9)"/>
+    <g id="Group_669" data-name="Group 669" transform="translate(442.025 344)">
+      <g id="Group_667" data-name="Group 667" transform="translate(0 1.499)">
+        <rect id="Rectangle_129" data-name="Rectangle 129" class="cls-2" width="8.424" height="0.807"/>
+      </g>
+      <g id="Group_668" data-name="Group 668" transform="translate(7.871)">
+        <path id="Path_573" data-name="Path 573" class="cls-2" d="M123.9,3.8l3.291-1.9L123.9,0Z" transform="translate(-123.9)"/>
+      </g>
+    </g>
+  </g>
+</svg>
