@@ -5,5 +5,7 @@ PageList:
   ready: 10
 - file: promotions.html
   ready: 10
+- file: promotions-2.html
+  ready: 10
 - file: styleguide.html
   ready: 0
