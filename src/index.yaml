@@ -13,5 +13,7 @@ PageList:
   ready: 20
 - file: contacts.html
   ready: 20
+- file: products.html
+  ready: 20
 - file: styleguide.html
   ready: 0

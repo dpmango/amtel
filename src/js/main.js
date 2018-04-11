@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+  $(document).on('click', '.check__item label', function() {
+      $(this).parent().toggleClass('is-active');
+  })
+
   ymaps.ready(function () {
     var myMap = new ymaps.Map('map', {
             center: [55.809844, 37.513380],

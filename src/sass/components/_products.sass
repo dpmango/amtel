@@ -1,0 +1,59 @@
+.products
+  padding: 40px 0 80px 0
+  h2
+    margin-top: 40px
+  p
+    margin-top: 25px
+    line-height: 1.4
+.check
+  &__grid
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    flex-wrap: wrap
+  &__item
+    display: flex
+    padding: 13px
+    line-height: 1.4
+    color: #606060
+    border: 2px solid #E83E31
+    box-sizing: border-box
+    flex: 1 0 144px
+    max-width: 144px
+    height: 144px
+    border-radius: 25px
+    margin: -1px
+    font-size: 14px
+    transition: all $transitionSpeed ease-in-out
+    text-decoration: none
+    background: #fff
+    position: relative
+    overflow: hidden
+    &.is-active
+      background: #E94835
+      color: #fff
+    label
+      position: absolute
+      width: 100%
+      height: 100%
+      left: 0
+      top: 0
+      padding: 13px
+      font-size: 14px
+      cursor: pointer
+    input[type=checkbox]
+      position: absolute
+      opacity: 0
+      left: -9999
+
+
+
++r($mobile)
+  .products
+    padding: 15px 0 30px 0
+    .check__item
+      width: 50%
+      flex: 0 1 50%
+      max-width: 50%
+      label
+        word-wrap: break-word
