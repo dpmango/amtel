@@ -1,0 +1,248 @@
+---
+title: Equipment title
+bodyClass: equipment-page
+---
+extends shared/_layout
+block content
+
+    // section
+    section
+      .page-head
+        .head-bg(style="background-image: url(img/bg-mountains.jpg)")
+        .container
+          ul.breadcrumbs
+            li
+              a(href="#") Главная
+            li
+              a(href="#")
+                +icon('ico-arrow')
+            li
+              a(href="#") Технологии и оборудование
+          h2 Выберите тип станции:
+    // section
+    section
+      .products
+        .container
+          .check__grid
+            .check__item.radio-item
+              label(for="radio_1") Стационарная
+              input(type="radio" id="radio_1" name="group1")
+            .check__item.radio-item
+              label(for="radio_2") Подвижная
+              input(type="radio" id="radio_2" name="group1")
+            .check__item.radio-item
+              label(for="radio_3") Морская
+              input(type="radio" id="radio_3" name="group1")
+            
+          .info-container
+            h2 Оборудование iDirect 
+            p.p-small Оборудование компании бесспорно является одним из лучших и соответствует всем современным требованиям корпоративных сетей связи. Это доказано успешным опытом мировой эксплуатации модемов серий iNFINITI и Evolution. Кроме того, при его разработке используются результаты исследований гражданского назначения.  
+            p.p-small Система iDirect является двунаправленным широкополосным решением, использующим схему доступа TDMA в прямом и MF-D-TDMA в обратном каналах связи. 
+          .info-container
+            h3 В своей сети мы поддерживаем линейки оборудования:
+            .check__grid
+              .check__item.radio-item
+                label(for="radio_11")
+                  p.l-name iNFINITI 3100
+                  .l-price
+                    p 78 976 ₽
+                  img(src="img/e-3100.png" alt="")
+                input(type="radio" id="radio_11" name="group2")
+              .check__item.radio-item
+                label(for="radio_12")
+                  p.l-name iNFINITI 5300
+                  .l-price
+                    p 78 976 ₽
+                  img(src="img/e-5300.png" alt="")
+                input(type="radio" id="radio_12" name="group2")
+              .check__item.radio-item
+                label(for="radio_13")
+                  p.l-name Evolution X1
+                  .l-price
+                    p 78 976 ₽
+                  img(src="img/e-x1.png" alt="")
+                input(type="radio" id="radio_13" name="group2")
+              .check__item.radio-item
+                label(for="radio_14")
+                  p.l-name Evolution X3
+                  .l-price
+                    p 78 976 ₽
+                  img(src="img/e-x5.png" alt="")
+                input(type="radio" id="radio_14" name="group2")
+              .check__item.radio-item
+                label(for="radio_15")
+                  p.l-name Evolution X5
+                  .l-price
+                    p 78 976 ₽
+                  img(src="img/e-x5.png" alt="")
+                input(type="radio" id="radio_15" name="group2")
+              .check__item.radio-item
+                label(for="radio_16")
+                  p.l-name Evolution X7
+                  .l-price
+                    p 78 976 ₽
+                  img(src="img/e-x7.png" alt="")
+                input(type="radio" id="radio_16" name="group2")
+            p.p-small Оборудование компании бесспорно является одним из лучших и соответствует всем современным требованиям корпоративных сетей связи. Это доказано успешным опытом мировой эксплуатации модемов серий iNFINITI и Evolution. Кроме того, при его разработке используются результаты исследований гражданского назначения.
+          .info-container
+            h2 Подходящий антенный комплекс 
+            .check__grid
+              .check__item.radio-item
+                label(for="radio_21")
+                  p.l-name Антенна 1
+                  p.l-info 1,2 м
+                  .l-price
+                    p 97 033 ₽
+                input(type="radio" id="radio_21" name="group3")
+              .check__item.radio-item
+                label(for="radio_22")
+                  p.l-name Антенна 2
+                  p.l-info 1,2 м
+                  .l-price
+                    p 97 033 ₽
+                input(type="radio" id="radio_22" name="group3")
+              .check__item.radio-item
+                label(for="radio_23")
+                  p.l-name Антенна 3
+                  p.l-info 1,2 м
+                  .l-price
+                    p 97 033 ₽
+                input(type="radio" id="radio_23" name="group3")
+          .info-container
+            h3 Не забудьте купить передатчик:
+            .check__grid
+              .check__item.radio-item
+                label(for="radio_31")
+                  p.l-name Передатчик
+                  p.l-info 2 ВТ
+                  .l-price
+                    p 278 204 ₽
+                input(type="radio" id="radio_31" name="group4")
+              .check__item.radio-item
+                label(for="radio_32")
+                  p.l-name Передатчик
+                  p.l-info 4 ВТ
+                  .l-price
+                    p 278 204 ₽
+                input(type="radio" id="radio_32" name="group4")
+              .check__item.radio-item
+                label(for="radio_33")
+                  p.l-name Передатчик
+                  p.l-info 6 ВТ
+                  .l-price
+                    p 278 204 ₽
+                input(type="radio" id="radio_33" name="group4")
+              .check__item.radio-item
+                label(for="radio_34")
+                  p.l-name Передатчик
+                  p.l-info 10 ВТ
+                  .l-price
+                    p 278 204 ₽
+                input(type="radio" id="radio_34" name="group4")
+              .check__item.radio-item
+                label(for="radio_35")
+                  p.l-name Передатчик
+                  p.l-info 12 ВТ
+                  .l-price
+                    p 278 204 ₽
+                input(type="radio" id="radio_35" name="group4")
+          .info-container
+            h3 И LNB приемник:
+            .price.price--red
+              p LNB приемник
+              p.bg-white Стоиомсть от  
+                span  9 214 ₽
+          .info-container
+            h2 Поздравляем!
+            .price
+              p Рекомендованный комплект
+              p.bg-white Затраты на приобретение от  
+                span  280 000 ₽
+          //- .info-container
+          //-   select
+          //-     option(val="vl1-0" selected disabled) Выберите продукт
+          //-     option(val="vl1-1") Продукт 1
+          //-     option(val="vl1-2") Продукт 2
+          //- .info-container
+          //-   h2 Узнать тариф
+          //-   select
+          //-     option(val="vl2-0" selected disabled) Выберите трафик в Гб
+          //-     option(val="vl2-1") 5
+          //-     option(val="vl2-2") 7
+          //- .info-container
+          //-   h2 Поздравляем!
+          //-   .price
+          //-     p Продукт 1, Тарифный план 1
+          //-     p.bg-white Затраты в месяц 
+          //-       span  18 762 ₽
+          //- .info-container
+          //-   h2 Выберите дополнительные опции
+          //-   p Опции можно приобрести как комплексно так и по отдельности.
+          //-   .checkbox__grid
+          //-     .checkbox
+          //-       label(for="checkbox_31") Телефония (соединительные линии)
+          //-       input.checkbox(type="checkbox" id="checkbox_31")
+          //-     .checkbox
+          //-       label(for="checkbox_32") Наземные каналы связи
+          //-       input.checkbox(type="checkbox" id="checkbox_32")
+          //-     .checkbox
+          //-       label(for="checkbox_33") Детализация ПД за прошедший период
+          //-       input.checkbox(type="checkbox" id="checkbox_33")
+          //-     .checkbox
+          //-       label(for="checkbox_34") Телефония (идентификационные коды)
+          //-       input.checkbox(type="checkbox" id="checkbox_34")
+          //-     .checkbox
+          //-       label(for="checkbox_35") Поддержка коммутационного оборудования
+          //-       input.checkbox(type="checkbox" id="checkbox_35")
+          //-     .checkbox
+          //-       label(for="checkbox_36") ПДПГИ детализация разовая за прошедший период
+          //-       input.checkbox(type="checkbox" id="checkbox_36")
+          //-     .checkbox
+          //-       label(for="checkbox_37") МГМН (телематика)
+          //-       input.checkbox(type="checkbox" id="checkbox_37")
+          //-     .checkbox
+          //-       label(for="checkbox_38") Размещение оборудования в стойке оператора
+          //-       input.checkbox(type="checkbox" id="checkbox_38")
+          //-     .checkbox
+          //-       label(for="checkbox_38") ПДПГИ детализация ежемесячная
+          //-       input.checkbox(type="checkbox" id="checkbox_38")
+          //-     .checkbox
+          //-       label(for="checkbox_38") Услуга фильтрации трафика
+          //-       input.checkbox(type="checkbox" id="checkbox_38")
+          //-     .checkbox
+          //-       label(for="checkbox_38") Детализация ПД
+          //-       input.checkbox(type="checkbox" id="checkbox_38")
+          //- .info-container
+          //-   .table
+          //-     .table__head
+          //-       .table__head-green
+          //-         .table__head-item
+          //-           p Тарифный план
+          //-         .table__head-item
+          //-           p Скорость, Мб
+          //-         .table__head-item
+          //-           p Объем трафика, Гб
+          //-         .table__head-item
+          //-           p Абонентская плата в месяц
+          //-       .table__head-white
+          //-         .table__head-item
+          //-           p 5
+          //-         .table__head-item
+          //-           p 1024/512
+          //-         .table__head-item
+          //-           p 7
+          //-         .table__head-item
+          //-           p 7762 ₽
+          //-     .table__middle
+          //-       p.g-check МГМН (телематика)
+          //-       p.g-check Размещение оборудования в стойке оператора
+          //-     .table__bottom
+          //-       p Стоимость продукта:
+          //-       p 7 762 ₽
+          //-   p Итоговую стоимость вашего продукта Вам сообщит менеджер. Отправьте запрос.
+          //- .buttons
+          //-   a.btn(href="#") Отправить запрос
+          //-   a.btn(href="#") Сохранить подбор тарифа
+          //-   a.btn.btn--grey(href="#") Вернуться на предыдущий шаг
+          //- p.p-mini *Предложение не является публичной офертой и для получения окончательного предложения обратитесь в коммерческую дирекцию с помощью опции «Отправить запрос».
+          //- a.btn.margin-button(href="#") Подходящее оборудование к выбранному тарифу

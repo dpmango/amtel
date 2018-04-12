@@ -4,6 +4,11 @@ $(document).ready(function() {
     $(this).parent().toggleClass('is-active');
   })
 
+  $(document).on('click', '.check__item.radio-item label', function() {
+    $(this).parents('.check__item').removeClass('is-active');
+    $(this).parent().toggleClass('is-active');
+  })
+
   $(document).on('click', '.checkbox label', function() {
     $(this).toggleClass('is-checked');
   })
