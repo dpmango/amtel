@@ -45,12 +45,159 @@
       position: absolute
       opacity: 0
       left: -9999
+.info-container
+  p
+    font-size: 18px
+  .selectricWrapper
+    margin: 25px 0 0 0
+    width: 100%
+    border: 2px solid #E94835
+    border-radius: 25px
+    overflow: hidden
+    &.selectricOpen
+      .selectric
+        border-bottom: 4px solid #E94835
+        .button
+          transform: rotate(180deg)
+          top: 5px
+  .selectric
+    border-radius: 21px
+    background: #E94835
+    border: 2px solid #E94835
+    .label
+      font-size: 16px
+      line-height: 1
+      padding: 15px 25px
+      color: #fff
+    .button
+      top: 14px
+      right: 12px
+      transition: all $transitionSpeed ease-in-out
+      &:after
+        border: 9px solid transparent
+        border-top-color: #fff
+  .selectricItems
+    background: #fff
+    overflow: hidden
+    // margin-top: -48px
+    position: static
+    border: none
+    li
+      font-size: 16px
+      font-family: Arial, sans-serif
+      line-height: 1
+      padding: 15px 25px
+      color: #E83E31
+      border: none
+      min-height: 0
+      &.hover
+        background: #fbfbfb
+      &.selected
+        background: #E83E31
+        color: #fff
+      &.disabled
+        display: none
+      &:first-child
+        margin-top: -25px
+        padding-top: 40px
+  .price
+    border-radius: 25px
+    background: #67A700
+    border: 2px solid #67A700
+    margin-top: 25px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    p
+      line-height: 1
+      color: #FFF
+      padding: 15px 25px
+      margin-top: 0
+      &.bg-white
+        width: 50%
+        background: #fff
+        border-radius: 25px
+        color: #67A700
+        span
+          font-weight: 700
+  .checkbox
+    position: relative
+    margin: 25px -10px 0px
+    padding: 0 10px
+    width: 35%
+    &__grid
+      display: flex
+      justify-content: flex-start
+      align-items: flex-start
+      flex-wrap: wrap
+    input[type=checkbox]
+      position: absolute
+      opacity: 0
+      left: -9999px
+    label
+      font-size: 13px
+      color: #737B80
+      line-height: 1.2
+      min-height: 20px
+      display: flex
+      align-items: center
+      padding-left: 28px
+      position: relative
+      cursor: pointer
+      &:after
+        display: block
+        position: absolute
+        left: 0
+        top: 0
+        content: ''
+        width: 16px
+        height: 18px
+        background-color: #fff
+        border: 2px solid #e83e31
+        border-radius: 7px
+      &.is-checked
+        &:after
+          background-image: url(../img/checked.svg)
+          background-position: center
+          background-size: 7px 11px
+          background-repeat: no-repeat
+.table
+  border: 2px solid #67A700
+  border-radius: 25px
+  overflow: hidden
+  background: #fff
+  margin-top: 40px
 
+.buttons
+  display: flex
+  justify-content: space-between
+  a
+    margin: 55px 8px 0
+    &:first-child
+      margin-left: 0
+    &:nth-child(2)
+      margin-right: auto
+
+.p-mini
+  font-size: 10px
+
+.margin-button
+  margin-top: 150px
+
+
+
++r($tablet)
+  .products
+    padding: 15px 0 30px 0
+    h2
+      margin-top: 25px
+    p
+      margin-top: 15px
 
 
 +r($mobile)
   .products
-    padding: 15px 0 30px 0
     .check__item
       width: 50%
       flex: 0 1 50%

@@ -1,73 +1,79 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
   $(document).on('click', '.check__item label', function() {
-      $(this).parent().toggleClass('is-active');
+    $(this).parent().toggleClass('is-active');
   })
 
-  ymaps.ready(function () {
-    var myMap = new ymaps.Map('map', {
-            center: [55.809844, 37.513380],
-            zoom: 17
-        }, {
-            searchControlProvider: 'yandex#search'
-        }),
+  $(document).on('click', '.checkbox label', function() {
+    $(this).toggleClass('is-checked');
+  })
 
-        // Создаём макет содержимого.
-        MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-            '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-        ),
+  $('select').selectric();
 
-        myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-            // hintContent: 'Собственный значок метки',
-            // balloonContent: 'Это красивая метка'
-        }, {
-            // Опции.
-            // Необходимо указать данный тип макета.
-            iconLayout: 'default#image',
-            // Своё изображение иконки метки.
-            iconImageHref: 'img/map.svg',
-            // Размеры метки.
-            iconImageSize: [273, 143],
-            // Смещение левого верхнего угла иконки относительно
-            // её "ножки" (точки привязки).
-            iconImageOffset: [-150, -50]
-        });
-
-    myMap.geoObjects
-        .add(myPlacemark)
-    myMap.behaviors
-        // Отключаем часть включенных по умолчанию поведений:
-        //  - drag - перемещение карты при нажатой левой кнопки мыши;
-        //  - magnifier.rightButton - увеличение области, выделенной правой кнопкой мыши.
-        .disable(['drag', 'rightMouseButtonMagnifier'])
-        // Включаем линейку.
-        .enable('ruler');
-
-      // Изменяем свойство поведения с помощью опции:
-      // изменение масштаба колесом прокрутки будет происходить медленно,
-      // на 1/2 уровня масштабирования в секунду.
-      myMap.options.set('scrollZoomSpeed', 0.5);
-});
+  // ymaps.ready(function() {
+  //   var myMap = new ymaps.Map('map', {
+  //       center: [55.809844, 37.513380],
+  //       zoom: 17
+  //     }, {
+  //       searchControlProvider: 'yandex#search'
+  //     }),
+  //
+  //     // Создаём макет содержимого.
+  //     MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+  //       '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+  //     ),
+  //
+  //     myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+  //       // hintContent: 'Собственный значок метки',
+  //       // balloonContent: 'Это красивая метка'
+  //     }, {
+  //       // Опции.
+  //       // Необходимо указать данный тип макета.
+  //       iconLayout: 'default#image',
+  //       // Своё изображение иконки метки.
+  //       iconImageHref: 'img/map.svg',
+  //       // Размеры метки.
+  //       iconImageSize: [273, 143],
+  //       // Смещение левого верхнего угла иконки относительно
+  //       // её "ножки" (точки привязки).
+  //       iconImageOffset: [-150, -50]
+  //     });
+  //
+  //   myMap.geoObjects
+  //     .add(myPlacemark)
+  //   myMap.behaviors
+  //     // Отключаем часть включенных по умолчанию поведений:
+  //     //  - drag - перемещение карты при нажатой левой кнопки мыши;
+  //     //  - magnifier.rightButton - увеличение области, выделенной правой кнопкой мыши.
+  //     .disable(['drag', 'rightMouseButtonMagnifier'])
+  //     // Включаем линейку.
+  //     .enable('ruler');
+  //
+  //   // Изменяем свойство поведения с помощью опции:
+  //   // изменение масштаба колесом прокрутки будет происходить медленно,
+  //   // на 1/2 уровня масштабирования в секунду.
+  //   myMap.options.set('scrollZoomSpeed', 0.5);
+  // });
 
   (function($) {
 
-  $.fn.menumaker = function(options) {
+    $.fn.menumaker = function(options) {
 
-      var cssmenu = $(this), settings = $.extend({
-        title: "Menu",
-        format: "dropdown",
-        sticky: false
-      }, options);
+      var cssmenu = $(this),
+        settings = $.extend({
+          title: "Menu",
+          format: "dropdown",
+          sticky: false
+        }, options);
 
       return this.each(function() {
         cssmenu.prepend('<div id="menu-button">' + settings.title + '</div>');
-        $(this).find("#menu-button").on('click', function(){
+        $(this).find("#menu-button").on('click', function() {
           $(this).toggleClass('menu-opened');
           var mainmenu = $(this).next('ul');
           if (mainmenu.hasClass('open')) {
             mainmenu.hide().removeClass('open');
-          }
-          else {
+          } else {
             mainmenu.show().addClass('open');
             if (settings.format === "dropdown") {
               mainmenu.find('ul').show();
@@ -83,8 +89,7 @@ $(document).ready(function(){
             $(this).toggleClass('submenu-opened');
             if ($(this).siblings('ul').hasClass('open')) {
               $(this).siblings('ul').removeClass('open').hide();
-            }
-            else {
+            } else {
               $(this).siblings('ul').addClass('open').show();
             }
           });
@@ -96,7 +101,7 @@ $(document).ready(function(){
         if (settings.sticky === true) cssmenu.css('position', 'fixed');
 
         resizeFix = function() {
-          if ($( window ).width() > 768) {
+          if ($(window).width() > 768) {
             cssmenu.find('ul').show();
           }
 
@@ -108,19 +113,19 @@ $(document).ready(function(){
         return $(window).on('resize', resizeFix);
 
       });
-  };
-})(jQuery);
+    };
+  })(jQuery);
 
-(function($){
-$(document).ready(function(){
+  (function($) {
+    $(document).ready(function() {
 
-$("#cssmenu").menumaker({
-   title: "Menu",
-   format: "multitoggle"
-});
+      $("#cssmenu").menumaker({
+        title: "Menu",
+        format: "multitoggle"
+      });
 
-});
-})(jQuery);
+    });
+  })(jQuery);
 
 
   //////////
@@ -145,7 +150,7 @@ $("#cssmenu").menumaker({
   ////////////
   // READY - triggered when PJAX DONE
   ////////////
-  function pageReady(){
+  function pageReady() {
     legacySupport();
     updateHeaderActiveClass();
     initHeaderScroll();
@@ -173,15 +178,15 @@ $("#cssmenu").menumaker({
 
 
   // some plugins work best with onload triggers
-  _window.on('load', function(){
+  _window.on('load', function() {
     // your functions
   })
 
   $('#search-input').mouseover(function() {
-      $(this).parents('.header__form').addClass('is-open');
+    $(this).parents('.header__form').addClass('is-open');
   })
   $('.header__form').mouseleave(function() {
-      $(this).removeClass('is-open');
+    $(this).removeClass('is-open');
   })
 
 
@@ -189,7 +194,7 @@ $("#cssmenu").menumaker({
   // COMMON
   //////////
 
-  function legacySupport(){
+  function legacySupport() {
     // svg support for laggy browsers
     svg4everybody();
 
@@ -203,14 +208,15 @@ $("#cssmenu").menumaker({
 
 
   // Prevent # behavior
-	_document
+  _document
     .on('click', '[href="#"]', function(e) {
-  		e.preventDefault();
-  	})
+      e.preventDefault();
+    })
     .on('click', 'a[href^="#section"]', function() { // section scroll
       var el = $(this).attr('href');
       $('body, html').animate({
-          scrollTop: $(el).offset().top}, 1000);
+        scrollTop: $(el).offset().top
+      }, 1000);
       return false;
     })
 
@@ -218,21 +224,21 @@ $("#cssmenu").menumaker({
   // HEADER SCROLL
   // add .header-static for .page or body
   // to disable sticky header
-  function initHeaderScroll(){
+  function initHeaderScroll() {
     _window.on('scroll', throttle(function(e) {
       var vScroll = _window.scrollTop();
       var header = $('.header').not('.header--static');
       var headerHeight = header.height();
       var firstSection = _document.find('.page__content div:first-child()').height() - headerHeight;
-      var visibleWhen = Math.round(_document.height() / _window.height()) >  2.5
+      var visibleWhen = Math.round(_document.height() / _window.height()) > 2.5
 
-      if (visibleWhen){
-        if ( vScroll > headerHeight ){
+      if (visibleWhen) {
+        if (vScroll > headerHeight) {
           header.addClass('is-fixed');
         } else {
           header.removeClass('is-fixed');
         }
-        if ( vScroll > firstSection ){
+        if (vScroll > firstSection) {
           header.addClass('is-fixed-visible');
         } else {
           header.removeClass('is-fixed-visible');
@@ -243,21 +249,21 @@ $("#cssmenu").menumaker({
 
 
   // HAMBURGER TOGGLER
-  _document.on('click', '[js-hamburger]', function(){
+  _document.on('click', '[js-hamburger]', function() {
     $(this).toggleClass('is-active');
     $('.mobile-navi').toggleClass('is-active');
   });
 
-  function closeMobileMenu(){
+  function closeMobileMenu() {
     $('[js-hamburger]').removeClass('is-active');
     $('.mobile-navi').removeClass('is-active');
   }
 
   // SET ACTIVE CLASS IN HEADER
   // * could be removed in production and server side rendering when header is inside barba-container
-  function updateHeaderActiveClass(){
-    $('.header__menu li').each(function(i,val){
-      if ( $(val).find('a').attr('href') == window.location.pathname.split('/').pop() ){
+  function updateHeaderActiveClass() {
+    $('.header__menu li').each(function(i, val) {
+      if ($(val).find('a').attr('href') == window.location.pathname.split('/').pop()) {
         $(val).addClass('is-active');
       } else {
         $(val).removeClass('is-active')
@@ -269,12 +275,12 @@ $("#cssmenu").menumaker({
   // SLIDERS
   //////////
 
-  function initSliders(){
+  function initSliders() {
     var slickNextArrow = '<div class="slick-prev"><svg class="ico ico-back-arrow"><use xlink:href="img/sprite.svg#ico-back-arrow"></use></svg></div>';
     var slickPrevArrow = '<div class="slick-next"><svg class="ico ico-next-arrow"><use xlink:href="img/sprite.svg#ico-next-arrow"></use></svg></div>'
 
     // General purpose sliders
-    $('[js-slider]').each(function(i, slider){
+    $('[js-slider]').each(function(i, slider) {
       var self = $(slider);
 
       // set data attributes on slick instance to control
@@ -312,14 +318,12 @@ $("#cssmenu").menumaker({
       speed: 300,
       slidesToShow: 1,
       adaptiveHeight: true,
-      responsive: [
-      {
+      responsive: [{
         breakpoint: 568,
         settings: {
           arrows: false
         }
-      }
-    ]
+      }]
 
     })
 
@@ -329,7 +333,7 @@ $("#cssmenu").menumaker({
   // MODALS
   //////////
 
-  function initPopups(){
+  function initPopups() {
     // Magnific Popup
     var startWindowScroll = 0;
     $('[js-popup]').magnificPopup({
@@ -355,22 +359,22 @@ $("#cssmenu").menumaker({
     });
 
     $('[js-popup-gallery]').magnificPopup({
-  		delegate: 'a',
-  		type: 'image',
-  		tLoading: 'Загрузка #%curr%...',
-  		mainClass: 'popup-buble',
-  		gallery: {
-  			enabled: true,
-  			navigateByImgClick: true,
-  			preload: [0,1]
-  		},
-  		image: {
-  			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-  		}
-  	});
+      delegate: 'a',
+      type: 'image',
+      tLoading: 'Загрузка #%curr%...',
+      mainClass: 'popup-buble',
+      gallery: {
+        enabled: true,
+        navigateByImgClick: true,
+        preload: [0, 1]
+      },
+      image: {
+        tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+      }
+    });
   }
 
-  function closeMfp(){
+  function closeMfp() {
     $.magnificPopup.close();
   }
 
@@ -380,36 +384,41 @@ $("#cssmenu").menumaker({
 
   // textarea autoExpand
   _document
-    .one('focus.autoExpand', '.ui-group textarea', function(){
-        var savedValue = this.value;
-        this.value = '';
-        this.baseScrollHeight = this.scrollHeight;
-        this.value = savedValue;
+    .one('focus.autoExpand', '.ui-group textarea', function() {
+      var savedValue = this.value;
+      this.value = '';
+      this.baseScrollHeight = this.scrollHeight;
+      this.value = savedValue;
     })
-    .on('input.autoExpand', '.ui-group textarea', function(){
-        var minRows = this.getAttribute('data-min-rows')|0, rows;
-        this.rows = minRows;
-        rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 17);
-        this.rows = minRows + rows;
+    .on('input.autoExpand', '.ui-group textarea', function() {
+      var minRows = this.getAttribute('data-min-rows') | 0,
+        rows;
+      this.rows = minRows;
+      rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 17);
+      this.rows = minRows + rows;
     });
 
   // Masked input
-  function initMasks(){
-    $("[js-dateMask]").mask("99.99.99",{placeholder:"ДД.ММ.ГГ"});
-    $("input[type='tel']").mask("+7 (000) 000-0000", {placeholder: "+7 (___) ___-____"});
+  function initMasks() {
+    $("[js-dateMask]").mask("99.99.99", {
+      placeholder: "ДД.ММ.ГГ"
+    });
+    $("input[type='tel']").mask("+7 (000) 000-0000", {
+      placeholder: "+7 (___) ___-____"
+    });
   }
 
 
   ////////////
   // SCROLLMONITOR - WOW LIKE
   ////////////
-  function initScrollMonitor(){
-    $('.wow').each(function(i, el){
+  function initScrollMonitor() {
+    $('.wow').each(function(i, el) {
 
-      var elWatcher = scrollMonitor.create( $(el) );
+      var elWatcher = scrollMonitor.create($(el));
 
       var delay;
-      if ( $(window).width() < 768 ){
+      if ($(window).width() < 768) {
         delay = 0
       } else {
         delay = $(el).data('animation-delay');
@@ -445,7 +454,7 @@ $("#cssmenu").menumaker({
   //////////
   // LAZY LOAD
   //////////
-  function initLazyLoad(){
+  function initLazyLoad() {
     _document.find('[js-lazy]').Lazy({
       threshold: 500,
       enableThrottle: true,
@@ -456,9 +465,9 @@ $("#cssmenu").menumaker({
       // visibleOnly: true,
       // placeholder: "data:image/gif;base64,R0lGODlhEALAPQAPzl5uLr9Nrl8e7...",
       onError: function(element) {
-          console.log('error loading ' + element.data('src'));
+        console.log('error loading ' + element.data('src'));
       },
-      beforeLoad: function(element){
+      beforeLoad: function(element) {
         // element.attr('style', '')
       }
     });
@@ -482,10 +491,10 @@ $("#cssmenu").menumaker({
 
       anime({
         targets: this.oldContainer,
-        opacity : .5,
+        opacity: .5,
         easing: easingSwing, // swing
         duration: 300,
-        complete: function(anim){
+        complete: function(anim) {
           deferred.resolve();
         }
       })
@@ -500,8 +509,8 @@ $("#cssmenu").menumaker({
       $(this.oldContainer).hide();
 
       $el.css({
-        visibility : 'visible',
-        opacity : .5
+        visibility: 'visible',
+        opacity: .5
       });
 
       anime({
@@ -540,7 +549,7 @@ $("#cssmenu").menumaker({
   });
 
   // some plugins get bindings onNewPage only that way
-  function triggerBody(){
+  function triggerBody() {
     $(window).scroll();
     $(window).resize();
   }
@@ -548,22 +557,22 @@ $("#cssmenu").menumaker({
   //////////
   // DEVELOPMENT HELPER
   //////////
-  function setBreakpoint(){
+  function setBreakpoint() {
     var wHost = window.location.host.toLowerCase()
     var displayCondition = wHost.indexOf("localhost") >= 0 || wHost.indexOf("surge") >= 0
-    if (displayCondition){
+    if (displayCondition) {
       console.log(displayCondition)
       var wWidth = _window.width();
 
-      var content = "<div class='dev-bp-debug'>"+wWidth+"</div>";
+      var content = "<div class='dev-bp-debug'>" + wWidth + "</div>";
 
       $('.page').append(content);
-      setTimeout(function(){
+      setTimeout(function() {
         $('.dev-bp-debug').fadeOut();
-      },1000);
-      setTimeout(function(){
+      }, 1000);
+      setTimeout(function() {
         $('.dev-bp-debug').remove();
-      },1500)
+      }, 1500)
     }
   }
 
