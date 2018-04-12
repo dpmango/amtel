@@ -114,6 +114,7 @@
       color: #FFF
       padding: 15px 25px
       margin-top: 0
+      font-size: 16px
       &.bg-white
         width: 50%
         background: #fff
@@ -219,7 +220,8 @@
     margin: 20px 25px 10px
     width: 100%
     padding-left: 28px
-    background: url(../img/green-check.svg) center left no-repeat
+    background: url(../img/green-check.svg) left top no-repeat
+    background-size: 20px 22px
 
 .buttons
   display: flex
@@ -246,6 +248,21 @@
       margin-top: 25px
     p
       margin-top: 15px
+    .info-container
+      .checkbox
+        width: 50%
+        margin: 20px 0 0 -10px
+  .table__head,
+  .table__bottom
+    p
+      margin-top: 0
+  .buttons
+    a
+      margin: 25px 5px 0
+  .margin-button
+    margin-top: 25px
+
+
 
 
 +r($mobile)
@@ -256,3 +273,48 @@
       max-width: 50%
       label
         word-wrap: break-word
+    .price
+      flex-wrap: wrap
+      p
+        width: 100%
+        &.bg-white
+          width: 100%
+    .info-container
+      .checkbox
+        width: 100%
+        margin: 20px 0 0 0
+        padding: 0
+  .table
+    &__head
+      display: flex
+      justify-content: space-between
+    &__head-green
+      width: 50%
+      flex-wrap: wrap
+      padding: 15px
+    &__head-item
+      width: 100%
+      max-width: 100%
+      min-height: 57px
+      text-align: left
+    &__head-white
+      width: 50%
+      flex-wrap: wrap
+      .table__head-item
+        text-align: center
+    &__bottom
+      padding: 0
+      border-top: 2px solid #67A700
+      p
+        width: 50%
+        line-height: 1.2
+        padding: 0 15px
+        &:last-child
+          background: #fff
+          color: #67A700
+          height: 100%
+          padding: 25px 15px
+  .buttons
+    flex-wrap: wrap
+    a
+      margin: 15px 0 0 0
