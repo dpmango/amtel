@@ -2,8 +2,10 @@
 .header
   // padding: 20px 0
   display: flex
-  padding-bottom: 40px
   border-bottom: 2px solid $colorRed
+  position: relative
+  z-index: 9999
+  flex-wrap: wrap
   &__wrapper
     display: flex
     width: 100%
@@ -111,6 +113,106 @@
     align-items: center
     &:hover
       background: #db8716
+nav
+  width: 100%
+
+  .main-nav
+    margin: 0 auto
+    padding: 0
+    display: flex
+    align-items: center
+    justify-content: space-between
+    li
+      margin: 0 4px
+      position: relative
+      a
+        font-size: 15px
+        color: #575B5F
+        line-height: 1.2
+        transition: all $transitionSpeed ease-in-out
+        border: 2px solid transparent
+        border-radius: 25px
+        padding: 17px 0px
+        justify-content: center
+        text-align: center
+        display: flex
+        &.open-dropdown
+          display: none
+        span
+          transition: all $transitionSpeed ease-in-out
+          border-bottom: 2px solid transparent
+        &:hover
+          span
+            color: $colorRed
+            border-bottom: 2px solid $colorRed
+      .dropdown-list
+        padding: 0
+        position: absolute
+        background: #fff
+        border: 2px solid $colorRed
+        border-radius: 25px
+        border-top-left-radius: 0
+        top: calc(100% - 2px)
+        box-shadow: 0px 3px 15px rgba(0,0,0,0.16)
+        transition: all $transitionSpeed ease-in-out
+        height: 0
+        overflow: hidden
+        border: none
+        li
+          width: 100%
+          margin: 0
+          &:first-child
+            a
+              padding-top: 14px
+          &:last-child
+            a
+              padding-bottom: 14px
+          a
+            padding: 7px 20px
+            width: max-content
+            text-align: left
+            &:hover
+              span
+                border-bottom: 2px solid transparent
+      &.dropdown
+        &:hover
+          .dropdown-list
+            height: max-content
+            overflow: hidden
+            border: 2px solid $colorRed
+          > a
+            padding: 17px 20px
+            border: 2px solid $colorRed
+            box-shadow: 0px 3px 15px rgba(0,0,0,0.16)
+            border-bottom-left-radius: 0
+            border-bottom-right-radius: 0
+            border-bottom: none
+            z-index: 2
+            position: relative
+            &:after
+              display: block
+              width: 100%
+              height: 15px
+              background: #fff
+              position: absolute
+              content: ''
+              bottom: 0px
+              left: 0
+            &:before
+              display: block
+              width: calc(100% + 25px)
+              height: 15px
+              background: #fff
+              position: absolute
+              content: ''
+              bottom: -15px
+              left: 0
+            span
+              border-bottom: 2px solid transparent
+            &:hover
+              span
+                border-bottom: 2px solid transparent
+
 
 +r($desktop)
   .header
@@ -126,6 +228,11 @@
       margin-left: 0
     &__prof-link
       align-self: center
+  nav
+    .main-nav
+      li
+        a
+          font-size: 14px
 
 +r($tablet)
   .header
@@ -179,6 +286,95 @@
         width: 22px
         height: 20px
         background-size: 22px 20px
+  nav
+    width: calc(100% - 60px)
+    border-right: 2px solid $colorRed
+    border-bottom: 2px solid $colorRed
+    border-bottom-right-radius: 25px
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.16)
+    position: absolute
+    top: 0px
+    background: #fff
+    padding: 7px 0
+    left: -110%
+    transition: all $transitionSpeed ease-in-out
+    &.is-open
+      left: 0
+    .container
+      padding: 0
+    .main-nav
+      width: 100%
+      flex-wrap: wrap
+      li
+        width: 100%
+        margin: 0
+        &.dropdown
+          a.open-dropdown
+            display: block
+            position: absolute
+            right: 20px
+            top: 4px
+            font-size: 16px
+            color: #575B5F
+            padding: 0
+            transition: all $transitionSpeed ease-in-out
+          .dropdown-list
+            position: static
+            border: none
+            box-shadow: none
+            padding-left: 15px
+            background: rgba(0,0,0, 0.05)
+            border-radius: 0
+            height: 0
+            transition: all $transitionSpeed ease-in-out
+            li
+              a
+                font-size: 12px
+                padding: 5px 14px
+              &:first-child
+                a
+                  padding-top: 7px
+              &:last-child
+                a
+                  padding-bottom: 7px
+          &:hover
+            a
+              box-shadow: none
+              border: none
+              padding: 5px 14px
+              &:hover
+                span
+                  border: none
+              &:before,
+              &:after
+                display: none
+            a.open-dropdown
+              padding: 0
+            .dropdown-list
+              position: static
+              border: none
+              box-shadow: none
+              height: 0
+          &.is-open
+            .dropdown-list
+              height: max-content
+            a.open-dropdown
+              transform: rotate(45deg)
+              padding: 0
+
+        a
+          border: none
+          padding: 7px 14px
+          color: #fff
+          text-align: left
+          justify-content: flex-start
+          color: #575B5F
+          span
+              border: none
+          &:hover
+            color: $colorRed
+            span
+              border: none
 
 +r($mobile)
   .header

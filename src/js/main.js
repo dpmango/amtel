@@ -1,12 +1,18 @@
 $(document).ready(function() {
 
+
   $(document).on('click', '.check__item label', function() {
     $(this).parent().toggleClass('is-active');
   })
 
+
   $(document).on('click', '.check__item.radio-item label', function() {
     $(this).parents('.check__item').removeClass('is-active');
     $(this).parent().toggleClass('is-active');
+  })
+
+  $(document).on('click', 'ul.main-nav li a', function() {
+    $('ul.main-nav li').toggleClass('is-open');
   })
 
   $(document).on('click', '.checkbox label', function() {
@@ -15,50 +21,51 @@ $(document).ready(function() {
 
   $('select').selectric();
 
-  // ymaps.ready(function() {
-  //   var myMap = new ymaps.Map('map', {
-  //       center: [55.809844, 37.513380],
-  //       zoom: 17
-  //     }, {
-  //       searchControlProvider: 'yandex#search'
-  //     }),
-  //
-  //     // Создаём макет содержимого.
-  //     MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-  //       '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-  //     ),
-  //
-  //     myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-  //       // hintContent: 'Собственный значок метки',
-  //       // balloonContent: 'Это красивая метка'
-  //     }, {
-  //       // Опции.
-  //       // Необходимо указать данный тип макета.
-  //       iconLayout: 'default#image',
-  //       // Своё изображение иконки метки.
-  //       iconImageHref: 'img/map.svg',
-  //       // Размеры метки.
-  //       iconImageSize: [273, 143],
-  //       // Смещение левого верхнего угла иконки относительно
-  //       // её "ножки" (точки привязки).
-  //       iconImageOffset: [-150, -50]
-  //     });
-  //
-  //   myMap.geoObjects
-  //     .add(myPlacemark)
-  //   myMap.behaviors
-  //     // Отключаем часть включенных по умолчанию поведений:
-  //     //  - drag - перемещение карты при нажатой левой кнопки мыши;
-  //     //  - magnifier.rightButton - увеличение области, выделенной правой кнопкой мыши.
-  //     .disable(['drag', 'rightMouseButtonMagnifier'])
-  //     // Включаем линейку.
-  //     .enable('ruler');
-  //
-  //   // Изменяем свойство поведения с помощью опции:
-  //   // изменение масштаба колесом прокрутки будет происходить медленно,
-  //   // на 1/2 уровня масштабирования в секунду.
-  //   myMap.options.set('scrollZoomSpeed', 0.5);
-  // });
+
+  ymaps.ready(function() {
+    var myMap = new ymaps.Map('map', {
+        center: [55.809844, 37.513380],
+        zoom: 17
+      }, {
+        searchControlProvider: 'yandex#search'
+      }),
+
+      // Создаём макет содержимого.
+      MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+        '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+      ),
+
+      myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+        // hintContent: 'Собственный значок метки',
+        // balloonContent: 'Это красивая метка'
+      }, {
+        // Опции.
+        // Необходимо указать данный тип макета.
+        iconLayout: 'default#image',
+        // Своё изображение иконки метки.
+        iconImageHref: 'img/map.svg',
+        // Размеры метки.
+        iconImageSize: [273, 143],
+        // Смещение левого верхнего угла иконки относительно
+        // её "ножки" (точки привязки).
+        iconImageOffset: [-150, -50]
+      });
+
+    myMap.geoObjects
+      .add(myPlacemark)
+    myMap.behaviors
+      // Отключаем часть включенных по умолчанию поведений:
+      //  - drag - перемещение карты при нажатой левой кнопки мыши;
+      //  - magnifier.rightButton - увеличение области, выделенной правой кнопкой мыши.
+      .disable(['drag', 'rightMouseButtonMagnifier'])
+      // Включаем линейку.
+      .enable('ruler');
+
+    // Изменяем свойство поведения с помощью опции:
+    // изменение масштаба колесом прокрутки будет происходить медленно,
+    // на 1/2 уровня масштабирования в секунду.
+    myMap.options.set('scrollZoomSpeed', 0.5);
+  });
 
   (function($) {
 
@@ -256,7 +263,7 @@ $(document).ready(function() {
   // HAMBURGER TOGGLER
   _document.on('click', '[js-hamburger]', function() {
     $(this).toggleClass('is-active');
-    $('.mobile-navi').toggleClass('is-active');
+    $('nav').toggleClass('is-open');
   });
 
   function closeMobileMenu() {

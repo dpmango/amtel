@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.174 23">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e94835;
+      }
+
+      .cls-2 {
+        fill: #585d61;
+      }
+    </style>
+  </defs>
+  <g id="Symbol_39_1" data-name="Symbol 39 – 1" transform="translate(-1356 -613)">
+    <path id="Path_610" data-name="Path 610" class="cls-1" d="M15.963,4.19,11.994.221,11.468,0H.735L0,.735v21.53L.735,23h14.7l.735-.735V4.716ZM11.553,1.859l2.8,2.8h-2.8ZM14.7,21.53H1.47V1.47h8.612V6.133H14.7Z" transform="translate(1356 613)"/>
+    <path id="Path_611" data-name="Path 611" class="cls-2" d="M28.4,79.07h0v4.39h0v1.47H38.65V84.2h0V77.8h0v-.2H28.4Zm1.47,0h7.31v4.39H29.87Z" transform="translate(1330.583 543.55)"/>
+    <rect id="Rectangle_215" data-name="Rectangle 215" class="cls-2" width="10.25" height="1.47" transform="translate(1358.983 629.951)"/>
+  </g>
+</svg>

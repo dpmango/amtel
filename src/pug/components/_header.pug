@@ -20,47 +20,55 @@ header.header
         .hamburger.hamburger--squeeze(js-hamburger)
           .hamburger-box
             .hamburger-inner
-
-//- #cssmenu
-//-   ul.main-nav
-//-     li.active
-//-       a(href='#') О компании
-//-       ul
-//-         li
-//-           a(href='#') История
-//-         li
-//-           a(href='#') Достижения
-//-         li
-//-           a(href='#') Наша команда
-//-         li
-//-           a(href='#') Миссия и ценности
-//-         li
-//-           a(href='#') Почему мы?
-//-         li
-//-           a(href='#') Лицензии и сертификаты
-//-         li
-//-           a(href='#') Пресс-кит
-//- 
-//-         //- li
-//-         //-   a(href='#') Product 2
-//-         //-   ul
-//-         //-     li
-//-         //-       a(href='#') Sub Product
-//-         //-     li
-//-         //-       a(href='#') Sub Product
-//-     li
-//-       a(href='#') Продукты
-//-     li
-//-       a(href='#') Решения
-//-     li
-//-       a(href='#') Технологии и оборудование
-//-     li
-//-       a(href='#') Техническая поддержка
-//-     li
-//-       a(href='#') Акции и предложения
-//-     li
-//-       a(href='#') Калькулятор
-//-     li
-//-       a(href='#') Контакты
+  nav
+    .container
+      ul.main-nav
+        li.dropdown
+          a.open-dropdown(href="#") +
+          a(href='#')
+            span О компании
+          ul.dropdown-list
+            li
+              a(href='#')
+                span История
+            li
+              a(href='#')
+                span Достижения
+            li
+              a(href='#')
+                span Наша команда
+            li
+              a(href='#')
+                span Миссия и ценности
+            li
+              a(href='#')
+                span Почему мы?
+            li
+              a(href='#')
+                span Лицензии и сертификаты
+            li
+              a(href='#')
+                span Пресс-кит
+        li
+          a(href='#')
+            span Продукты
+        li
+          a(href='#')
+            span Решения
+        li
+          a(href='#')
+            span Технологии и оборудование
+        li
+          a(href='#')
+            span Техническая поддержка
+        li
+          a(href='#')
+            span Акции и предложения
+        li
+          a(href='#')
+            span Калькулятор
+        li
+          a(href='#')
+            span Контакты
           										
 // HEADER :: END

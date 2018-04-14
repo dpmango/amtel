@@ -1,0 +1,153 @@
+.private
+  margin-top: 30px
+  margin-bottom: 200px
+  &__grid
+    display: flex
+    justify-content: space-between
+    align-items: top
+  .left
+    max-width: 300px
+  .info-container
+    .selectricWrapper
+      margin-top: 15px
+      border-radius: 20px
+      &.selectricOpen
+        .selectric
+          .button
+            top: -1px
+    .selectricItems
+      overflow-y: scroll
+      li
+        font-size: 13px
+        padding: 8px 25px
+        color: #606060
+        line-height: 1.2
+        &.selected
+          color: #fff
+        &:first-child
+          padding-top: 16px
+        &:last-child
+          padding-bottom: 16px
+    .selectric
+      border-radius: 15px
+      .label
+        padding: 8px 20px
+        margin: 0 50px 0 0
+      .button
+        top: 7px
+.right
+  padding-top: 60px
+  min-width: 220px
+  a
+    &:hover
+      span
+        border-bottom: 1px solid transparent
+    font-size: 13px
+    color: $colorRed
+    display: block
+    margin-top: 5px
+    line-height: 1.4
+    span
+      transition: all $transitionSpeed ease-in-out
+      border-bottom: 1px solid $colorRed
+    &.p-link
+      padding-left: 30px
+      position: relative
+      margin-top: 12px
+      display: block
+      img
+        max-height: 22px
+        width: 22px
+        position: absolute
+        left: 0px
+    .p-link
+      padding-left: 30px
+      position: relative
+      margin-top: 12px
+      display: block
+      img
+        max-height: 22px
+        width: 22px
+        position: absolute
+        left: 0px
+    &.thank
+      margin-top: 40px
+.line
+  margin-top: 35px
+  height: 2px
+  width: 100%
+  background: $colorRed
+.middle
+  // max-width: 590px
+  padding: 15px
+  margin: 0 15px
+  border: 2px solid #E7EAEB
+  border-top: none
+  border-bottom: none
+  h2
+    margin-top: 35px
+    &:first-child
+      margin-top: 0
+  p
+    margin-top: 15px
+    font-size: 13px
+    line-height: 1.4
+    font-family: Arial, sans-serif
+  a
+    &:hover
+      span
+        border-bottom: 1px solid transparent
+    font-size: 13px
+    color: $colorRed
+    display: block
+    margin-top: 5px
+    line-height: 1.4
+    span
+      transition: all $transitionSpeed ease-in-out
+      border-bottom: 1px solid $colorRed
+    &.p-link
+      padding-left: 30px
+      position: relative
+      margin-top: 12px
+      display: block
+      img
+        max-height: 22px
+        width: 22px
+        position: absolute
+        left: 0px
+  &__item
+    width: 33%
+    &.m-name
+      width: 66%
+      max-width: 100%
+      display: flex
+      .m-info
+        margin-left: 15px
+
+  &__grid
+    display: flex
+    margin-top: 20px
+    min-width: 33%
+    flex-wrap: wrap
+    &.m--icons
+      width: 100%
+      margin-top: 35px
+      .middle__item
+        width: 33%
+        display: flex
+        align-items: center
+        justify-content: flex-start
+        img
+          max-height: 62px
+          width: auto
+          margin-right: 10px
+        p
+          font-family: Arial, sans-serif
+          font-size: 16px
+          color: #737B80
+
+
+
++r($tablet)
+  .private
+    margin-top: 15px

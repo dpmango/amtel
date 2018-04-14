@@ -17,5 +17,7 @@ PageList:
   ready: 20
 - file: equipment.html
   ready: 20
+- file: private.html
+  ready: 20
 - file: styleguide.html
   ready: 0
