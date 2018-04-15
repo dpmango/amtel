@@ -36,20 +36,41 @@ block content
                   option(val="pr7") 7Договор № АП-034 от 24 апреля 2015 года
                   option(val="pr8") 8Договор № АП-0934 от 24 мая 2015 года
                   option(val="pr9") 9Договор № АП-034 от 24 апреля 2015 года
+              .right.mobile-visible
+                .line
+                a(href="#")
+                  span Персональная информация
+                a(href="#")
+                  span Список действующих станций
+                a(href="#")
+                  span Тариф
+                a(href="#")
+                  span Дополнительные услуги и опции
+                a(href="#")
+                  span Отчеты об услугах
+                a.p-link.thank(href="#")
+                  img(src="img/hands-icon.svg")
+                  span Поблагодарить
+                a.p-link.comp(href="#")
+                  img(src="img/phone.svg")
+                  span Пожаловаться
+                a.p-link.down(href="#")
+                  img(src="img/presentation.svg")
+                  span Скачать презентацию компании
             .middle
               h2 Ваш менеджер
               .middle__grid
                 .middle__item.m-name
-                  img(src="http://via.placeholder.com/140x80")
+                  img(src="img/manager.svg")
                   .m-info
                     h3 Филиппова Ольга Сергеевна
-                    a(href="tel:+74959830404") +7 (495) 983-04-04 (доб. 1103)
+                    a.number(href="tel:+74959830404") +7 (495) 983-04-04 (доб. 1103)
                     a(href="mailto:fos@amtelcom.ru") fos@amtelcom.ru
-                .middle__item
-                  a.p-link.comp(href="#")
+                .middle__item.m-links
+                  a.p-link(href="#")
                     img(src="img/phone.svg")
                     span Задать вопрос вашему менеджеру
-                  a.p-link.down(href="#")
+                  a.p-link(href="#")
                     img(src="img/instr.svg")
                     span Написать специалисту технической поддержки
               .line
@@ -57,7 +78,7 @@ block content
               p Уважаемые абонент!
               p 15 ноября 2017 года в период с 08-00 до 08-15 (время Московское) на сети АО «АМТЕЛ-СВЯЗЬ» будут проводиться профилактические работы. В этот период возможны перерывы сервиса телефонии суммарной продолжительностью до 15 минут. Просим получателей данного уведомления передать информацию в технические службы и уполномоченным лицам. Приносим свои извинения за доставленные неудобства.
               h2 Акции и специальные предложения для вас
-              .middle__grid.m--icons
+              .middle__grid.m-icons
                 .middle__item
                   img(src="img/bonus.svg")
                   p Бонусы
@@ -67,7 +88,7 @@ block content
                 .middle__item
                   img(src="img/special.svg")
                   p Специальные предложения
-            .right
+            .right.mobile-hidden
               a(href="#")
                 span Персональная информация
               a(href="#")
