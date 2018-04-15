@@ -1,0 +1,101 @@
+.white-popup
+  max-width: 855px
+  background: #fff
+  margin: 0 auto
+  position: relative
+  border-radius: 25px
+  border: 2px solid #737B80
+  overflow: hidden
+  h2
+    font-size: 16px
+    color: #fff
+    padding: 15px 25px
+    text-align: left
+    width: 100%
+    border-radius: 20px
+    background: #737B80
+    display: inline-block
+  form
+    padding: 0 20px 20px 20px
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+  .ui-input
+    width: 48%
+    position: relative
+    &.has-error
+      input
+        border: 1px solid $colorRed
+      label
+        font-size: 12px
+        color: $colorRed
+        position: absolute
+        bottom: -17px
+        left: 29px
+    &.submit-input
+      width: 100%
+      text-align: center
+  input
+    width: 100%
+    border-radius: 25px
+    border: 1px solid #F4F4F4
+    background: #F4F4F4
+    font-size: 16px
+    color: #737B80
+    padding: 20px 30px
+    margin-top: 30px
+    &::-webkit-input-placeholder
+      color: #BEC3C6
+    &:-moz-placeholder
+      color: #BEC3C6
+    &::-moz-placeholder
+      color: #BEC3C6
+    &:-ms-input-placeholder
+      color: #BEC3C6
+    &.btn
+      color: #fff
+      background: #707070
+      cursor: pointer
+      margin: 50px auto 25px
+      display: inline-block
+      width: auto
+      &:hover
+        background: #919A9F
+  p
+    width: 100%
+    font-size: 10px
+    text-align: left
+
+.mfp-close-btn-in .mfp-close
+  color: #fff
+  top: 3px
+
+.mfp-bg
+  background: rgba(255,255,255,0.91)
+.mfp-zoom-in
+  .mfp-with-anim
+    opacity: 0
+    transition: all 0.2s ease-in-out
+    transform: scale(0.8)
+  &.mfp-bg
+    opacity: 0
+    transition: all 0.3s ease-out
+  &.mfp-ready
+    .mfp-with-anim
+      opacity: 1
+      transform: scale(1)
+    &.mfp-bg
+      opacity: 0.8
+  &.mfp-removing
+    .mfp-with-anim
+      transform: scale(0.8)
+      opacity: 0
+    &.mfp-bg
+      opacity: 0
+
++r($mobile)
+  .white-popup
+    .ui-input
+      width: 100%
+    input
+      margin-top: 20px

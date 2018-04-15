@@ -348,7 +348,7 @@ $(document).ready(function() {
   function initPopups() {
     // Magnific Popup
     var startWindowScroll = 0;
-    $('[js-popup]').magnificPopup({
+    $('.open-popup').magnificPopup({
       type: 'inline',
       fixedContentPos: true,
       fixedBgPos: true,
@@ -361,6 +361,7 @@ $(document).ready(function() {
       callbacks: {
         beforeOpen: function() {
           startWindowScroll = _window.scrollTop();
+          this.st.mainClass = this.st.el.attr('data-effect');
           // $('html').addClass('mfp-helper');
         },
         close: function() {

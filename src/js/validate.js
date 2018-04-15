@@ -67,6 +67,7 @@ $(document).ready(function(){
     rules: {
       last_name: "required",
       first_name: "required",
+      ot_name: "required",
       email: {
         required: true,
         email: true
@@ -74,12 +75,13 @@ $(document).ready(function(){
       password: {
         required: true,
         minlength: 6,
-      }
-      // phone: validatePhone
+      },
+      phone: validatePhone
     },
     messages: {
       last_name: "Заполните это поле",
       first_name: "Заполните это поле",
+      ot_name: "Заполните это поле",
       email: {
           required: "Заполните это поле",
           email: "Email содержит неправильный формат"
@@ -88,10 +90,10 @@ $(document).ready(function(){
           required: "Заполните это поле",
           email: "Пароль мимимум 6 символов"
       },
-      // phone: {
-      //     required: "Заполните это поле",
-      //     minlength: "Введите корректный телефон"
-      // }
+      phone: {
+          required: "Заполните это поле",
+          minlength: "Введите корректный телефон"
+      },
     }
   });
 
