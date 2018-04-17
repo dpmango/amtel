@@ -68,13 +68,20 @@
     align-self: center
     margin: 0 30px
     width: 100%
+    position: relative
+    z-index: 2
     .ui-input
       width: 100%
       input
         width: 100%
+        border: 2px solid transparent
+        &:focus
+          border: 2px solid #545b5e
+          box-shadow: inset -1px 1px 3px 1px rgba(0,0,0,0.2)
   &__prof-link
     font-size: 14px
     position: relative
+    z-index: 1
     display: flex
     align-self: flex-start
     color: #fff
@@ -84,18 +91,15 @@
     margin-left: 25px
     flex: 1 0 108px
     max-width: 108px
-    &:after
-      display: block
-      content: ''
+    span
+      font-size: 15px
       position: absolute
       left: -25px
       top: 1px
-      background: url(../../img/case-icon.svg) center left no-repeat
-      background-size: 17px 15px
-      width: 17px
-      height: 15px
+      color: #fff
     &:hover
-      border-color: transparent
+      span
+        color: #545b5e
   &__language
     display: flex
     align-self: flex-start
@@ -112,7 +116,7 @@
     justify-content: center
     align-items: center
     &:hover
-      background: #db8716
+      background: #545b5e
 nav
   width: 100%
 
@@ -267,9 +271,10 @@ nav
       margin-right: 20px
       margin: 0
       flex: 1
-      input
-        border: 2px solid $colorRed
-        font-size: 13px
+      .ui-input
+        input
+          border: 2px solid $colorRed
+          font-size: 13px
     &__language
       align-self: center
       background: $colorRed
@@ -280,12 +285,11 @@ nav
       border: none
       padding: 0
       margin: 0 20px
-      &:after
-        left: 0
-        background: url(../../img/case-icon-red.svg) center left no-repeat
-        width: 22px
-        height: 20px
-        background-size: 22px 20px
+      span
+        font-size: 20px
+        left: 0px
+        top: 1px
+        color: $colorRed
   nav
     width: calc(100% - 60px)
     border-right: 2px solid $colorRed
@@ -293,6 +297,7 @@ nav
     border-bottom-right-radius: 25px
     box-shadow: 0px 3px 15px rgba(0,0,0,0.16)
     position: absolute
+    z-index: 10
     top: 0px
     background: #fff
     padding: 7px 0
@@ -396,59 +401,45 @@ nav
         z-index: 2
         width: calc(100% - 175px)
         right: 50px
+        .ui-input
+          input
+            border: 2px solid $colorRed
+            width: 100%
+            max-width: 100%
+            background-image: none
+            transition: all $transitionSpeed ease-in-out
+            &::-webkit-input-placeholder
+              color: $colorRed
+              font-size: 13px
+            &:-moz-placeholder
+              color: $colorRed
+              font-size: 13px
+            &::-moz-placeholder
+              color: $colorRed
+              font-size: 13px
+            &:-ms-input-placeholder
+              color: $colorRed
+              font-size: 13px
+      .ui-input
         input
-          border: 2px solid $colorRed
-          width: 100%
-          max-width: 100%
-          background-image: none
+          font-size: 13px
+          background: url(../../img/search.svg) center right no-repeat
+          background-size: 20px 20px
+          padding: 7px 14px
+          border: none
+          max-width: 20px
+          margin-left: auto
+          color: $colorRed
           transition: all $transitionSpeed ease-in-out
           &::-webkit-input-placeholder
-            color: $colorRed
-            font-size: 13px
+            color: #fff
+            font-size: 0
           &:-moz-placeholder
-            color: $colorRed
-            font-size: 13px
+            color: #fff
+            font-size: 0
           &::-moz-placeholder
-            color: $colorRed
-            font-size: 13px
+            color: #fff
+            font-size: 0
           &:-ms-input-placeholder
-            color: $colorRed
-            font-size: 13px
-      input
-        border: 2px solid $colorRed
-        font-size: 13px
-        background: url(../../img/search.svg) center right no-repeat
-        background-size: 20px 20px
-        padding: 7px 14px
-        border: none
-        max-width: 20px
-        margin-left: auto
-        color: $colorRed
-        transition: all $transitionSpeed ease-in-out
-        &::-webkit-input-placeholder
-          color: #fff
-          font-size: 0
-        &:-moz-placeholder
-          color: #fff
-          font-size: 0
-        &::-moz-placeholder
-          color: #fff
-          font-size: 0
-        &:-ms-input-placeholder
-          color: #fff
-          font-size: 0
-
-        // &:focus
-        //   width: 100%
-        //   max-width: 100%
-        //   border: 2px solid $colorRed
-        //   background: #fff
-
-        //   &::-webkit-input-placeholder
-        //     color: $colorRed
-        //   &:-moz-placeholder
-        //     color: $colorRed
-        //   &::-moz-placeholder
-        //     color: $colorRed
-        //   &:-ms-input-placeholder
-        //     color: $colorRed
+            color: #fff
+            font-size: 0

@@ -11,7 +11,7 @@
     	color: #fff
     	line-height: 1.2
     	text-align: center
-    	
+
     	margin: 0 15px
     	&:first-child
     		margin-left: 0
@@ -34,18 +34,42 @@
   	border-radius: 50%
   	overflow: hidden
   	margin-left: 14px
-  	&.fb-icon
-  		&:hover
-  			.ico
-	  			color: $facebook
-  	&.vk-icon
-  		&:hover
-  			.ico
-	  			color: $vk
-   	&.insta-icon
-   		&:hover
-   			.ico
-  				background: $instagram
+
+.ico
+  position: relative
+  z-index: 2
+a.footer__icon
+  line-height: 0
+  background: $colorRed
+  border: none
+  transition: all $transitionSpeed ease-in-out
+  position: relative
+  .a-overlay
+    display: block
+    position: absolute
+    width: 94%
+    height: 94%
+    left: 1%
+    top: 0
+    bottom: 0
+    right: 0
+    margin: auto
+    background: transparent
+    border-radius: 50%
+    z-index: 1
+    transition: all $transitionSpeed ease-in-out
+  &:hover
+    .a-overlay
+      background: #fff
+.fb-icon:hover
+	.ico
+    color: $facebook
+.vk-icon:hover
+	.ico
+		color: $vk
+.insta-icon:hover
+	.ico
+	  color: $instagram
 
 +r($tablet)
 	.footer
