@@ -1,88 +1,196 @@
-$(document).ready(function() {
-
-
-  $(document).on('click', '.checkbox-item label', function() {
+$(document).ready(function () {
+  $(document).on('click', '.checkbox-item label', function () {
     $(this).parent().toggleClass('is-active');
-  })
+  });
 
-  // $('input[price]').change(function() {
-  //     var total = 0;
-  //     $('input[price]:checked').each(function() {
-  //         total += parseInt($(this).attr('price'), 10);
-  //     });
-  //     alert(total);
-  // });
-
-
-  $(document).ready(function() {
-
+  (function () {
     var $cbs = $('input[price]');
 
     function calcUsage() {
       var total = 0;
-      $cbs.each(function() {
+      $cbs.each(function () {
         if ($(this).is(":checked"))
           total = parseFloat(total) + parseFloat($(this).val());
       });
-      $("#pay_price").text(total + ' $$$');
+      $("#pay_price").text(total + ' ₽');
+      $("#pay_price2").text(total + ' ₽');
     }
-    $cbs.click(function() {
+
+    $cbs.click(function () {
       calcUsage();
     });
+
     calcUsage();
+  }());
 
-  });
+  // CHANGES START FROM HERE <<<
+  var $settingsForm = $('#settingsForm');
+  var $settingsHeader = $settingsForm.find('.settings-header');
+  var $settingsBody = $settingsForm.find('.settings-value');
+  var $settingsOptions = $settingsForm.find('.settings-options');
+
+  // settings object
+  var formSettings = {
+    moduleType: {
+      id: 0,
+      name: '',
+    },
+    modulteComplex: {
+      id: 0,
+      value: '',
+    },
+    modulteTranslator: {
+      id: 0,
+      value: '',
+    },
+    options: [],
+  };
+
+  // Form functional
+  (function () {
+    // Product type
+    (function () {
+      var $productTypeRadio = $('.product-type');
+
+      $productTypeRadio.change(function () {
+        var $self = $(this);
+        var productName = $self.data('product-name');
+        var productValue = $self.val();
+        var productID = $self.attr('id');
+
+        $self.parent().siblings().removeClass('is-active');
+        $self.parent().addClass('is-active');
+
+        $($settingsHeader.children()[0]).find('p').html(productName);
+        $($settingsBody.children()[0]).find('p').html(productValue + ' ₽');
+      });
+    }());
+
+    // Product complex
+    (function () {
+      var $productTypeRadio = $('.product-complex');
+
+      $productTypeRadio.change(function () {
+        var $self = $(this);
+        var productName = $self.data('product-name');
+        var productValue = $self.val();
+        var productID = $self.attr('id');
+
+        $self.parent().siblings().removeClass('is-active');
+        $self.parent().addClass('is-active');
+
+        $($settingsHeader.children()[1]).find('p').html(productName);
+        $($settingsBody.children()[1]).find('p').html(productValue + ' ₽');
+      });
+    }());
+
+    // Product complex
+    (function () {
+      var $productTypeRadio = $('.product-translator');
+
+      $productTypeRadio.change(function () {
+        var $self = $(this);
+        var productName = $self.data('product-name');
+        var productValue = $self.val();
+        var productID = $self.attr('id');
+
+        $self.parent().siblings().removeClass('is-active');
+        $self.parent().addClass('is-active');
+
+        $($settingsHeader.children()[2]).find('p').html(productName);
+        $($settingsBody.children()[2]).find('p').html(productValue + ' ₽');
+      });
+    }());
+
+    // Product option
+    (function () {
+      var $productTypeCheckbox = $('.product-option');
+
+      $productTypeCheckbox.change(function () {
+        var $self = $(this);
+        var productName = $self.data('product-name');
+        var productValue = $self.val();
+        var productID = $self.attr('id');
+
+        if ($self.prop('checked') === true) {
+          var newOption = '<p class="g-check" data-option-id="' + productID + '">' + productName + '</p>'
+
+          formSettings.options.push(productID);
+          $settingsOptions.html($settingsOptions.html() + newOption);
+        } else {
+          $settingsOptions.find('[data-option-id="' + productID + '"]').remove();
+
+          if (formSettings.options.indexOf(productID) >= 0) formSettings.options.splice(formSettings.options.indexOf(productID), 1)
+        }
+        console.log(formSettings.options);
+
+        if (!formSettings.options.length) {
+          $settingsOptions.find('.g-check.empty').css('display', 'block');
+        } else {
+          $settingsOptions.find('.g-check.empty').css('display', 'none');
+        }
+      });
+    }());
+  }());
 
 
-  $(document).on('click', '.radio-item label', function() {
-
+  $(document).on('click', '.radio-item label', function () {
     $(this).parent().parent().find('.check__item').removeClass('is-active');
 
     $(this).parent().addClass('is-active');
   })
 
-  $(document).on('click', 'ul.main-nav li a', function() {
-    $('ul.main-nav li').toggleClass('is-open');
+  $(document).on('click', 'ul.main-nav li a', function () {
+    $(this).parent().toggleClass('is-open');
   })
 
-  $(document).on('click', '.checkbox label', function() {
+  $(document).on('click', '.checkbox label', function () {
     $(this).toggleClass('is-checked');
   })
 
   $('select').selectric();
 
 
-  ymaps.ready(function() {
-    var myMap = new ymaps.Map('map', {
-        center: [55.809844, 37.513380],
-        zoom: 17
-      }, {
-        searchControlProvider: 'yandex#search'
-      }),
+  $(document).ready(function() {
 
-      // Создаём макет содержимого.
-      MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-        '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-      ),
+    if ($('#map').length > 0) {
 
-      myPlacemark = new ymaps.Placemark([55.809844, 37.513380], {
-      }, {
-        // Необходимо указать данный тип макета.
-        iconLayout: 'default#image',
-        iconImageHref: 'img/map.svg',
-        iconImageSize: [273, 143],
-        // Смещение левого верхнего угла иконки относительно
-        // её "ножки" (точки привязки).
-        iconImageOffset: [-150, -50]
+      ymaps.ready(function () {
+        var myMap = new ymaps.Map('map', {
+          center: [55.809844, 37.513380],
+          zoom: 17
+        }, {
+            searchControlProvider: 'yandex#search'
+          }),
+
+          // Создаём макет содержимого.
+          MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+            '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+          ),
+
+          myPlacemark = new ymaps.Placemark([55.809844, 37.513380], {
+          }, {
+              // Необходимо указать данный тип макета.
+              iconLayout: 'default#image',
+              iconImageHref: 'img/map.svg',
+              iconImageSize: [273, 143],
+              // Смещение левого верхнего угла иконки относительно
+              // её "ножки" (точки привязки).
+              iconImageOffset: [-150, -50]
+            });
+
+        myMap.geoObjects
+          .add(myPlacemark)
       });
 
-      myMap.geoObjects
-        .add(myPlacemark)
-    });
+    }
 
-  (function($) {
+  });
 
-    $.fn.menumaker = function(options) {
+
+  (function ($) {
+
+    $.fn.menumaker = function (options) {
 
       var cssmenu = $(this),
         settings = $.extend({
@@ -91,9 +199,9 @@ $(document).ready(function() {
           sticky: false
         }, options);
 
-      return this.each(function() {
+      return this.each(function () {
         cssmenu.prepend('<div id="menu-button">' + settings.title + '</div>');
-        $(this).find("#menu-button").on('click', function() {
+        $(this).find("#menu-button").on('click', function () {
           $(this).toggleClass('menu-opened');
           var mainmenu = $(this).next('ul');
           if (mainmenu.hasClass('open')) {
@@ -108,9 +216,9 @@ $(document).ready(function() {
 
         cssmenu.find('li ul').parent().addClass('has-sub');
 
-        multiTg = function() {
+        multiTg = function () {
           cssmenu.find(".has-sub").prepend('<span class="submenu-button"></span>');
-          cssmenu.find('.submenu-button').on('click', function() {
+          cssmenu.find('.submenu-button').on('click', function () {
             $(this).toggleClass('submenu-opened');
             if ($(this).siblings('ul').hasClass('open')) {
               $(this).siblings('ul').removeClass('open').hide();
@@ -125,7 +233,7 @@ $(document).ready(function() {
 
         if (settings.sticky === true) cssmenu.css('position', 'fixed');
 
-        resizeFix = function() {
+        resizeFix = function () {
           if ($(window).width() > 768) {
             cssmenu.find('ul').show();
           }
@@ -141,8 +249,8 @@ $(document).ready(function() {
     };
   })(jQuery);
 
-  (function($) {
-    $(document).ready(function() {
+  (function ($) {
+    $(document).ready(function () {
 
       $("#cssmenu").menumaker({
         title: "Menu",
@@ -203,14 +311,14 @@ $(document).ready(function() {
 
 
   // some plugins work best with onload triggers
-  _window.on('load', function() {
+  _window.on('load', function () {
     // your functions
   })
 
-  $('#search-input').click(function() {
+  $('#search-input').click(function () {
     $(this).parents('.header__form').addClass('is-open');
   })
-  $('header').mouseleave(function() {
+  $('header').mouseleave(function () {
     $('.header__form').removeClass('is-open');
   })
 
@@ -234,10 +342,10 @@ $(document).ready(function() {
 
   // Prevent # behavior
   _document
-    .on('click', '[href="#"]', function(e) {
+    .on('click', '[href="#"]', function (e) {
       e.preventDefault();
     })
-    .on('click', 'a[href^="#section"]', function() { // section scroll
+    .on('click', 'a[href^="#section"]', function () { // section scroll
       var el = $(this).attr('href');
       $('body, html').animate({
         scrollTop: $(el).offset().top
@@ -250,7 +358,7 @@ $(document).ready(function() {
   // add .header-static for .page or body
   // to disable sticky header
   function initHeaderScroll() {
-    _window.on('scroll', throttle(function(e) {
+    _window.on('scroll', throttle(function (e) {
       var vScroll = _window.scrollTop();
       var header = $('.header').not('.header--static');
       var headerHeight = header.height();
@@ -274,7 +382,7 @@ $(document).ready(function() {
 
 
   // HAMBURGER TOGGLER
-  _document.on('click', '[js-hamburger]', function() {
+  _document.on('click', '[js-hamburger]', function () {
     $(this).toggleClass('is-active');
     $('nav').toggleClass('is-open');
   });
@@ -287,7 +395,7 @@ $(document).ready(function() {
   // SET ACTIVE CLASS IN HEADER
   // * could be removed in production and server side rendering when header is inside barba-container
   function updateHeaderActiveClass() {
-    $('.header__menu li').each(function(i, val) {
+    $('.header__menu li').each(function (i, val) {
       if ($(val).find('a').attr('href') == window.location.pathname.split('/').pop()) {
         $(val).addClass('is-active');
       } else {
@@ -305,7 +413,7 @@ $(document).ready(function() {
     var slickPrevArrow = '<div class="slick-next"><svg class="ico ico-next-arrow"><use xlink:href="img/sprite.svg#ico-next-arrow"></use></svg></div>'
 
     // General purpose sliders
-    $('[js-slider]').each(function(i, slider) {
+    $('[js-slider]').each(function (i, slider) {
       var self = $(slider);
 
       // set data attributes on slick instance to control
@@ -372,12 +480,12 @@ $(document).ready(function() {
       removalDelay: 300,
       mainClass: 'popup-buble',
       callbacks: {
-        beforeOpen: function() {
+        beforeOpen: function () {
           startWindowScroll = _window.scrollTop();
           this.st.mainClass = this.st.el.attr('data-effect');
           // $('html').addClass('mfp-helper');
         },
-        close: function() {
+        close: function () {
           // $('html').removeClass('mfp-helper');
           _window.scrollTop(startWindowScroll);
         }
@@ -410,13 +518,13 @@ $(document).ready(function() {
 
   // textarea autoExpand
   _document
-    .one('focus.autoExpand', '.ui-group textarea', function() {
+    .one('focus.autoExpand', '.ui-group textarea', function () {
       var savedValue = this.value;
       this.value = '';
       this.baseScrollHeight = this.scrollHeight;
       this.value = savedValue;
     })
-    .on('input.autoExpand', '.ui-group textarea', function() {
+    .on('input.autoExpand', '.ui-group textarea', function () {
       var minRows = this.getAttribute('data-min-rows') | 0,
         rows;
       this.rows = minRows;
@@ -439,7 +547,7 @@ $(document).ready(function() {
   // SCROLLMONITOR - WOW LIKE
   ////////////
   function initScrollMonitor() {
-    $('.wow').each(function(i, el) {
+    $('.wow').each(function (i, el) {
 
       var elWatcher = scrollMonitor.create($(el));
 
@@ -454,7 +562,7 @@ $(document).ready(function() {
 
       var animationName = $(el).data('animation-name') || "wowFade"
 
-      elWatcher.enterViewport(throttle(function() {
+      elWatcher.enterViewport(throttle(function () {
         $(el).addClass(animationClass);
         $(el).css({
           'animation-name': animationName,
@@ -462,9 +570,9 @@ $(document).ready(function() {
           'visibility': 'visible'
         });
       }, 100, {
-        'leading': true
-      }));
-      elWatcher.exitViewport(throttle(function() {
+          'leading': true
+        }));
+      elWatcher.exitViewport(throttle(function () {
         $(el).removeClass(animationClass);
         $(el).css({
           'animation-name': 'none',
@@ -490,10 +598,10 @@ $(document).ready(function() {
       effectTime: 350,
       // visibleOnly: true,
       // placeholder: "data:image/gif;base64,R0lGODlhEALAPQAPzl5uLr9Nrl8e7...",
-      onError: function(element) {
+      onError: function (element) {
         console.log('error loading ' + element.data('src'));
       },
-      beforeLoad: function(element) {
+      beforeLoad: function (element) {
         // element.attr('style', '')
       }
     });
@@ -506,13 +614,13 @@ $(document).ready(function() {
   Barba.Pjax.Dom.containerClass = "page";
 
   var FadeTransition = Barba.BaseTransition.extend({
-    start: function() {
+    start: function () {
       Promise
         .all([this.newContainerLoading, this.fadeOut()])
         .then(this.fadeIn.bind(this));
     },
 
-    fadeOut: function() {
+    fadeOut: function () {
       var deferred = Barba.Utils.deferred();
 
       anime({
@@ -520,7 +628,7 @@ $(document).ready(function() {
         opacity: .5,
         easing: easingSwing, // swing
         duration: 300,
-        complete: function(anim) {
+        complete: function (anim) {
           deferred.resolve();
         }
       })
@@ -528,7 +636,7 @@ $(document).ready(function() {
       return deferred.promise
     },
 
-    fadeIn: function() {
+    fadeIn: function () {
       var _this = this;
       var $el = $(this.newContainer);
 
@@ -551,7 +659,7 @@ $(document).ready(function() {
         opacity: 1,
         easing: easingSwing, // swing
         duration: 300,
-        complete: function(anim) {
+        complete: function (anim) {
           triggerBody()
           _this.done();
         }
@@ -560,14 +668,14 @@ $(document).ready(function() {
   });
 
   // set barba transition
-  Barba.Pjax.getTransition = function() {
+  Barba.Pjax.getTransition = function () {
     return FadeTransition;
   };
 
   Barba.Prefetch.init();
   Barba.Pjax.start();
 
-  Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container, newPageRawHTML) {
+  Barba.Dispatcher.on('newPageReady', function (currentStatus, oldStatus, container, newPageRawHTML) {
 
     pageReady();
     closeMobileMenu();
@@ -593,10 +701,10 @@ $(document).ready(function() {
       var content = "<div class='dev-bp-debug'>" + wWidth + "</div>";
 
       $('.page').append(content);
-      setTimeout(function() {
+      setTimeout(function () {
         $('.dev-bp-debug').fadeOut();
       }, 1000);
-      setTimeout(function() {
+      setTimeout(function () {
         $('.dev-bp-debug').remove();
       }, 1500)
     }
