@@ -21,11 +21,22 @@
     display: flex
     justify-content: flex-start
     align-items: flex-start
-  img
+  &__item-image
     max-width: 58px
     width: 100%
     height: auto
     margin-right: 20px
+    height: 40px
+    &.card-icon
+      background: svg-load('../img/card.svg', fill=#000) left top no-repeat
+    &.phone-icon
+      height: 55px
+      background: svg-load('../img/phone.svg', fill=#000) left top no-repeat
+  // img
+  //   max-width: 58px
+  //   width: 100%
+  //   height: auto
+  //   margin-right: 20px
   h3
     font-size: 13px
     font-weight: 700
