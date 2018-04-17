@@ -6,7 +6,8 @@
     justify-content: space-between
     align-items: top
   .left
-    max-width: 300px
+    flex: 0 1 275px
+    max-width: 275px
     .right
       padding-top: 0
     .line
@@ -172,27 +173,36 @@
           font-size: 16px
           color: #737B80
 
-.mobile-visible
-  display: none
-.mobile-hidden
-  display: block
-
 +r($desktop)
-  .mobile-hidden
-    display: none
-  .mobile-visible
-    display: block
+  .private
+    margin-bottom: 50px
+  .private__grid
+    flex-wrap: wrap
   .middle
     margin-right: 0
     padding-right: 0
     border-right: none
+    width: calc(100% - 300px)
+  .right
+    width: 100%
+    padding-top: 35px
+    width: calc(100% - 300px)
+    display: flex
+    flex-wrap: wrap
+    align-self: flex-end
+    margin-left: auto
+    justify-content: space-between
+    a
+      width: 100%
+      &.thank
+        margin-top: 5px
+    .bottom-links
+      margin-left: 5px
+      width: 40%
+
 
 
 +r($tablet)
-  .mobile-hidden
-    display: block
-  .mobile-visible
-    display: none
   .private
     margin-top: 15px
     margin-bottom: 30px
@@ -219,6 +229,12 @@
 
 
 +r($mobile)
+  .private
+    .left
+      max-width: 100%
+      flex: 1
+    .selectricItems
+      max-height: 150px
   .middle
     &__grid
       margin-top: 15px
@@ -244,3 +260,11 @@
       a.p-link
         width: 100%
         padding-right: 0
+  .right
+    padding-top: 30px
+    a.p-link
+      &.thank
+        margin-top: 20px
+    .bottom-links
+      margin-left: 5px
+      width: 100%

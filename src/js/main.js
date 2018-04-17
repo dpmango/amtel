@@ -224,11 +224,11 @@ $(document).ready(function() {
     // your functions
   })
 
-  $('#search-input').mouseover(function() {
+  $('#search-input').click(function() {
     $(this).parents('.header__form').addClass('is-open');
   })
-  $('.header__form').mouseleave(function() {
-    $(this).removeClass('is-open');
+  $('header').mouseleave(function() {
+    $('.header__form').removeClass('is-open');
   })
 
 
