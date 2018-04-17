@@ -1,14 +1,44 @@
 $(document).ready(function() {
 
 
-  $(document).on('click', '.check__item label', function() {
+  $(document).on('click', '.checkbox-item label', function() {
     $(this).parent().toggleClass('is-active');
   })
 
+  // $('input[price]').change(function() {
+  //     var total = 0;
+  //     $('input[price]:checked').each(function() {
+  //         total += parseInt($(this).attr('price'), 10);
+  //     });
+  //     alert(total);
+  // });
 
-  $(document).on('click', '.check__item.radio-item label', function() {
-    $(this).parents('.check__item').removeClass('is-active');
-    $(this).parent().toggleClass('is-active');
+
+  $(document).ready(function() {
+
+    var $cbs = $('input[price]');
+
+    function calcUsage() {
+      var total = 0;
+      $cbs.each(function() {
+        if ($(this).is(":checked"))
+          total = parseFloat(total) + parseFloat($(this).val());
+      });
+      $("#pay_price").text(total + ' $$$');
+    }
+    $cbs.click(function() {
+      calcUsage();
+    });
+    calcUsage();
+
+  });
+
+
+  $(document).on('click', '.radio-item label', function() {
+
+    $(this).parent().parent().find('.check__item').removeClass('is-active');
+
+    $(this).parent().addClass('is-active');
   })
 
   $(document).on('click', 'ul.main-nav li a', function() {
@@ -324,7 +354,7 @@ $(document).ready(function() {
 
     $('.main-slider').slick({
       dots: false,
-      infinite: false,
+      infinite: true,
       autoplay: true,
       autoplaySpeed: 4000,
       speed: 300,

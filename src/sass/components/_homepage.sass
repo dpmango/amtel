@@ -19,22 +19,18 @@
     background-size: cover
     background-position: center
     background-repeat: no-repeat
-    &:nth-child(1)
-      .main-slider__title
-        right: 50px
-        top: 100px
-    &:nth-child(2)
-      .main-slider__title
-        left: 120px
-        top: 190px
-    &:nth-child(3)
-      .main-slider__title
-        right: 320px
-        top: 350px
-    &:nth-child(4)
-      .main-slider__title
-        right: 150px
-        top: 260px
+    .main-slider__title.p-item-1
+      right: 50px
+      top: 100px
+    .main-slider__title.p-item-2
+      left: 120px
+      top: 190px
+    .main-slider__title.p-item-3
+      right: 320px
+      top: 350px
+    .main-slider__title.p-item-4
+      right: 150px
+      top: 260px
   .slick-arrow
     position: absolute
     width: 37px
@@ -61,22 +57,18 @@
   .main-slider
     .item
       min-height: 320px
-      &:nth-child(1)
-        .main-slider__title
-          right: 50px
-          top: 50px
-      &:nth-child(2)
-        .main-slider__title
-          left: 120px
-          top: 190px
-      &:nth-child(3)
-        .main-slider__title
-          right: 150px
-          top: 240px
-      &:nth-child(4)
-        .main-slider__title
-          right: 130px
-          top: 200px
+      .main-slider__title.p-item-1
+        right: 50px
+        top: 50px
+      .main-slider__title.p-item-2
+        left: 120px
+        top: 190px
+      .main-slider__title.p-item-3
+        right: 150px
+        top: 240px
+      .main-slider__title.p-item-4
+        right: 130px
+        top: 200px
     .slick-next
       right: 20px
     .slick-prev
@@ -93,13 +85,9 @@
         background-position: center right -180px
       &:nth-child(2)
         background-position: center left -250px
-        .main-slider__title
-          margin-top: 180px
-      &:nth-child(3)
+      &:nth-child(3),
       &:nth-child(4)
         background-position: center right -280px
-        .main-slider__title
-          margin-top: 190px
     &__title
       position: static
       text-indent: 0
@@ -108,6 +96,12 @@
       font-size: 36px
       max-width: 290px
       margin: 30px auto
+  .main-slider__title.p-item-2
+    margin-top: 180px
+  .main-slider__title.p-item-3
+    margin-top: 240px
+  .main-slider__title.p-item-4
+    margin-top: 190px
 
 
 // main-slider styles
