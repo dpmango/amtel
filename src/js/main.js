@@ -1,201 +1,378 @@
 $(document).ready(function () {
-  $(document).on('click', '.checkbox-item label', function () {
-    $(this).parent().toggleClass('is-active');
-  });
+  //////////
+  // Global variables
+  //////////
 
-  (function () {
-    var $cbs = $('input[price]');
+  var _window = $(window);
+  var _document = $(document);
 
-    function calcUsage() {
-      var total = 0;
-      $cbs.each(function () {
-        if ($(this).is(":checked"))
-          total = parseFloat(total) + parseFloat($(this).val());
-      });
-      $("#pay_price").text(total + ' ₽');
-      $("#pay_price2").text(total + ' ₽');
-    }
+  // BREAKPOINT SETTINGS
+  var bp = {
+    mobileS: 375,
+    mobile: 568,
+    tablet: 768,
+    desktop: 992,
+    wide: 1336,
+    hd: 1680
+  }
 
-    $cbs.click(function () {
-      calcUsage();
+  var easingSwing = [.02, .01, .47, 1]; // default jQuery easing for anime.js
+
+  ////////////
+  // READY - triggered when PJAX DONE
+  ////////////
+  function pageReady() {
+    legacySupport();
+    updateHeaderActiveClass();
+    initHeaderScroll();
+
+    initPopups();
+    initSliders();
+    initScrollMonitor();
+    initMasks();
+    initLazyLoad();
+    initMap();
+    initMenumaker();
+    initSelectric();
+
+    initCalc();
+
+    // development helper
+    _window.on('resize', debounce(setBreakpoint, 200))
+  }
+
+  // this is a master function which should have all functionality
+  pageReady();
+
+
+  // some plugins work best with onload triggers
+  _window.on('load', function () {
+    // your functions
+  })
+
+  //////////
+  // COMMON
+  //////////
+
+  function legacySupport() {
+    // svg support for laggy browsers
+    svg4everybody();
+
+    // Viewport units buggyfill
+    window.viewportUnitsBuggyfill.init({
+      force: false,
+      refreshDebounceWait: 150,
+      appendToBody: true
     });
-
-    calcUsage();
-  }());
-
-  // CHANGES START FROM HERE <<<
-  var $settingsForm = $('#settingsForm');
-  var $settingsHeader = $settingsForm.find('.settings-header');
-  var $settingsBody = $settingsForm.find('.settings-value');
-  var $settingsOptions = $settingsForm.find('.settings-options');
-
-  // settings object
-  var formSettings = {
-    moduleType: {
-      id: 0,
-      name: '',
-    },
-    modulteComplex: {
-      id: 0,
-      value: '',
-    },
-    modulteTranslator: {
-      id: 0,
-      value: '',
-    },
-    options: [],
-  };
-
-  // Form functional
-  (function () {
-    // Product type
-    (function () {
-      var $productTypeRadio = $('.product-type');
-
-      $productTypeRadio.change(function () {
-        var $self = $(this);
-        var productName = $self.data('product-name');
-        var productValue = $self.val();
-        var productID = $self.attr('id');
-
-        $self.parent().siblings().removeClass('is-active');
-        $self.parent().addClass('is-active');
-
-        $($settingsHeader.children()[0]).find('p').html(productName);
-        $($settingsBody.children()[0]).find('p').html(productValue + ' ₽');
-      });
-    }());
-
-    // Product complex
-    (function () {
-      var $productTypeRadio = $('.product-complex');
-
-      $productTypeRadio.change(function () {
-        var $self = $(this);
-        var productName = $self.data('product-name');
-        var productValue = $self.val();
-        var productID = $self.attr('id');
-
-        $self.parent().siblings().removeClass('is-active');
-        $self.parent().addClass('is-active');
-
-        $($settingsHeader.children()[1]).find('p').html(productName);
-        $($settingsBody.children()[1]).find('p').html(productValue + ' ₽');
-      });
-    }());
-
-    // Product complex
-    (function () {
-      var $productTypeRadio = $('.product-translator');
-
-      $productTypeRadio.change(function () {
-        var $self = $(this);
-        var productName = $self.data('product-name');
-        var productValue = $self.val();
-        var productID = $self.attr('id');
-
-        $self.parent().siblings().removeClass('is-active');
-        $self.parent().addClass('is-active');
-
-        $($settingsHeader.children()[2]).find('p').html(productName);
-        $($settingsBody.children()[2]).find('p').html(productValue + ' ₽');
-      });
-    }());
-
-    // Product option
-    (function () {
-      var $productTypeCheckbox = $('.product-option');
-
-      $productTypeCheckbox.change(function () {
-        var $self = $(this);
-        var productName = $self.data('product-name');
-        var productValue = $self.val();
-        var productID = $self.attr('id');
-
-        if ($self.prop('checked') === true) {
-          var newOption = '<p class="g-check" data-option-id="' + productID + '">' + productName + '</p>'
-
-          formSettings.options.push(productID);
-          $settingsOptions.html($settingsOptions.html() + newOption);
-        } else {
-          $settingsOptions.find('[data-option-id="' + productID + '"]').remove();
-
-          if (formSettings.options.indexOf(productID) >= 0) formSettings.options.splice(formSettings.options.indexOf(productID), 1)
-        }
-        console.log(formSettings.options);
-
-        if (!formSettings.options.length) {
-          $settingsOptions.find('.g-check.empty').css('display', 'block');
-        } else {
-          $settingsOptions.find('.g-check.empty').css('display', 'none');
-        }
-      });
-    }());
-  }());
+  }
 
 
-  $(document).on('click', '.radio-item label', function () {
-    $(this).parent().parent().find('.check__item').removeClass('is-active');
-
-    $(this).parent().addClass('is-active');
-  })
-
-  $(document).on('click', 'ul.main-nav li a', function () {
-    $(this).parent().toggleClass('is-open');
-  })
-
-  $(document).on('click', '.checkbox label', function () {
-    $(this).toggleClass('is-checked');
-  })
-
-
-  $('select').selectric();
-
-
-  $('.selectricItems ul li').on('click', function(e) {
+  // CLICK HANDLERS
+  _document
+    .on('click', '[href="#"]', function (e) {
       e.preventDefault();
-      var $self = $(this),
-          tabIndex = $self.index();
-      $self.siblings().removeClass('active');
-      $self.addClass('active');
-      $('.contract__item').removeClass('active').eq(tabIndex).addClass('active');
+    })
+    .on('click', 'a[href^="#section"]', function () { // section scroll
+      var el = $(this).attr('href');
+      $('body, html').animate({
+        scrollTop: $(el).offset().top
+      }, 1000);
+      return false;
+    })
+    .on('click', '.radio-item label', function () {
+      $(this).parent().parent().find('.check__item').removeClass('is-active');
+      $(this).parent().addClass('is-active');
+    })
+    .on('click', 'ul.main-nav li a', function () {
+      $(this).parent().toggleClass('is-open');
+    })
+    .on('click', '.checkbox label', function () {
+      $(this).toggleClass('is-checked');
+    })
+    .on('click', '#search-input', function () {
+      $(this).parents('.header__form').addClass('is-open');
+    })
+    .on('mouseleave', 'header', function () {
+      $('.header__form').removeClass('is-open');
+    })
+
+  // HEADER SCROLL
+  // add .header-static for .page or body
+  // to disable sticky header
+  function initHeaderScroll() {
+    _window.on('scroll', throttle(function (e) {
+      var vScroll = _window.scrollTop();
+      var header = $('.header').not('.header--static');
+      var headerHeight = header.height();
+      var firstSection = _document.find('.page__content div:first-child()').height() - headerHeight;
+      var visibleWhen = Math.round(_document.height() / _window.height()) > 2.5
+
+      if (visibleWhen) {
+        if (vScroll > headerHeight) {
+          header.addClass('is-fixed');
+        } else {
+          header.removeClass('is-fixed');
+        }
+        if (vScroll > firstSection) {
+          header.addClass('is-fixed-visible');
+        } else {
+          header.removeClass('is-fixed-visible');
+        }
+      }
+    }, 10));
+  }
+
+
+  // HAMBURGER TOGGLER
+  _document.on('click', '[js-hamburger]', function () {
+    $(this).toggleClass('is-active');
+    $('nav').toggleClass('is-open');
   });
 
+  function closeMobileMenu() {
+    $('[js-hamburger]').removeClass('is-active');
+    $('.mobile-navi').removeClass('is-active');
+  }
 
-  if ($('#map').length) {
+  // SET ACTIVE CLASS IN HEADER
+  // * could be removed in production and server side rendering when header is inside barba-container
+  function updateHeaderActiveClass() {
+    $('.header__menu li').each(function (i, val) {
+      if ($(val).find('a').attr('href') == window.location.pathname.split('/').pop()) {
+        $(val).addClass('is-active');
+      } else {
+        $(val).removeClass('is-active')
+      }
+    });
+  }
 
-    ymaps.ready(function () {
-      var myMap = new ymaps.Map('map', {
-        center: [55.809844, 37.513380],
-        zoom: 17
-      }, {
-          searchControlProvider: 'yandex#search'
-        }),
 
-        // Создаём макет содержимого.
-        MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-          '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-        ),
+  //////////
+  // SLIDERS
+  //////////
+  function initCalc(){
+    _document
+      .on('click', '.checkbox-item label', function () {
+        $(this).parent().toggleClass('is-active');
+      });
 
-        myPlacemark = new ymaps.Placemark([55.809844, 37.513380], {
-        }, {
-            // Необходимо указать данный тип макета.
-            iconLayout: 'default#image',
-            iconImageHref: 'img/map.svg',
-            iconImageSize: [273, 143],
-            // Смещение левого верхнего угла иконки относительно
-            // её "ножки" (точки привязки).
-            iconImageOffset: [-150, -50]
-          });
+    (function () {
+      var $cbs = $('input[price]');
 
-      myMap.geoObjects
-        .add(myPlacemark)
+      function calcUsage() {
+        var total = 0;
+        $cbs.each(function () {
+          if ($(this).is(":checked"))
+            total = parseFloat(total) + parseFloat($(this).val());
+        });
+        $("#pay_price").text(total + ' ₽');
+        $("#pay_price2").text(total + ' ₽');
+      }
+
+      $cbs.click(function () {
+        calcUsage();
+      });
+
+      calcUsage();
+    }());
+
+    // CHANGES START FROM HERE <<<
+    var $settingsForm = $('#settingsForm');
+    var $settingsHeader = $settingsForm.find('.settings-header');
+    var $settingsBody = $settingsForm.find('.settings-value');
+    var $settingsOptions = $settingsForm.find('.settings-options');
+
+    // settings object
+    var formSettings = {
+      moduleType: {
+        id: 0,
+        name: '',
+      },
+      modulteComplex: {
+        id: 0,
+        value: '',
+      },
+      modulteTranslator: {
+        id: 0,
+        value: '',
+      },
+      options: [],
+    };
+
+    // Form functional
+    (function () {
+      // Product type
+      (function () {
+        var $productTypeRadio = $('.product-type');
+
+        $productTypeRadio.change(function () {
+          var $self = $(this);
+          var productName = $self.data('product-name');
+          var productValue = $self.val();
+          var productID = $self.attr('id');
+
+          $self.parent().siblings().removeClass('is-active');
+          $self.parent().addClass('is-active');
+
+          $($settingsHeader.children()[0]).find('p').html(productName);
+          $($settingsBody.children()[0]).find('p').html(productValue + ' ₽');
+        });
+      }());
+
+      // Product complex
+      (function () {
+        var $productTypeRadio = $('.product-complex');
+
+        $productTypeRadio.change(function () {
+          var $self = $(this);
+          var productName = $self.data('product-name');
+          var productValue = $self.val();
+          var productID = $self.attr('id');
+
+          $self.parent().siblings().removeClass('is-active');
+          $self.parent().addClass('is-active');
+
+          $($settingsHeader.children()[1]).find('p').html(productName);
+          $($settingsBody.children()[1]).find('p').html(productValue + ' ₽');
+        });
+      }());
+
+      // Product complex
+      (function () {
+        var $productTypeRadio = $('.product-translator');
+
+        $productTypeRadio.change(function () {
+          var $self = $(this);
+          var productName = $self.data('product-name');
+          var productValue = $self.val();
+          var productID = $self.attr('id');
+
+          $self.parent().siblings().removeClass('is-active');
+          $self.parent().addClass('is-active');
+
+          $($settingsHeader.children()[2]).find('p').html(productName);
+          $($settingsBody.children()[2]).find('p').html(productValue + ' ₽');
+        });
+      }());
+
+      // Product option
+      (function () {
+        var $productTypeCheckbox = $('.product-option');
+
+        $productTypeCheckbox.change(function () {
+          var $self = $(this);
+          var productName = $self.data('product-name');
+          var productValue = $self.val();
+          var productID = $self.attr('id');
+
+          if ($self.prop('checked') === true) {
+            var newOption = '<p class="g-check" data-option-id="' + productID + '">' + productName + '</p>'
+
+            formSettings.options.push(productID);
+            $settingsOptions.html($settingsOptions.html() + newOption);
+          } else {
+            $settingsOptions.find('[data-option-id="' + productID + '"]').remove();
+
+            if (formSettings.options.indexOf(productID) >= 0) formSettings.options.splice(formSettings.options.indexOf(productID), 1)
+          }
+          console.log(formSettings.options);
+
+          if (!formSettings.options.length) {
+            $settingsOptions.find('.g-check.empty').css('display', 'block');
+          } else {
+            $settingsOptions.find('.g-check.empty').css('display', 'none');
+          }
+        });
+      }());
+    }());
+
+  }
+
+  //////////
+  // SLIDERS
+  //////////
+  function initSliders() {
+
+    $('.main-slider').slick({
+      dots: false,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      speed: 300,
+      slidesToShow: 1,
+      adaptiveHeight: true,
+      responsive: [{
+        breakpoint: 568,
+        settings: {
+          arrows: false
+        }
+      }]
+    })
+
+  }
+
+  //////////
+  // MODALS
+  //////////
+
+  function initPopups() {
+    // Magnific Popup
+    var startWindowScroll = 0;
+    $('.open-popup').magnificPopup({
+      type: 'inline',
+      fixedContentPos: true,
+      fixedBgPos: true,
+      overflowY: 'auto',
+      closeBtnInside: true,
+      preloader: false,
+      midClick: true,
+      removalDelay: 300,
+      mainClass: 'popup-buble',
+      callbacks: {
+        beforeOpen: function () {
+          startWindowScroll = _window.scrollTop();
+          this.st.mainClass = this.st.el.attr('data-effect');
+          // $('html').addClass('mfp-helper');
+        },
+        close: function () {
+          // $('html').removeClass('mfp-helper');
+          _window.scrollTop(startWindowScroll);
+        }
+      }
     });
 
-  };
+    $('[js-popup-gallery]').magnificPopup({
+      delegate: 'a',
+      type: 'image',
+      tLoading: 'Загрузка #%curr%...',
+      mainClass: 'popup-buble',
+      gallery: {
+        enabled: true,
+        navigateByImgClick: true,
+        preload: [0, 1]
+      },
+      image: {
+        tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+      }
+    });
+  }
+
+  function closeMfp() {
+    $.magnificPopup.close();
+  }
 
 
-  (function ($) {
+  ////////////
+  // MENUMAKER
+  ////////////
+  function initMenumaker(){
+
+    if ( $("#cssmenu").length > 0 ){
+      $("#cssmenu").menumaker({
+        title: "Menu",
+        format: "multitoggle"
+      });
+    }
 
     $.fn.menumaker = function (options) {
 
@@ -254,270 +431,26 @@ $(document).ready(function () {
 
       });
     };
-  })(jQuery);
-
-  (function ($) {
-    $(document).ready(function () {
-
-      $("#cssmenu").menumaker({
-        title: "Menu",
-        format: "multitoggle"
-      });
-
-    });
-  })(jQuery);
-
-
-  //////////
-  // Global variables
-  //////////
-
-  var _window = $(window);
-  var _document = $(document);
-
-  // BREAKPOINT SETTINGS
-  var bp = {
-    mobileS: 375,
-    mobile: 568,
-    tablet: 768,
-    desktop: 992,
-    wide: 1336,
-    hd: 1680
   }
-
-  var easingSwing = [.02, .01, .47, 1]; // default jQuery easing for anime.js
 
   ////////////
-  // READY - triggered when PJAX DONE
+  // SELECTRIC
   ////////////
-  function pageReady() {
-    legacySupport();
-    updateHeaderActiveClass();
-    initHeaderScroll();
-
-    initPopups();
-    initSliders();
-    initScrollMonitor();
-    initMasks();
-    initLazyLoad();
-
-    // development helper
-    _window.on('resize', debounce(setBreakpoint, 200))
-
-    // AVAILABLE in _components folder
-    // copy paste in main.js and initialize here
-
-    // initTeleport();
-    // parseSvg();
-    // revealFooter();
-    // _window.on('resize', throttle(revealFooter, 100));
-  }
-
-  // this is a master function which should have all functionality
-  pageReady();
+  function initSelectric(){
+    $('select').selectric();
 
 
-  // some plugins work best with onload triggers
-  _window.on('load', function () {
-    // your functions
-  })
-
-  $('#search-input').click(function () {
-    $(this).parents('.header__form').addClass('is-open');
-  })
-  $('header').mouseleave(function () {
-    $('.header__form').removeClass('is-open');
-  })
-
-
-  //////////
-  // COMMON
-  //////////
-
-  function legacySupport() {
-    // svg support for laggy browsers
-    svg4everybody();
-
-    // Viewport units buggyfill
-    window.viewportUnitsBuggyfill.init({
-      force: true,
-      refreshDebounceWait: 150,
-      appendToBody: true
-    });
-  }
-
-
-  // Prevent # behavior
-  _document
-    .on('click', '[href="#"]', function (e) {
-      e.preventDefault();
-    })
-    .on('click', 'a[href^="#section"]', function () { // section scroll
-      var el = $(this).attr('href');
-      $('body, html').animate({
-        scrollTop: $(el).offset().top
-      }, 1000);
-      return false;
-    })
-
-
-  // HEADER SCROLL
-  // add .header-static for .page or body
-  // to disable sticky header
-  function initHeaderScroll() {
-    _window.on('scroll', throttle(function (e) {
-      var vScroll = _window.scrollTop();
-      var header = $('.header').not('.header--static');
-      var headerHeight = header.height();
-      var firstSection = _document.find('.page__content div:first-child()').height() - headerHeight;
-      var visibleWhen = Math.round(_document.height() / _window.height()) > 2.5
-
-      if (visibleWhen) {
-        if (vScroll > headerHeight) {
-          header.addClass('is-fixed');
-        } else {
-          header.removeClass('is-fixed');
-        }
-        if (vScroll > firstSection) {
-          header.addClass('is-fixed-visible');
-        } else {
-          header.removeClass('is-fixed-visible');
-        }
-      }
-    }, 10));
-  }
-
-
-  // HAMBURGER TOGGLER
-  _document.on('click', '[js-hamburger]', function () {
-    $(this).toggleClass('is-active');
-    $('nav').toggleClass('is-open');
-  });
-
-  function closeMobileMenu() {
-    $('[js-hamburger]').removeClass('is-active');
-    $('.mobile-navi').removeClass('is-active');
-  }
-
-  // SET ACTIVE CLASS IN HEADER
-  // * could be removed in production and server side rendering when header is inside barba-container
-  function updateHeaderActiveClass() {
-    $('.header__menu li').each(function (i, val) {
-      if ($(val).find('a').attr('href') == window.location.pathname.split('/').pop()) {
-        $(val).addClass('is-active');
-      } else {
-        $(val).removeClass('is-active')
-      }
-    });
-  }
-
-  //////////
-  // SLIDERS
-  //////////
-
-  function initSliders() {
-    var slickNextArrow = '<div class="slick-prev"><svg class="ico ico-back-arrow"><use xlink:href="img/sprite.svg#ico-back-arrow"></use></svg></div>';
-    var slickPrevArrow = '<div class="slick-next"><svg class="ico ico-next-arrow"><use xlink:href="img/sprite.svg#ico-next-arrow"></use></svg></div>'
-
-    // General purpose sliders
-    $('[js-slider]').each(function (i, slider) {
-      var self = $(slider);
-
-      // set data attributes on slick instance to control
-      if (self && self !== undefined) {
-        self.slick({
-          autoplay: self.data('slick-autoplay') !== undefined ? true : false,
-          dots: self.data('slick-dots') !== undefined ? true : false,
-          arrows: self.data('slick-arrows') !== undefined ? true : false,
-          prevArrow: slickNextArrow,
-          nextArrow: slickPrevArrow,
-          infinite: self.data('slick-infinite') !== undefined ? true : true,
-          speed: 300,
-          slidesToShow: 1,
-          accessibility: false,
-          adaptiveHeight: true,
-          draggable: self.data('slick-no-controls') !== undefined ? false : true,
-          swipe: self.data('slick-no-controls') !== undefined ? false : true,
-          swipeToSlide: self.data('slick-no-controls') !== undefined ? false : true,
-          touchMove: self.data('slick-no-controls') !== undefined ? false : true
-        });
-      }
-
-    })
-
-    // other individual sliders goes here
-    $('[js-myCustomSlider]').slick({
-
-    })
-
-    $('.main-slider').slick({
-      dots: false,
-      infinite: true,
-      autoplay: true,
-      autoplaySpeed: 4000,
-      speed: 300,
-      slidesToShow: 1,
-      adaptiveHeight: true,
-      responsive: [{
-        breakpoint: 568,
-        settings: {
-          arrows: false
-        }
-      }]
-
-    })
-
-  }
-
-  //////////
-  // MODALS
-  //////////
-
-  function initPopups() {
-    // Magnific Popup
-    var startWindowScroll = 0;
-    $('.open-popup').magnificPopup({
-      type: 'inline',
-      fixedContentPos: true,
-      fixedBgPos: true,
-      overflowY: 'auto',
-      closeBtnInside: true,
-      preloader: false,
-      midClick: true,
-      removalDelay: 300,
-      mainClass: 'popup-buble',
-      callbacks: {
-        beforeOpen: function () {
-          startWindowScroll = _window.scrollTop();
-          this.st.mainClass = this.st.el.attr('data-effect');
-          // $('html').addClass('mfp-helper');
-        },
-        close: function () {
-          // $('html').removeClass('mfp-helper');
-          _window.scrollTop(startWindowScroll);
-        }
-      }
+    _document.on('click', '.selectricItems ul li', function(e) {
+        e.preventDefault();
+        var $self = $(this),
+            tabIndex = $self.index();
+        $self.siblings().removeClass('active');
+        $self.addClass('active');
+        $('.contract__item').removeClass('active').eq(tabIndex).addClass('active');
     });
 
-    $('[js-popup-gallery]').magnificPopup({
-      delegate: 'a',
-      type: 'image',
-      tLoading: 'Загрузка #%curr%...',
-      mainClass: 'popup-buble',
-      gallery: {
-        enabled: true,
-        navigateByImgClick: true,
-        preload: [0, 1]
-      },
-      image: {
-        tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-      }
-    });
   }
 
-  function closeMfp() {
-    $.magnificPopup.close();
-  }
 
   ////////////
   // UI
@@ -579,14 +512,14 @@ $(document).ready(function () {
       }, 100, {
           'leading': true
         }));
-      elWatcher.exitViewport(throttle(function () {
-        $(el).removeClass(animationClass);
-        $(el).css({
-          'animation-name': 'none',
-          'animation-delay': 0,
-          'visibility': 'hidden'
-        });
-      }, 100));
+      // elWatcher.exitViewport(throttle(function () {
+      //   $(el).removeClass(animationClass);
+      //   $(el).css({
+      //     'animation-name': 'none',
+      //     'animation-delay': 0,
+      //     'visibility': 'hidden'
+      //   });
+      // }, 100));
     });
 
   }
@@ -694,6 +627,43 @@ $(document).ready(function () {
     $(window).scroll();
     $(window).resize();
   }
+
+  //////////
+  // MAP
+  //////////
+  function initMap(){
+    if ($('#map').length) {
+
+      ymaps.ready(function () {
+        var myMap = new ymaps.Map('map', {
+          center: [55.809844, 37.513380],
+          zoom: 17
+        }, {
+            searchControlProvider: 'yandex#search'
+          }),
+
+          // Создаём макет содержимого.
+          MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+            '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+          ),
+
+          myPlacemark = new ymaps.Placemark([55.809844, 37.513380], {
+          }, {
+              // Необходимо указать данный тип макета.
+              iconLayout: 'default#image',
+              iconImageHref: 'img/map.svg',
+              iconImageSize: [273, 143],
+              // Смещение левого верхнего угла иконки относительно
+              // её "ножки" (точки привязки).
+              iconImageOffset: [-150, -50]
+            });
+
+        myMap.geoObjects
+          .add(myPlacemark)
+      });
+    }
+  };
+
 
   //////////
   // DEVELOPMENT HELPER

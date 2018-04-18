@@ -19,5 +19,3 @@ PageList:
   ready: 90
 - file: private.html
   ready: 90
-- file: styleguide.html
-  ready: 0
