@@ -2,22 +2,22 @@ ProjectTitle: Amtel
 
 PageList:
 - file: homepage.html
-  ready: 20
+  ready: 90
 - file: promotions.html
-  ready: 20
+  ready: 90
 - file: promotions-2.html
-  ready: 20
+  ready: 90
 - file: news-page.html
-  ready: 20
+  ready: 90
 - file: new-page.html
-  ready: 20
+  ready: 90
 - file: contacts.html
-  ready: 20
+  ready: 90
 - file: products.html
-  ready: 20
+  ready: 90
 - file: equipment.html
-  ready: 20
+  ready: 90
 - file: private.html
-  ready: 20
+  ready: 90
 - file: styleguide.html
   ready: 0
