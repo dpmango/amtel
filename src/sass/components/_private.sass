@@ -6,8 +6,8 @@
     justify-content: space-between
     align-items: top
   .left
-    flex: 0 1 275px
-    max-width: 275px
+    flex: 0 1 290px
+    min-width: 290px
     .right
       padding-top: 0
     .line
@@ -16,10 +16,7 @@
     .selectricWrapper
       margin-top: 15px
       border-radius: 20px
-      &.selectricOpen
-        .selectric
-          .button
-            top: -1px
+
     .selectricItems
       overflow-y: scroll
       li
@@ -39,7 +36,123 @@
         padding: 8px 20px
         margin: 0 50px 0 0
       .button
-        top: 7px
+        top: 3px
+
+.contract__item
+  display: none
+  &.active
+    display: block
+  a
+    position: relative
+    color: $colorRed
+    font-size: 12px
+    padding-left: 25px
+    display: block
+    line-height: 1.2
+    margin: 30px 0
+    transition: all $transitionSpeed ease-in-out
+    span
+      border-bottom: 1px dashed $colorRed
+      transition: all $transitionSpeed ease-in-out
+    &:hover
+      span
+        border-bottom: 1px solid transparent
+    .c-image
+      position: absolute
+      left: 0
+      top: -4px
+      width: 14px
+      height: 20px
+      background: svg-load('../img/doc-icon.svg', fill=#000) left top no-repeat
+
+.contract__row
+  display: flex
+  width: 100%
+  justify-content: center
+  align-items: flex-start
+  flex-wrap: wrap
+  &.mt-40
+    margin-top: 40px
+  p
+    font-size: 13px
+    line-height: 1.4
+    color: #919A9F
+    margin: 0
+    padding: 0
+    span
+      border-bottom: 1px solid #919A9F
+    &.status
+      span
+        color: #26A700
+    &.level
+      padding-left: 28px
+      position: relative
+  a
+    font-size: 13px
+    line-height: 1.4
+    margin: 0
+    padding: 0
+  .left-side
+    width: 50%
+    padding: 0 5px
+    margin: 3px 0px
+    text-align: right
+    line-height: 1.4
+  .right-side
+    width: 50%
+    padding: 0 5px
+    margin: 3px 0px
+    text-align: left
+    line-height: 1.4
+    position: relative
+    .l-group
+      position: absolute
+      display: block
+      left: 5px
+      top: 0
+      height: 13px
+      width: 22px
+      .l-block
+        width: 4px
+        background: #D5D8D9
+        position: absolute
+        bottom: 0
+      .l-1
+        height: 25%
+        left: 0
+      .l-2
+        height: 50%
+        left: 6px
+      .l-3
+        height: 75%
+        left: 12px
+      .l-4
+        height: 100%
+        left: 18px
+      &.l-25
+        .l-1
+          background: #26A700
+      &.l-50
+        .l-1,
+        .l-2
+          background: #26A700
+      &.l-75
+        .l-1,
+        .l-2,
+        .l-3
+          background: #26A700
+      &.l-100
+        .l-1,
+        .l-2,
+        .l-3,
+        .l-4
+          background: #26A700
+    p
+      color: #565A5E
+      span
+        border-bottom: none
+
+
 .right
   padding-top: 60px
   min-width: 220px
@@ -70,11 +183,17 @@
       position: relative
       margin-top: 12px
       display: block
-      img
-        max-height: 22px
-        width: 22px
-        position: absolute
-        left: 0px
+    .p-link-img
+      height: 22px
+      width: 22px
+      position: absolute
+      left: 0px
+      &.hands-icon
+        background: svg-load('../img/hands-icon.svg', fill=#000) center center no-repeat
+      &.phone-icon
+        background: svg-load('../img/phone.svg', fill=#000) center center no-repeat
+      &.presentation-icon
+        background: svg-load('../img/presentation.svg', fill=#000) center center no-repeat
     &.thank
       margin-top: 40px
 .line
@@ -122,6 +241,15 @@
         width: 22px
         position: absolute
         left: 0px
+  .p-link-img
+    height: 22px
+    width: 22px
+    position: absolute
+    left: 0px
+    &.phone-icon
+      background: svg-load('../img/phone.svg', fill=#000) left center no-repeat
+    &.instr-icon
+      background: svg-load('../img/instr.svg', fill=#000) left center no-repeat
   &__item
     width: 100%
 
@@ -190,11 +318,11 @@
     margin-right: 0
     padding-right: 0
     border-right: none
-    width: calc(100% - 300px)
+    width: calc(100% - 320px)
   .right
     width: 100%
     padding-top: 35px
-    width: calc(100% - 300px)
+    width: calc(100% - 320px)
     display: flex
     flex-wrap: wrap
     align-self: flex-end
@@ -234,6 +362,9 @@
       margin-top: 15px
   .line
     margin-top: 15px
+  .contract__row
+    &.mt-40
+      margin-top: 20px
 
 
 +r($mobile)

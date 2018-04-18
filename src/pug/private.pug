@@ -28,14 +28,319 @@ block content
               .info-container
                 select.choose-doc
                   option(val="pr1" selected disabled) Быстрый поиск
-                  option(val="pr2") Договор № АП-34 от 24 апреля 2017 года
-                  option(val="pr3") Договор № АП-74 от 14 мая 2015 года
-                  option(val="pr4") Договор № АП-034 от 24 июля 2019 года
-                  option(val="pr5") Договор № КАП/ПРР-034 от 24 апреля 2012 года
-                  option(val="pr6") Договор № АП-034 от 24 апреля 2015 года
-                  option(val="pr7") 7Договор № АП-034 от 24 апреля 2015 года
-                  option(val="pr8") 8Договор № АП-0934 от 24 мая 2015 года
-                  option(val="pr9") 9Договор № АП-034 от 24 апреля 2015 года
+                  option(val="pr2") Договор № АП-34 от 24 апреля #1
+                  option(val="pr3") Договор № АП-74 от 14 мая #2
+                  option(val="pr4") Договор № АП-034 от 24 июля #3
+                  //- option(val="pr5") Договор № КАП/ПРР-034 от 24 апреля 2012 года
+                  //- option(val="pr6") Договор № АП-034 от 24 апреля 2015 года
+                  //- option(val="pr7") 7Договор № АП-034 от 24 апреля 2015 года
+                  //- option(val="pr8") 8Договор № АП-0934 от 24 мая 2015 года
+                  //- option(val="pr9") 9Договор № АП-034 от 24 апреля 2015 года
+              .contract__item
+                // empty container for script
+              .contract__item
+                a.open-contract(href="#")
+                  span Договор № АП-034 от 24 апреля #1
+                  .c-image
+                .contract__info
+                  .contract__row
+                    .left-side
+                      p
+                        span UID:
+                    .right-side
+                      a(href="#")
+                        span 12312-24
+                  .contract__row
+                    .left-side
+                      p
+                        span Имя станции:
+                    .right-side
+                      p
+                        span CSS_030018_S402-X1
+                  .contract__row
+                    .left-side
+                      p
+                        span Статус:
+                    .right-side
+                      p.status
+                        span В сети
+                  .contract__row
+                    .left-side
+                      p
+                        span Сигнал/шум
+                    .right-side
+                      p.level
+                        span 30 dBi/31 dBi
+                        // 4 levels of signal 
+                        // l-25 - 25%
+                        // l-50 - 50%
+                        // l-75 - 75%
+                        // l-100 - 100%
+                        // add one of this class to .l-group
+                        .l-group.l-25
+                          .l-block.l-1
+                          .l-block.l-2
+                          .l-block.l-3
+                          .l-block.l-4
+                  .contract__row
+                    .left-side
+                      p
+                        span Тип модема:
+                    .right-side
+                      p
+                        span 5100
+                  .contract__row
+                    .left-side
+                      p
+                        span Адрес:
+                    .right-side
+                      p
+                        span Россия, Владивосток, ул. Заречная 25
+                  .contract__row
+                    .left-side
+                      p
+                        span Тариф:
+                    .right-side
+                      a(href="#")
+                        span Турбо-20
+                  .contract__row
+                    .left-side
+                      p
+                        span Космический аппарат:
+                    .right-side
+                      a(href="#")
+                        span Экпсресс-АМ6
+                  .contract__row
+                    .left-side
+                      p
+                        span Скачено/передано:
+                    .right-side
+                      p
+                        span 1,15 Gb/3,34 Gb
+                  .contract__row
+                    .left-side
+                      p
+                        span Остаток трафика:
+                    .right-side
+                      p
+                        span 1,23 Gb
+                  .contract__row.mt-40
+                    .left-side
+                      a.open-popup(href="#popup-table" data-effect="mfp-zoom-in")
+                        span Сформировать отчет
+                    .right-side
+                  .contract__row
+                    .left-side
+                      a(href="#")
+                        span Создать заявку
+                    .right-side
+                  .contract__row
+                    .left-side
+                      a(href="#")
+                        span Карта покрытия
+                    .right-side
+              .contract__item
+                a.open-contract(href="#")
+                  span Договор № АП-034 от 24 апреля #2
+                  .c-image
+                .contract__info
+                  .contract__row
+                    .left-side
+                      p
+                        span UID:
+                    .right-side
+                      a(href="#")
+                        span 12312-24
+                  .contract__row
+                    .left-side
+                      p
+                        span Имя станции:
+                    .right-side
+                      p
+                        span CSS_030018_S402-X1
+                  .contract__row
+                    .left-side
+                      p
+                        span Статус:
+                    .right-side
+                      p.status
+                        span В сети
+                  .contract__row
+                    .left-side
+                      p
+                        span Сигнал/шум
+                    .right-side
+                      p.level
+                        span 30 dBi/31 dBi
+                        // 4 levels of signal 
+                        // l-25 - 25%
+                        // l-50 - 50%
+                        // l-75 - 75%
+                        // l-100 - 100%
+                        // add one of this class to .l-group
+                        .l-group.l-50
+                          .l-block.l-1
+                          .l-block.l-2
+                          .l-block.l-3
+                          .l-block.l-4
+                  .contract__row
+                    .left-side
+                      p
+                        span Тип модема:
+                    .right-side
+                      p
+                        span 5100
+                  .contract__row
+                    .left-side
+                      p
+                        span Адрес:
+                    .right-side
+                      p
+                        span Россия, Владивосток, ул. Заречная 25
+                  .contract__row
+                    .left-side
+                      p
+                        span Тариф:
+                    .right-side
+                      a(href="#")
+                        span Турбо-20
+                  .contract__row
+                    .left-side
+                      p
+                        span Космический аппарат:
+                    .right-side
+                      a(href="#")
+                        span Экпсресс-АМ6
+                  .contract__row
+                    .left-side
+                      p
+                        span Скачено/передано:
+                    .right-side
+                      p
+                        span 1,15 Gb/3,34 Gb
+                  .contract__row
+                    .left-side
+                      p
+                        span Остаток трафика:
+                    .right-side
+                      p
+                        span 1,23 Gb
+                  .contract__row.mt-40
+                    .left-side
+                      a.open-popup(href="#popup-table" data-effect="mfp-zoom-in")
+                        span Сформировать отчет
+                    .right-side
+                  .contract__row
+                    .left-side
+                      a(href="#")
+                        span Создать заявку
+                    .right-side
+                  .contract__row
+                    .left-side
+                      a(href="#")
+                        span Карта покрытия
+                    .right-side
+              .contract__item
+                a.open-contract(href="#")
+                  span Договор № АП-034 от 24 апреля #3
+                  .c-image
+                .contract__info
+                  .contract__row
+                    .left-side
+                      p
+                        span UID:
+                    .right-side
+                      a(href="#")
+                        span 12312-24
+                  .contract__row
+                    .left-side
+                      p
+                        span Имя станции:
+                    .right-side
+                      p
+                        span CSS_030018_S402-X1
+                  .contract__row
+                    .left-side
+                      p
+                        span Статус:
+                    .right-side
+                      p.status
+                        span В сети
+                  .contract__row
+                    .left-side
+                      p
+                        span Сигнал/шум
+                    .right-side
+                      p.level
+                        span 30 dBi/31 dBi
+                        // 4 levels of signal 
+                        // l-25 - 25%
+                        // l-50 - 50%
+                        // l-75 - 75%
+                        // l-100 - 100%
+                        // add one of this class to .l-group
+                        .l-group.l-100
+                          .l-block.l-1
+                          .l-block.l-2
+                          .l-block.l-3
+                          .l-block.l-4
+                  .contract__row
+                    .left-side
+                      p
+                        span Тип модема:
+                    .right-side
+                      p
+                        span 5100
+                  .contract__row
+                    .left-side
+                      p
+                        span Адрес:
+                    .right-side
+                      p
+                        span Россия, Владивосток, ул. Заречная 25
+                  .contract__row
+                    .left-side
+                      p
+                        span Тариф:
+                    .right-side
+                      a(href="#")
+                        span Турбо-20
+                  .contract__row
+                    .left-side
+                      p
+                        span Космический аппарат:
+                    .right-side
+                      a(href="#")
+                        span Экпсресс-АМ6
+                  .contract__row
+                    .left-side
+                      p
+                        span Скачено/передано:
+                    .right-side
+                      p
+                        span 1,15 Gb/3,34 Gb
+                  .contract__row
+                    .left-side
+                      p
+                        span Остаток трафика:
+                    .right-side
+                      p
+                        span 1,23 Gb
+                  .contract__row.mt-40
+                    .left-side
+                      a.open-popup(href="#popup-table" data-effect="mfp-zoom-in")
+                        span Сформировать отчет
+                    .right-side
+                  .contract__row
+                    .left-side
+                      a(href="#")
+                        span Создать заявку
+                    .right-side
+                  .contract__row
+                    .left-side
+                      a(href="#")
+                        span Карта покрытия
+                    .right-side
             .middle
               h2 Ваш менеджер
               .middle__grid
@@ -47,10 +352,12 @@ block content
                     a(href="mailto:fos@amtelcom.ru") fos@amtelcom.ru
                 .middle__item.m-links
                   a.p-link(href="#")
-                    img(src="img/phone.svg")
+                    .p-link-img.phone-icon
+                      //- img(src="img/phone.svg")
                     span Задать вопрос вашему менеджеру
                   a.p-link(href="#")
-                    img(src="img/instr.svg")
+                    .p-link-img.instr-icon
+                      //- img(src="img/instr.svg")
                     span Написать специалисту технической поддержки
               .line
               h2 Технические новости
@@ -84,11 +391,14 @@ block content
                   span Отчеты об услугах
               .bottom-links
                 a.p-link.thank(href="#")
-                  img(src="img/hands-icon.svg")
+                  .p-link-img.hands-icon
+                    //- img(src="img/hands-icon.svg")
                   span Поблагодарить
                 a.p-link.comp(href="#")
-                  img(src="img/phone.svg")
+                  .p-link-img.phone-icon
+                    //- img(src="img/phone.svg")
                   span Пожаловаться
                 a.p-link.down(href="#")
-                  img(src="img/presentation.svg")
+                  .p-link-img.presentation-icon
+                    //- img(src="img/presentation.svg")
                   span Скачать презентацию компании

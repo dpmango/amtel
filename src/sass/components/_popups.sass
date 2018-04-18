@@ -70,6 +70,53 @@
   color: #fff
   top: 3px
 
+.table-popup
+  max-width: 1200px
+  background: #fff
+  margin: 0 auto
+  position: relative
+  border-radius: 25px
+  border: 2px solid #737B80
+  // overflow: hidden
+  .mfp-close
+    color: #000
+    top: -40px
+    right: -15px
+  .table-overflow
+    overflow-x: scroll
+    overflow: scroll
+    border-radius: 20px
+    table
+      border-collapse: collapse
+      border-spacing: 0
+    th,
+    td
+      text-align: center
+      font-size: 16px
+      font-weight: 400
+      color: #919A9F
+      padding: 10px 5px
+    th
+      background: #737B80
+      color: #fff
+    td
+      padding: 15px 5px
+  .download-table
+    font-size: 15px
+    color: $colorRed
+    margin: 25px
+    display: inline-block
+    transition: all $transitionSpeed ease-in-out
+    background: url(../img/presentation.svg) center left no-repeat
+    padding-left: 25px
+    span
+      border-bottom: 1px solid $colorRed
+      transition: all $transitionSpeed ease-in-out
+    &:hover
+      span
+        border-bottom: 1px solid transparent
+
+
 .mfp-bg
   background: rgba(255,255,255,0.91)
 .mfp-zoom-in

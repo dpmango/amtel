@@ -148,44 +148,51 @@ $(document).ready(function () {
     $(this).toggleClass('is-checked');
   })
 
+
   $('select').selectric();
 
 
-  $(document).ready(function() {
-
-    if ($('#map').length > 0) {
-
-      ymaps.ready(function () {
-        var myMap = new ymaps.Map('map', {
-          center: [55.809844, 37.513380],
-          zoom: 17
-        }, {
-            searchControlProvider: 'yandex#search'
-          }),
-
-          // Создаём макет содержимого.
-          MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-            '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-          ),
-
-          myPlacemark = new ymaps.Placemark([55.809844, 37.513380], {
-          }, {
-              // Необходимо указать данный тип макета.
-              iconLayout: 'default#image',
-              iconImageHref: 'img/map.svg',
-              iconImageSize: [273, 143],
-              // Смещение левого верхнего угла иконки относительно
-              // её "ножки" (точки привязки).
-              iconImageOffset: [-150, -50]
-            });
-
-        myMap.geoObjects
-          .add(myPlacemark)
-      });
-
-    }
-
+  $('.selectricItems ul li').on('click', function(e) {
+      e.preventDefault();
+      var $self = $(this),
+          tabIndex = $self.index();
+      $self.siblings().removeClass('active');
+      $self.addClass('active');
+      $('.contract__item').removeClass('active').eq(tabIndex).addClass('active');
   });
+
+
+  if ($('#map').length) {
+
+    ymaps.ready(function () {
+      var myMap = new ymaps.Map('map', {
+        center: [55.809844, 37.513380],
+        zoom: 17
+      }, {
+          searchControlProvider: 'yandex#search'
+        }),
+
+        // Создаём макет содержимого.
+        MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+          '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+        ),
+
+        myPlacemark = new ymaps.Placemark([55.809844, 37.513380], {
+        }, {
+            // Необходимо указать данный тип макета.
+            iconLayout: 'default#image',
+            iconImageHref: 'img/map.svg',
+            iconImageSize: [273, 143],
+            // Смещение левого верхнего угла иконки относительно
+            // её "ножки" (точки привязки).
+            iconImageOffset: [-150, -50]
+          });
+
+      myMap.geoObjects
+        .add(myPlacemark)
+    });
+
+  };
 
 
   (function ($) {

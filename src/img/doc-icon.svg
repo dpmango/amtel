@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.174 23">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e83e31;
+      }
+
+      .cls-2 {
+        fill: #585d61;
+      }
+    </style>
+  </defs>
+  <g id="Symbol_41_1" data-name="Symbol 41 – 1" transform="translate(-391 -403.701)">
+    <path id="Path_588" data-name="Path 588" class="cls-1" d="M15.963,4.19,11.994.221,11.468,0H.735L0,.735v21.53L.735,23h14.7l.735-.735V4.716ZM11.553,1.859l2.8,2.8h-2.8ZM1.47,21.53V1.47h8.612V6.133H14.7v15.4Z" transform="translate(391 403.701)"/>
+    <rect id="Rectangle_143" data-name="Rectangle 143" class="cls-2" width="5.955" height="1.47" transform="translate(393.983 411.851)"/>
+    <rect id="Rectangle_144" data-name="Rectangle 144" class="cls-2" width="2.752" height="1.47" transform="translate(401.439 411.851)"/>
+    <rect id="Rectangle_145" data-name="Rectangle 145" class="cls-2" width="5.955" height="1.47" transform="translate(393.983 414.477)"/>
+    <rect id="Rectangle_146" data-name="Rectangle 146" class="cls-2" width="2.752" height="1.47" transform="translate(401.439 414.477)"/>
+    <rect id="Rectangle_147" data-name="Rectangle 147" class="cls-2" width="5.955" height="1.47" transform="translate(393.983 417.438)"/>
+    <rect id="Rectangle_148" data-name="Rectangle 148" class="cls-2" width="2.752" height="1.47" transform="translate(401.439 417.438)"/>
+    <rect id="Rectangle_149" data-name="Rectangle 149" class="cls-2" width="5.955" height="1.47" transform="translate(393.983 420.064)"/>
+    <rect id="Rectangle_150" data-name="Rectangle 150" class="cls-2" width="2.752" height="1.47" transform="translate(401.439 420.064)"/>
+  </g>
+</svg>
