@@ -8,9 +8,9 @@ block content
     // section
     section
       .page-head
-        .head-bg(style="background-image: url(img/bg-promotions.jpg)")
+        .head-bg.wow(data-animation-class="wowFadeLeft" style="background-image: url(img/bg-promotions.jpg)")
         .container
-          ul.breadcrumbs
+          ul.breadcrumbs.wow
             li
               a(href="#") Главная
             li
@@ -18,48 +18,54 @@ block content
                 +icon('ico-arrow')
             li
               a(href="#") Новости
-          h2 Новости
+          h2.wow Новости
     // section
     section
       .news-p
         .container
           .news-p__grid
-            a.news-p__item(href="#")
+            //item
+            a.news-p__item.wow(data-animation-delay=".1s" href="#")
               .news-p__item-image
                 img(src="img/worker-1.png" alt="")
               .news-p__item-info
                 p.news-p__item-date 34 декабря 2017
                 p.news-p__item-title Уважаемые абоненты! Все будет хорошо! Но может быть всякое)
               p.news-p__item-more-info В этот период возможны перерывы сервиса суммарной продолжительностью до 30 минут  на VSAT-станциях, работающих через космический аппарат «Экспресс-АМ6». Просим получателей данного уведомления передать информацию в технические службы и уполномоченным лицам. Приносим свои извинения за доставленные неудобства.
-            a.news-p__item(href="#")
+            //item
+            a.news-p__item.wow(data-animation-delay=".2s" href="#")
               .news-p__item-image
                 img(src="img/worker-2.png" alt="")
               .news-p__item-info
                 p.news-p__item-date 34 декабря 2017
                 p.news-p__item-title Уважаемые абоненты! Все будет хорошо! Но может быть всякое)
               p.news-p__item-more-info В этот период возможны перерывы сервиса суммарной продолжительностью до 30 минут  на VSAT-станциях, работающих через космический аппарат «Экспресс-АМ6». Просим получателей данного уведомления передать информацию в технические службы и уполномоченным лицам. Приносим свои извинения за доставленные неудобства.
-            a.news-p__item(href="#")
+            //item
+            a.news-p__item.wow(data-animation-delay=".3s" href="#")
               .news-p__item-image
                 img(src="img/worker-1.png" alt="")
               .news-p__item-info
                 p.news-p__item-date 34 декабря 2017
                 p.news-p__item-title Уважаемые абоненты! Все будет хорошо! Но может быть всякое)
               p.news-p__item-more-info В этот период возможны перерывы сервиса суммарной продолжительностью до 30 минут  на VSAT-станциях, работающих через космический аппарат «Экспресс-АМ6». Просим получателей данного уведомления передать информацию в технические службы и уполномоченным лицам. Приносим свои извинения за доставленные неудобства.
-            a.news-p__item(href="#")
+            //item
+            a.news-p__item.wow(data-animation-delay=".4s" href="#")
               .news-p__item-image
                 img(src="img/worker-2.png" alt="")
               .news-p__item-info
                 p.news-p__item-date 34 декабря 2017
                 p.news-p__item-title Уважаемые абоненты! Все будет хорошо! Но может быть всякое)
               p.news-p__item-more-info В этот период возможны перерывы сервиса суммарной продолжительностью до 30 минут  на VSAT-станциях, работающих через космический аппарат «Экспресс-АМ6». Просим получателей данного уведомления передать информацию в технические службы и уполномоченным лицам. Приносим свои извинения за доставленные неудобства.
-            a.news-p__item(href="#")
+            //item
+            a.news-p__item.wow(data-animation-delay=".5s" href="#")
               .news-p__item-image
                 img(src="img/worker-1.png" alt="")
               .news-p__item-info
                 p.news-p__item-date 34 декабря 2017
                 p.news-p__item-title Уважаемые абоненты! Все будет хорошо! Но может быть всякое)
               p.news-p__item-more-info В этот период возможны перерывы сервиса суммарной продолжительностью до 30 минут  на VSAT-станциях, работающих через космический аппарат «Экспресс-АМ6». Просим получателей данного уведомления передать информацию в технические службы и уполномоченным лицам. Приносим свои извинения за доставленные неудобства.
-            a.news-p__item(href="#")
+            //item
+            a.news-p__item.wow(data-animation-delay=".6s" href="#")
               .news-p__item-image
                 img(src="img/worker-2.png" alt="")
               .news-p__item-info
@@ -67,4 +73,4 @@ block content
                 p.news-p__item-title Уважаемые абоненты! Все будет хорошо! Но может быть всякое)
               p.news-p__item-more-info В этот период возможны перерывы сервиса суммарной продолжительностью до 30 минут  на VSAT-станциях, работающих через космический аппарат «Экспресс-АМ6». Просим получателей данного уведомления передать информацию в технические службы и уполномоченным лицам. Приносим свои извинения за доставленные неудобства.
             
-          a.btn.news-p__button(href="#") Архив новостей
+          a.btn.news-p__button(href="#").wow Архив новостей

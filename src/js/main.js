@@ -32,8 +32,9 @@ $(document).ready(function () {
     initMasks();
     initLazyLoad();
     initMap();
-    initMenumaker();
+    // initMenumaker();
     initSelectric();
+    initValidate();
 
     initCalc();
 
@@ -44,6 +45,9 @@ $(document).ready(function () {
   // this is a master function which should have all functionality
   pageReady();
 
+  revealFooter();
+  _window.on('resize', debounce(revealFooter, 200));
+
 
   // some plugins work best with onload triggers
   _window.on('load', function () {
@@ -53,6 +57,20 @@ $(document).ready(function () {
   //////////
   // COMMON
   //////////
+  function msieversion() {
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  if ( msieversion() ){
+    $('body').addClass('is-ie');
+  }
 
   function legacySupport() {
     // svg support for laggy browsers
@@ -147,42 +165,48 @@ $(document).ready(function () {
   }
 
 
-  //////////
-  // SLIDERS
-  //////////
-  function initCalc(){
-    _document
-      .on('click', '.checkbox-item label', function () {
-        $(this).parent().toggleClass('is-active');
-      });
-
-    (function () {
-      var $cbs = $('input[price]');
-
-      function calcUsage() {
-        var total = 0;
-        $cbs.each(function () {
-          if ($(this).is(":checked"))
-            total = parseFloat(total) + parseFloat($(this).val());
+  // FOOTER REVEAL
+  function revealFooter() {
+    var footer = _document.find('[js-reveal-footer]');
+    if (footer.length > 0) {
+      var footerHeight = footer.outerHeight();
+      var maxHeight = _window.height() - footerHeight > 100;
+      console.log(_window.height(), footerHeight, _window.height() - footerHeight > 100)
+      if (maxHeight && !msieversion() ) {
+        $('body').css({
+          'margin-bottom': footerHeight
         });
-        $("#pay_price").text(total + ' ₽');
-        $("#pay_price2").text(total + ' ₽');
+        footer.css({
+          'position': 'fixed',
+          'z-index': -10
+        });
+      } else {
+        $('body').css({
+          'margin-bottom': 0
+        });
+        footer.css({
+          'position': 'static',
+          'z-index': 10
+        });
       }
+    }
+  }
 
-      $cbs.click(function () {
-        calcUsage();
-      });
+  //////////
+  // CALC
+  //////////
+  _document
+    .on('click', '.checkbox-item label', function () {
+      $(this).parent().toggleClass('is-active');
+    });
 
-      calcUsage();
-    }());
+  function initCalc(){
 
-    // CHANGES START FROM HERE <<<
+    var $cbs = $('input[price]');
     var $settingsForm = $('#settingsForm');
     var $settingsHeader = $settingsForm.find('.settings-header');
     var $settingsBody = $settingsForm.find('.settings-value');
     var $settingsOptions = $settingsForm.find('.settings-options');
-
-    // settings object
     var formSettings = {
       moduleType: {
         id: 0,
@@ -199,92 +223,104 @@ $(document).ready(function () {
       options: [],
     };
 
-    // Form functional
+    // SET PRICE
+    function calcUsage() {
+      var total = 0;
+      $cbs.each(function () {
+        if ($(this).is(":checked"))
+          total = parseFloat(total) + parseFloat($(this).val());
+      });
+      $("#pay_price").text(total + ' ₽');
+      $("#pay_price2").text(total + ' ₽');
+    }
+
+    _document.on('click', $cbs, calcUsage)
+    calcUsage();
+
+
+    // Product type
     (function () {
-      // Product type
-      (function () {
-        var $productTypeRadio = $('.product-type');
+      var $productTypeRadio = $('.product-type');
 
-        $productTypeRadio.change(function () {
-          var $self = $(this);
-          var productName = $self.data('product-name');
-          var productValue = $self.val();
-          var productID = $self.attr('id');
+      $productTypeRadio.change(function () {
+        var $self = $(this);
+        var productName = $self.data('product-name');
+        var productValue = $self.val();
+        var productID = $self.attr('id');
 
-          $self.parent().siblings().removeClass('is-active');
-          $self.parent().addClass('is-active');
+        $self.parent().siblings().removeClass('is-active');
+        $self.parent().addClass('is-active');
 
-          $($settingsHeader.children()[0]).find('p').html(productName);
-          $($settingsBody.children()[0]).find('p').html(productValue + ' ₽');
-        });
-      }());
-
-      // Product complex
-      (function () {
-        var $productTypeRadio = $('.product-complex');
-
-        $productTypeRadio.change(function () {
-          var $self = $(this);
-          var productName = $self.data('product-name');
-          var productValue = $self.val();
-          var productID = $self.attr('id');
-
-          $self.parent().siblings().removeClass('is-active');
-          $self.parent().addClass('is-active');
-
-          $($settingsHeader.children()[1]).find('p').html(productName);
-          $($settingsBody.children()[1]).find('p').html(productValue + ' ₽');
-        });
-      }());
-
-      // Product complex
-      (function () {
-        var $productTypeRadio = $('.product-translator');
-
-        $productTypeRadio.change(function () {
-          var $self = $(this);
-          var productName = $self.data('product-name');
-          var productValue = $self.val();
-          var productID = $self.attr('id');
-
-          $self.parent().siblings().removeClass('is-active');
-          $self.parent().addClass('is-active');
-
-          $($settingsHeader.children()[2]).find('p').html(productName);
-          $($settingsBody.children()[2]).find('p').html(productValue + ' ₽');
-        });
-      }());
-
-      // Product option
-      (function () {
-        var $productTypeCheckbox = $('.product-option');
-
-        $productTypeCheckbox.change(function () {
-          var $self = $(this);
-          var productName = $self.data('product-name');
-          var productValue = $self.val();
-          var productID = $self.attr('id');
-
-          if ($self.prop('checked') === true) {
-            var newOption = '<p class="g-check" data-option-id="' + productID + '">' + productName + '</p>'
-
-            formSettings.options.push(productID);
-            $settingsOptions.html($settingsOptions.html() + newOption);
-          } else {
-            $settingsOptions.find('[data-option-id="' + productID + '"]').remove();
-
-            if (formSettings.options.indexOf(productID) >= 0) formSettings.options.splice(formSettings.options.indexOf(productID), 1)
-          }
-          console.log(formSettings.options);
-
-          if (!formSettings.options.length) {
-            $settingsOptions.find('.g-check.empty').css('display', 'block');
-          } else {
-            $settingsOptions.find('.g-check.empty').css('display', 'none');
-          }
-        });
-      }());
+        $($settingsHeader.children()[0]).find('p').html(productName);
+        $($settingsBody.children()[0]).find('p').html(productValue + ' ₽');
+      });
     }());
+
+    // Product complex
+    (function () {
+      var $productTypeRadio = $('.product-complex');
+
+      $productTypeRadio.change(function () {
+        var $self = $(this);
+        var productName = $self.data('product-name');
+        var productValue = $self.val();
+        var productID = $self.attr('id');
+
+        $self.parent().siblings().removeClass('is-active');
+        $self.parent().addClass('is-active');
+
+        $($settingsHeader.children()[1]).find('p').html(productName);
+        $($settingsBody.children()[1]).find('p').html(productValue + ' ₽');
+      });
+    }());
+
+    // Product translator
+    (function () {
+      var $productTypeRadio = $('.product-translator');
+
+      $productTypeRadio.change(function () {
+        var $self = $(this);
+        var productName = $self.data('product-name');
+        var productValue = $self.val();
+        var productID = $self.attr('id');
+
+        $self.parent().siblings().removeClass('is-active');
+        $self.parent().addClass('is-active');
+
+        $($settingsHeader.children()[2]).find('p').html(productName);
+        $($settingsBody.children()[2]).find('p').html(productValue + ' ₽');
+      });
+    }());
+
+    // Product option
+    (function () {
+      var $productTypeCheckbox = $('.product-option');
+
+      $productTypeCheckbox.change(function () {
+        var $self = $(this);
+        var productName = $self.data('product-name');
+        var productValue = $self.val();
+        var productID = $self.attr('id');
+
+        if ($self.prop('checked') === true) {
+          var newOption = '<p class="g-check" data-option-id="' + productID + '">' + productName + '</p>'
+
+          formSettings.options.push(productID);
+          $settingsOptions.html($settingsOptions.html() + newOption);
+        } else {
+          $settingsOptions.find('[data-option-id="' + productID + '"]').remove();
+
+          if (formSettings.options.indexOf(productID) >= 0) formSettings.options.splice(formSettings.options.indexOf(productID), 1)
+        }
+
+        if (!formSettings.options.length) {
+          $settingsOptions.find('.g-check.empty').css('display', 'block');
+        } else {
+          $settingsOptions.find('.g-check.empty').css('display', 'none');
+        }
+      });
+    }());
+
 
   }
 
@@ -293,7 +329,7 @@ $(document).ready(function () {
   //////////
   function initSliders() {
 
-    $('.main-slider').slick({
+    $('.main-slider').not('.slick-initialized').slick({
       dots: false,
       infinite: true,
       autoplay: true,
@@ -359,78 +395,6 @@ $(document).ready(function () {
 
   function closeMfp() {
     $.magnificPopup.close();
-  }
-
-
-  ////////////
-  // MENUMAKER
-  ////////////
-  function initMenumaker(){
-
-    if ( $("#cssmenu").length > 0 ){
-      $("#cssmenu").menumaker({
-        title: "Menu",
-        format: "multitoggle"
-      });
-    }
-
-    $.fn.menumaker = function (options) {
-
-      var cssmenu = $(this),
-        settings = $.extend({
-          title: "Menu",
-          format: "dropdown",
-          sticky: false
-        }, options);
-
-      return this.each(function () {
-        cssmenu.prepend('<div id="menu-button">' + settings.title + '</div>');
-        $(this).find("#menu-button").on('click', function () {
-          $(this).toggleClass('menu-opened');
-          var mainmenu = $(this).next('ul');
-          if (mainmenu.hasClass('open')) {
-            mainmenu.hide().removeClass('open');
-          } else {
-            mainmenu.show().addClass('open');
-            if (settings.format === "dropdown") {
-              mainmenu.find('ul').show();
-            }
-          }
-        });
-
-        cssmenu.find('li ul').parent().addClass('has-sub');
-
-        multiTg = function () {
-          cssmenu.find(".has-sub").prepend('<span class="submenu-button"></span>');
-          cssmenu.find('.submenu-button').on('click', function () {
-            $(this).toggleClass('submenu-opened');
-            if ($(this).siblings('ul').hasClass('open')) {
-              $(this).siblings('ul').removeClass('open').hide();
-            } else {
-              $(this).siblings('ul').addClass('open').show();
-            }
-          });
-        };
-
-        if (settings.format === 'multitoggle') multiTg();
-        else cssmenu.addClass('dropdown');
-
-        if (settings.sticky === true) cssmenu.css('position', 'fixed');
-
-        resizeFix = function () {
-          if ($(window).width() > 768) {
-            cssmenu.find('ul').show();
-          }
-
-          if ($(window).width() <= 768) {
-            cssmenu.find('ul').hide().removeClass('open');
-          }
-        };
-        resizeFix();
-        return $(window).on('resize', resizeFix);
-
-      });
-    };
   }
 
   ////////////
@@ -589,7 +553,7 @@ $(document).ready(function () {
 
       anime({
         targets: "html, body",
-        scrollTop: 0,
+        scrollTop: 1,
         easing: easingSwing, // swing
         duration: 150
       });
@@ -620,12 +584,14 @@ $(document).ready(function () {
     pageReady();
     closeMobileMenu();
 
+    setTimeout(revealFooter, 300)
   });
 
   // some plugins get bindings onNewPage only that way
   function triggerBody() {
-    $(window).scroll();
-    $(window).resize();
+    _window.scrollTop(0)
+    _window.scroll();
+    _window.resize();
   }
 
   //////////
@@ -672,7 +638,6 @@ $(document).ready(function () {
     var wHost = window.location.host.toLowerCase()
     var displayCondition = wHost.indexOf("localhost") >= 0 || wHost.indexOf("surge") >= 0
     if (displayCondition) {
-      console.log(displayCondition)
       var wWidth = _window.width();
 
       var content = "<div class='dev-bp-debug'>" + wWidth + "</div>";
@@ -687,4 +652,105 @@ $(document).ready(function () {
     }
   }
 
+
+  function initValidate(){
+    ////////////////
+    // FORM VALIDATIONS
+    ////////////////
+
+    // jQuery validate plugin
+    // https://jqueryvalidation.org
+
+
+    // GENERIC FUNCTIONS
+    ////////////////////
+
+    var validateErrorPlacement = function(error, element) {
+      error.addClass('ui-input__validation');
+      error.appendTo(element.parent("div"));
+    }
+    var validateHighlight = function(element) {
+      $(element).parent('div').addClass("has-error");
+    }
+    var validateUnhighlight = function(element) {
+      $(element).parent('div').removeClass("has-error");
+    }
+    var validateSubmitHandler = function(form) {
+      $(form).addClass('loading');
+      $.ajax({
+        type: "POST",
+        url: $(form).attr('action'),
+        data: $(form).serialize(),
+        success: function(response) {
+          $(form).removeClass('loading');
+          var data = $.parseJSON(response);
+          if (data.status == 'success') {
+            // do something I can't test
+          } else {
+              $(form).find('[data-error]').html(data.message).show();
+          }
+        }
+      });
+    }
+
+    var validatePhone = {
+      required: true,
+      normalizer: function(value) {
+          var PHONE_MASK = '+X (XXX) XXX-XXXX';
+          if (!value || value === PHONE_MASK) {
+              return value;
+          } else {
+              return value.replace(/[^\d]/g, '');
+          }
+      },
+      minlength: 11,
+      digits: true
+    }
+
+    ////////
+    // FORMS
+
+
+    /////////////////////
+    // REGISTRATION FORM
+    ////////////////////
+    $(".js-registration-form").validate({
+      errorPlacement: validateErrorPlacement,
+      highlight: validateHighlight,
+      unhighlight: validateUnhighlight,
+      submitHandler: validateSubmitHandler,
+      rules: {
+        last_name: "required",
+        first_name: "required",
+        ot_name: "required",
+        email: {
+          required: true,
+          email: true
+        },
+        password: {
+          required: true,
+          minlength: 6,
+        },
+        phone: validatePhone
+      },
+      messages: {
+        last_name: "Заполните это поле",
+        first_name: "Заполните это поле",
+        ot_name: "Заполните это поле",
+        email: {
+            required: "Заполните это поле",
+            email: "Email содержит неправильный формат"
+        },
+        password: {
+            required: "Заполните это поле",
+            email: "Пароль мимимум 6 символов"
+        },
+        phone: {
+            required: "Заполните это поле",
+            minlength: "Введите корректный телефон"
+        },
+      }
+    });
+
+  }
 });

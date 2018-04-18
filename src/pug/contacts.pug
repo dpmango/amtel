@@ -8,9 +8,9 @@ block content
     // section
     section
       .page-head
-        .head-bg(style="background-image: url(img/bg-contacts.jpg)")
+        .head-bg.wow(data-animation-class="wowFadeLeft" style="background-image: url(img/bg-contacts.jpg)")
         .container
-          ul.breadcrumbs
+          ul.breadcrumbs.wow
             li
               a(href="#") Главная
             li
@@ -18,23 +18,23 @@ block content
                 +icon('ico-arrow')
             li
               a(href="#") Контактная информация
-          h2 Контактная информация
+          h2.wow Контактная информация
     // section
     section
       .contacts
         .container
           .contacts__grid
-            .contacts__item
+            // col
+            .contacts__item.wow
               .contacts__item-image.card-icon
-                //- img(src="img/card.svg" alt="")
               .contacts__info
                 h3 АО «АМТЕЛ-СВЯЗЬ»
                 p
                   strong Адрес:
                 p 125315, г. Москва, ул. Ленинградский пр-т, д. 80, корп. 37
-            .contacts__item
+            // col
+            .contacts__item.wow
               .contacts__item-image.phone-icon
-                //- img(src="img/phone.svg" alt="")
               .contacts__info
                 h3 Телефон/Факс:
                 p 
@@ -46,5 +46,5 @@ block content
                   strong Электронная почта:
                 a(href="mailto:informa_amtelcom_ru") informa_amtelcom_ru
     // section
-    section
+    section.wow(data-animation-class="wowFadeRight")
       #map

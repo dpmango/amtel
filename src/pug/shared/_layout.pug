@@ -1,6 +1,6 @@
 include _mixins
 doctype html
-html(lang="en")
+html(lang="ru")
   head
     include _head
 
@@ -15,11 +15,10 @@ html(lang="en")
         .page__content
           block content
 
-        include ../components/_pre-footer
-
         block footer
           include ../components/_footer
-          include ../components/_popups
+        
+        include ../components/_popups
         
     block scripts
       include _scripts

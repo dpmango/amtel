@@ -8,9 +8,9 @@ block content
     // section
     section
       .page-head
-        .head-bg(style="background-image: url(img/bg-promotions.jpg)")
+        .head-bg.wow(data-animation-class="wowFadeLeft" style="background-image: url(img/bg-promotions.jpg)")
         .container
-          ul.breadcrumbs
+          ul.breadcrumbs.wow
             li
               a(href="#") Главная
             li
@@ -18,12 +18,12 @@ block content
                 +icon('ico-arrow')
             li
               a(href="#") Акции
-          h2 Акции
+          h2.wow Акции
     // section
     section
       .promotions
         .container
-          .promotions__grid
+          .promotions__grid.wow
             a.promotions__item(href="promotions-2.html") Выход в интернет
             a.promotions__item(href="promotions-2.html") Звонки в центральный офис
             a.promotions__item(href="promotions-2.html") Социальные сети

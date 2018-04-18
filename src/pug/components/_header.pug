@@ -1,9 +1,9 @@
 // HEADER :: START
-header.header
+header.header.wow(data-animation-class="wowFadeRight")
   .container
     .header__wrapper
       .header__logo-container
-        a(href="#")
+        a(href="homepage.html")
           img(src="img/logotype.svg", alt="").header__logotype
         img(src="img/digital.svg", alt="").header__logo-info
       .header__main
@@ -13,7 +13,7 @@ header.header
         form(action="#").header__form
           .ui-input
             input(type="text" placeholder="Поиск" id="search-input")
-        a(href="#").header__prof-link Личный кабинет
+        a(href="private.html").header__prof-link Личный кабинет
           span
             +icon('ico-case-icon')
         a(href="#").header__language Eng
@@ -22,6 +22,8 @@ header.header
         .hamburger.hamburger--squeeze(js-hamburger)
           .hamburger-box
             .hamburger-inner
+  
+  // NAV
   nav
     .container
       ul.main-nav
@@ -52,25 +54,25 @@ header.header
               a(href='#')
                 span Пресс-кит
         li
-          a(href='#')
+          a(href='products.html')
             span Продукты
         li
           a(href='#')
             span Решения
         li
-          a(href='#')
+          a(href='equipment.html')
             span Технологии и оборудование
         li
           a(href='#')
             span Техническая поддержка
         li
-          a(href='#')
+          a(href='promotions.html')
             span Акции и предложения
         li
           a(href='#')
             span Калькулятор
         li
-          a(href='#')
+          a(href='contacts.html')
             span Контакты
           										
 // HEADER :: END

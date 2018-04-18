@@ -6,7 +6,7 @@ extends shared/_layout
 block content
 
     // section
-    section
+    section.wow(data-animation-class="wowFadeLeft")
       .main-slider
         .item(style="background-image: url(img/bg-slider-1.jpg)")
           .container
@@ -24,7 +24,7 @@ block content
     section
       .page-head
         .container
-          ul.breadcrumbs
+          ul.breadcrumbs.wow
             li
               a(href="#") Главная
             li
@@ -32,12 +32,12 @@ block content
                 +icon('ico-arrow')
             li
               a(href="#") Продукты
-          h2 Выберите Вашу потребность
+          h2.wow Выберите Вашу потребность
     // section
     section
       .products
         .container
-          .check__grid
+          .check__grid.wow
             .check__item.checkbox-item
               label(for="checkbox_1") Выход в интернет
               input(type="checkbox" id="checkbox_1")
@@ -107,30 +107,30 @@ block content
             .check__item.checkbox-item
               label(for="checkbox_23") Социальный объект или государственное учреждение
               input(type="checkbox" id="checkbox_23")
-          .info-container
+          .info-container.wow
             h2 Продукт 1
             p Разделенные каналы по передачи данных представляют собой пакетные конфигурации предоплаченного трафика при оптимальной скорости в негарантированном канале
-          .info-container
+          .info-container.wow
             h2 Продукт 2
             p Разделенные каналы по передачи данных представляют собой пакетные конфигурации предоплаченного трафика при оптимальной скорости в негарантированном канале
-          .info-container
+          .info-container.wow
             select
               option(val="vl1-0" selected disabled) Выберите продукт
               option(val="vl1-1") Продукт 1
               option(val="vl1-2") Продукт 2
-          .info-container
+          .info-container.wow
             h2 Узнать тариф
             select
               option(val="vl2-0" selected disabled) Выберите трафик в Гб
               option(val="vl2-1") 5
               option(val="vl2-2") 7
-          .info-container
+          .info-container.wow
             h2 Поздравляем!
             .price
               p Продукт 1, Тарифный план 1
               p.bg-white Затраты в месяц 
                 span  18 762 ₽
-          .info-container
+          .info-container.wow
             h2 Выберите дополнительные опции
             p Опции можно приобрести как комплексно так и по отдельности.
             .checkbox__grid
@@ -167,7 +167,7 @@ block content
               .checkbox
                 label(for="checkbox_38") Детализация ПД
                 input.checkbox(type="checkbox" id="checkbox_38")
-          .info-container
+          .info-container.wow
             .table
               .table__head
                 .table__head-green
@@ -195,7 +195,7 @@ block content
                 p Стоимость продукта:
                 p 7 762 ₽
             p Итоговую стоимость вашего продукта Вам сообщит менеджер. Отправьте запрос.
-          .buttons
+          .buttons.wow
             a.btn.open-popup(href="#order1" data-effect="mfp-zoom-in") Отправить запрос
             a.btn(href="#") Сохранить подбор тарифа
             a.btn.btn--grey(href="#") Вернуться на предыдущий шаг

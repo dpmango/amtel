@@ -8,9 +8,9 @@ block content
     // section
     section
       .page-head
-        .head-bg(style="background-image: url(img/bg-mountains.jpg)")
+        .head-bg.wow(data-animation-class="wowFadeLeft" style="background-image: url(img/bg-mountains.jpg)")
         .container
-          ul.breadcrumbs
+          ul.breadcrumbs.wow
             li
               a(href="#") Главная
             li
@@ -18,12 +18,12 @@ block content
                 +icon('ico-arrow')
             li
               a(href="#") Технологии и оборудование
-          h2 Выберите тип станции:
+          h2.wow Выберите тип станции:
     // section
     section
       .products
         .container
-          .check__grid
+          .check__grid.wow
             .check__item.radio-item
               label(for="radio_1") Стационарная
               input(type="radio" value="1000" price="1" id="radio_1" name="group1" data-product-name="Стационарная")
@@ -34,11 +34,11 @@ block content
               label(for="radio_3") Морская
               input(type="radio" value="3000" price="1" id="radio_3" name="group1" data-product-name="Морская")
             
-          .info-container
+          .info-container.wow
             h2 Оборудование iDirect 
             p.p-small Оборудование компании бесспорно является одним из лучших и соответствует всем современным требованиям корпоративных сетей связи. Это доказано успешным опытом мировой эксплуатации модемов серий iNFINITI и Evolution. Кроме того, при его разработке используются результаты исследований гражданского назначения.  
             p.p-small Система iDirect является двунаправленным широкополосным решением, использующим схему доступа TDMA в прямом и MF-D-TDMA в обратном каналах связи. 
-          .info-container
+          .info-container.wow
             h3 В своей сети мы поддерживаем линейки оборудования:
             .check__grid
               .check__item.radio-item
@@ -84,7 +84,7 @@ block content
                   img(src="img/e-x7.png" alt="")
                 input(type="radio" value="17000" price="1" id="radio_9" name="group2" data-product-name="Evolution X7" class="product-type")
             p.p-small Оборудование компании бесспорно является одним из лучших и соответствует всем современным требованиям корпоративных сетей связи. Это доказано успешным опытом мировой эксплуатации модемов серий iNFINITI и Evolution. Кроме того, при его разработке используются результаты исследований гражданского назначения.
-          .info-container
+          .info-container.wow
             h2 Подходящий антенный комплекс 
             .check__grid
               .check__item.radio-item
@@ -108,7 +108,7 @@ block content
                   .l-price
                     p 97 033 ₽
                 input(type="radio" value="97 033" price="1" id="radio_12" name="group3" data-product-name="Антенна 3" class="product-complex")
-          .info-container
+          .info-container.wow
             h3 Не забудьте купить передатчик:
             .check__grid
               .check__item.radio-item
@@ -146,20 +146,20 @@ block content
                   .l-price
                     p 278 204 ₽
                 input(type="radio" value="278 204" price="1" id="radio_17" name="group4" data-product-name="Передатчик 12 ВТ" class="product-translator")
-          .info-container
+          .info-container.wow
             h3 И LNB приемник:
             .price.price--red
               p LNB приемник
               p.bg-white Стоиомсть от  
                 span 9 214 ₽
                   input(type="radio" checked value="9214" price="1")
-          .info-container
+          .info-container.wow
             h2 Поздравляем!
             .price
               p Рекомендованный комплект
               p.bg-white Затраты на приобретение от  
                 span#pay_price2  280 000 ₽
-          .info-container
+          .info-container.wow
             h2 Выберите дополнительные опции
             p Опции можно приобрести как комплексно так и по отдельности.
             .checkbox__grid
@@ -184,7 +184,7 @@ block content
               .checkbox
                 label(for="checkbox_7") Разъем для кабеля RG-11
                 input.checkbox(type="checkbox" price="1" value="7" id="checkbox_7" data-product-name="Разъем для кабеля RG-11" class="product-option")
-          .info-container
+          .info-container.wow
             .table#settingsForm
               .table__head
                 .table__head-green.settings-header
@@ -211,7 +211,7 @@ block content
                 p Стоимость оборудования:
                 p#pay_price 48 762 ₽
             h3 Хотите скидку? Отправьте запрос!
-          .buttons.buttons--equipment
+          .buttons.buttons--equipment.wow
             a.btn.open-popup(href="#order1" data-effect="mfp-zoom-in") Отправить запрос
             a.btn(href="#") Сохранить расчёт
             a.btn.btn--grey(href="#") Вернуться на предыдущий шаг
