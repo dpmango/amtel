@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   //////////
   // Global variables
   //////////
@@ -84,9 +85,20 @@ $(document).ready(function () {
     });
   }
 
+  _document.ready(function() {
+      $('.selectricItems ul li').on('click', function(e) {
+      e.preventDefault();
+      var $self = $(this),
+          tabIndex = $self.index();
+      $self.siblings().removeClass('active');
+      $self.addClass('active');
+      $('.contract__item').removeClass('active').eq(tabIndex).addClass('active');
+    });
+  });
 
   // CLICK HANDLERS
   _document
+
     .on('click', '[href="#"]', function (e) {
       e.preventDefault();
     })
