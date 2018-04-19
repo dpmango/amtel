@@ -33,7 +33,6 @@ $(document).ready(function () {
     initMasks();
     initLazyLoad();
     initMap();
-    // initMenumaker();
     initSelectric();
     initValidate();
 
@@ -85,20 +84,8 @@ $(document).ready(function () {
     });
   }
 
-  _document.ready(function() {
-      $('.selectricItems ul li').on('click', function(e) {
-      e.preventDefault();
-      var $self = $(this),
-          tabIndex = $self.index();
-      $self.siblings().removeClass('active');
-      $self.addClass('active');
-      $('.contract__item').removeClass('active').eq(tabIndex).addClass('active');
-    });
-  });
-
   // CLICK HANDLERS
   _document
-
     .on('click', '[href="#"]', function (e) {
       e.preventDefault();
     })
@@ -183,7 +170,6 @@ $(document).ready(function () {
     if (footer.length > 0) {
       var footerHeight = footer.outerHeight();
       var maxHeight = _window.height() - footerHeight > 100;
-      console.log(_window.height(), footerHeight, _window.height() - footerHeight > 100)
       if (maxHeight && !msieversion() ) {
         $('body').css({
           'margin-bottom': footerHeight
@@ -213,7 +199,46 @@ $(document).ready(function () {
     });
 
   function initCalc(){
+    // PRODUCTS
+    var form = $('[js-products-form]');
 
+    _document.on('change', form, function(e){
+      // get id's for type and send via ajax
+      var typeInputs = form.find('input[name="type"]:checked');
+      var selectedTypeId = [];
+      typeInputs.each(function(i,type){
+        selectedTypeId.push($(type).val());
+      });
+
+      // get response with products available
+      $.ajax({
+        'url': '/json/getProducts.json',
+        'data': {
+          'typeId': selectedTypeId
+        },
+        'method': 'GET',
+        'success': function(res){
+          setProducts(res);
+        }
+      })
+
+      // set product options
+      function setProducts(data){
+        var container = $('[js-set-products]');
+        container.html(""); // erase container
+        var appendedObj = ""
+
+        $.each(data, function(i, product){
+          appendedObj = appendedObj + "<div class='info-container'><h2>"+ product.name +"</h2><p>"+ product.description +"</p></div>"
+        })
+
+        container.append(appendedObj).hide().slideDown();
+      }
+
+    })
+
+
+    // EQUIPMENT
     var $cbs = $('input[price]');
     var $settingsForm = $('#settingsForm');
     var $settingsHeader = $settingsForm.find('.settings-header');
@@ -415,14 +440,14 @@ $(document).ready(function () {
   function initSelectric(){
     $('select').selectric();
 
+    $('.choose-doc li').on('click', function(e) {
+      var $self = $(this),
+          tabIndex = $self.index();
+      $self.siblings().removeClass('active');
+      $self.addClass('active');
+      $('.contract__item').removeClass('active').eq(tabIndex).addClass('active');
 
-    _document.on('click', '.selectricItems ul li', function(e) {
-        e.preventDefault();
-        var $self = $(this),
-            tabIndex = $self.index();
-        $self.siblings().removeClass('active');
-        $self.addClass('active');
-        $('.contract__item').removeClass('active').eq(tabIndex).addClass('active');
+      e.preventDefault();
     });
 
   }

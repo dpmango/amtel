@@ -33,86 +33,89 @@ block content
             li
               a(href="#") Продукты
           h2.wow Выберите Вашу потребность
+          
     // section
     section
-      .products
+      form(action="#" js-products-form).products
         .container
+          // select product
           .check__grid.wow
             .check__item.checkbox-item
-              label(for="checkbox_1") Выход в интернет
-              input(type="checkbox" id="checkbox_1")
-            .check__item.checkbox-item
-              label(for="checkbox_2") Звонки в центральный офис
-              input(type="checkbox" id="checkbox_2")
-            .check__item.checkbox-item
-              label(for="checkbox_3") Электронная почта и отчеты начальнику
-              input(type="checkbox" id="checkbox_3")
-            .check__item.checkbox-item
-              label(for="checkbox_4") Мессенджеры и соц сети
-              input(type="checkbox" id="checkbox_4")
-            .check__item.checkbox-item
-              label(for="checkbox_5") Скачивание и отправка презентаций и графики
-              input(type="checkbox" id="checkbox_5")
-            .check__item.checkbox-item
-              label(for="checkbox_6") Безлимитный выход в Интернет
-              input(type="checkbox" id="checkbox_6")
-            .check__item.checkbox-item
-              label(for="checkbox_7") Выход в интернет без изменения суточной скорости
-              input(type="checkbox" id="checkbox_7")
-            .check__item.checkbox-item
-              label(for="checkbox_8") Индивидуальные каналы связи под ключ
-              input(type="checkbox" id="checkbox_8")
-            .check__item.checkbox-item
-              label(for="checkbox_9") Интернет для личного пользования
-              input(type="checkbox" id="checkbox_9")
-            .check__item.checkbox-item
-              label(for="checkbox_10") Надежная связь для объекта государственного значения
-              input(type="checkbox" id="checkbox_10")
-            .check__item.checkbox-item
-              label(for="checkbox_11") Ораганизация видео-конференций
-              input(type="checkbox" id="checkbox_11")
-            .check__item.checkbox-item
-              label(for="checkbox_12") Вебинары и удаленные совещания
-              input(type="checkbox" id="checkbox_12")
-            .check__item.checkbox-item
-              label(for="checkbox_13") Точечные видеоконференции или разовая передача данных
-              input(type="checkbox" id="checkbox_13")
-            .check__item.checkbox-item
-              label(for="checkbox_14") Сотовая связь на объектах и станциях
-              input(type="checkbox" id="checkbox_14")
-            .check__item.checkbox-item
-              label(for="checkbox_15") Организация Системы коллективного доступа
-              input(type="checkbox" id="checkbox_15")
-            .check__item.checkbox-item
-              label(for="checkbox_16") Индивидуальное решение
-              input(type="checkbox" id="checkbox_16")
-            .check__item.checkbox-item
-              label(for="checkbox_17") Выход в море 
-              input(type="checkbox" id="checkbox_17")
-            .check__item.checkbox-item
-              label(for="checkbox_18") Связь в движении
-              input(type="checkbox" id="checkbox_18")
-            .check__item.checkbox-item
-              label(for="checkbox_19") Организация магистральных каналов
-              input(type="checkbox" id="checkbox_19")
-            .check__item.checkbox-item
-              label(for="checkbox_20") Строительство сложных магистральных объектов
-              input(type="checkbox" id="checkbox_20")
-            .check__item.checkbox-item
-              label(for="checkbox_21") Бесперебойная работа поточных приложений в режиме реального времени
-              input(type="checkbox" id="checkbox_21")
-            .check__item.checkbox-item
-              label(for="checkbox_22") Добыча полезных ископаемых
-              input(type="checkbox" id="checkbox_22")
-            .check__item.checkbox-item
-              label(for="checkbox_23") Социальный объект или государственное учреждение
-              input(type="checkbox" id="checkbox_23")
-          .info-container.wow
-            h2 Продукт 1
-            p Разделенные каналы по передачи данных представляют собой пакетные конфигурации предоплаченного трафика при оптимальной скорости в негарантированном канале
-          .info-container.wow
-            h2 Продукт 2
-            p Разделенные каналы по передачи данных представляют собой пакетные конфигурации предоплаченного трафика при оптимальной скорости в негарантированном канале
+              label(for="type_1") Выход в интернет
+              input(type="checkbox" name="type" id="type_1" value="1")
+            .check__item.type-item
+              label(for="type_2") Звонки в центральный офис
+              input(type="checkbox" name="type" id="type_2" value="2")
+            .check__item.type-item
+              label(for="type_3") Электронная почта и отчеты начальнику
+              input(type="checkbox" name="type" id="type_3" value="3")
+            .check__item.type-item
+              label(for="type_4") Мессенджеры и соц сети
+              input(type="checkbox" name="type" id="type_4" value="4")
+            .check__item.type-item
+              label(for="type_5") Скачивание и отправка презентаций и графики
+              input(type="checkbox" name="type" id="type_5" value="5")
+            .check__item.type-item
+              label(for="type_6") Безлимитный выход в Интернет
+              input(type="checkbox" name="type" id="type_6" value="6")
+            .check__item.type-item
+              label(for="type_7") Выход в интернет без изменения суточной скорости
+              input(type="checkbox" name="type" id="type_7" value="7")
+            .check__item.type-item
+              label(for="type_8") Индивидуальные каналы связи под ключ
+              input(type="checkbox" name="type" id="type_8" value="8")
+            .check__item.type-item
+              label(for="type_9") Интернет для личного пользования
+              input(type="checkbox" name="type" id="type_9" value="9")
+            .check__item.type-item
+              label(for="type_10") Надежная связь для объекта государственного значения
+              input(type="checkbox" name="type" id="type_10" value="10")
+            .check__item.type-item
+              label(for="type_11") Ораганизация видео-конференций
+              input(type="checkbox" name="type" id="type_11" value="11")
+            .check__item.type-item
+              label(for="type_12") Вебинары и удаленные совещания
+              input(type="checkbox" name="type" id="type_12" value="12")
+            .check__item.type-item
+              label(for="type_13") Точечные видеоконференции или разовая передача данных
+              input(type="checkbox" name="type" id="type_13" value="13")
+            .check__item.type-item
+              label(for="type_14") Сотовая связь на объектах и станциях
+              input(type="checkbox" name="type" id="type_14" value="14")
+            .check__item.type-item
+              label(for="type_15") Организация Системы коллективного доступа
+              input(type="checkbox" name="type" id="type_15" value="15")
+            .check__item.type-item
+              label(for="type_16") Индивидуальное решение
+              input(type="checkbox" name="type" id="type_16" value="16")
+            .check__item.type-item
+              label(for="type_17") Выход в море 
+              input(type="checkbox" name="type" id="type_17" value="16")
+            .check__item.type-item
+              label(for="type_18") Связь в движении
+              input(type="checkbox" name="type" id="type_18" value="17")
+            .check__item.type-item
+              label(for="type_19") Организация магистральных каналов
+              input(type="checkbox" name="type" id="type_19" value="18")
+            .check__item.type-item
+              label(for="type_20") Строительство сложных магистральных объектов
+              input(type="checkbox" name="type" id="type_20" value="19")
+            .check__item.type-item
+              label(for="type_21") Бесперебойная работа поточных приложений в режиме реального времени
+              input(type="checkbox" name="type" id="type_21" value="20")
+            .check__item.type-item
+              label(for="type_22") Добыча полезных ископаемых
+              input(type="checkbox" name="type" id="type_22" value="21")
+            .check__item.type-item
+              label(for="type_23") Социальный объект или государственное учреждение
+              input(type="checkbox" name="type" id="type_23" value="22")
+          div(js-set-products)
+          //- .info-container.wow
+          //-   h2 Продукт 1
+          //-   p Разделенные каналы по передачи данных представляют собой пакетные конфигурации предоплаченного трафика при оптимальной скорости в негарантированном канале
+          //- .info-container.wow
+          //-   h2 Продукт 2
+          //-   p Разделенные каналы по передачи данных представляют собой пакетные конфигурации предоплаченного трафика при оптимальной скорости в негарантированном канале
           .info-container.wow
             select
               option(val="vl1-0" selected disabled) Выберите продукт

@@ -1,0 +1,23 @@
+{
+	"select": "Выберите трафик в Гб",
+	"tarifs": [{
+			"id": "223",
+			"select_value": "5 Гб",
+			"name": "Тарифный план №3",
+			"speed": "1024/512",
+			"speed_suf": "кб/с",
+			"traffic": "5",
+			"traffic_suf": "Гб"
+		},
+		{
+			"id": "224",
+			"select_value": "7 Гб",
+			"name": "Тарифный план №4",
+			"price": "18762",
+			"speed": "1024/512",
+			"speed_suf": "кб/с",
+			"traffic": "7",
+			"traffic_suf": "Гб"
+		}
+	]
+}
