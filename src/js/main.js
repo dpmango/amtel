@@ -96,9 +96,15 @@ $(document).ready(function () {
       }, 1000);
       return false;
     })
+    // radio
     .on('click', '.radio-item label', function () {
       $(this).parent().parent().find('.check__item').removeClass('is-active');
       $(this).parent().addClass('is-active');
+    })
+    // checkox
+    .on('click', '.type-item label', function () {
+      // $(this).parent().parent().find('.check__item').removeClass('is-active');
+      $(this).parent().toggleClass('is-active');
     })
     .on('click', 'ul.main-nav li a', function () {
       $(this).parent().toggleClass('is-open');
@@ -201,13 +207,25 @@ $(document).ready(function () {
   function initCalc(){
     // PRODUCTS
     var form = $('[js-products-form]');
+    var typeInputs = form.find('input[name="type"]');
+    var chooseProductsContainer = $('[js-choose-products]');
+    var productsSelect = chooseProductsContainer.find('select');
+    var chooseTarifsContainer = $('[js-choose-tarif]');
+    var tarifSelect = chooseTarifsContainer.find('select');
+    var availableTarifs = {};
+    var selectedTarif = {};
+    var calcOptionsContainer = $('[js-choose-options]');
+    var calcTableContainer = $('[js-calc-table]');
+    var calcCtaContainer = $('[js-calc-cta]');
 
-    _document.on('change', form, function(e){
-      // get id's for type and send via ajax
-      var typeInputs = form.find('input[name="type"]:checked');
+    // select type of product
+    typeInputs.on('change', function(e){
+      // get id's for type
       var selectedTypeId = [];
       typeInputs.each(function(i,type){
-        selectedTypeId.push($(type).val());
+        if ( $(type).is(':checked') ){
+          selectedTypeId.push($(type).val());
+        }
       });
 
       // get response with products available
@@ -221,21 +239,75 @@ $(document).ready(function () {
           setProducts(res);
         }
       })
+    })
+    // select specific product
+    productsSelect.on('change', function(e){
+      $.ajax({
+        'url': '/json/getTarifs.json',
+        'data': {
+          'productId': productsSelect.val()
+        },
+        'method': 'GET',
+        'success': function(res){
+          setTarifs(res);
+          availableTarifs = res.tarifs // store all tarifs to get data leter
+        }
+      })
+    })
 
-      // set product options
-      function setProducts(data){
-        var container = $('[js-set-products]');
-        container.html(""); // erase container
-        var appendedObj = ""
-
-        $.each(data, function(i, product){
-          appendedObj = appendedObj + "<div class='info-container'><h2>"+ product.name +"</h2><p>"+ product.description +"</p></div>"
-        })
-
-        container.append(appendedObj).hide().slideDown();
-      }
+    // select specific tarif
+    tarifSelect.on('change', function(e){
+      var currentVal = $(this).val();
+      $.each(availableTarifs, function(i, tarif){
+        if ( tarif.id == currentVal ){
+          selectedTarif = tarif // find selected tarrif
+          displayOptions(); // and show containers
+        }
+      });
 
     })
+
+    // set product options
+    function setProducts(data){
+      var container = $('[js-set-products]');
+      container.html(""); // erase container
+      productsSelect.html("<option selected disabled> Выберите продукт</option>"); // erase select
+      var appendedObj = ""
+
+      // populate data
+      $.each(data, function(i, product){
+        appendedObj = appendedObj + "<div class='info-container'><h2>"+ product.name +"</h2><p>"+ product.description +"</p></div>"
+        productsSelect.append('<option value='+product.id+'>' + product.name + '</option>');
+      });
+
+      productsSelect.selectric('refresh'); // refresh selectric for markup and bindings
+
+      // show containers
+      container.append(appendedObj).hide().slideDown();
+      chooseProductsContainer.slideDown();
+
+    }
+
+    // set tarifs options
+    function setTarifs(data){
+      // update select
+      tarifSelect.html("<option selected disabled>"+data.select+"</option>"); // erase select
+      $.each(data.tarifs, function(i, tarif){
+        tarifSelect.append('<option value='+tarif.id+'>' + tarif.select_value + '</option>');
+      });
+      tarifSelect.selectric('refresh');
+
+      // show containers
+      chooseTarifsContainer.slideDown();
+    }
+
+    // display options
+    function displayOptions(){
+      calcOptionsContainer.slideDown();
+      calcTableContainer.slideDown();
+      calcCtaContainer.slideDown();
+
+    }
 
 
     // EQUIPMENT

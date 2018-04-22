@@ -5,7 +5,7 @@ bodyClass: products-page
 extends shared/_layout
 block content
 
-    // section
+    // slider section
     section.wow(data-animation-class="wowFadeLeft")
       .main-slider
         .item(style="background-image: url(img/bg-slider-1.jpg)")
@@ -20,7 +20,7 @@ block content
         .item(style="background-image: url(img/bg-slider-4.jpg)")
           .container
             p.main-slider__title.p-item-4 Технологии
-    // section
+    // crumbs section
     section
       .page-head
         .container
@@ -34,7 +34,7 @@ block content
               a(href="#") Продукты
           h2.wow Выберите Вашу потребность
           
-    // section
+    // calc section
     section
       form(action="#" js-products-form).products
         .container
@@ -109,31 +109,32 @@ block content
             .check__item.type-item
               label(for="type_23") Социальный объект или государственное учреждение
               input(type="checkbox" name="type" id="type_23" value="22")
+          // products description
           div(js-set-products)
+            // data will be populated from json
           //- .info-container.wow
           //-   h2 Продукт 1
-          //-   p Разделенные каналы по передачи данных представляют собой пакетные конфигурации предоплаченного трафика при оптимальной скорости в негарантированном канале
-          //- .info-container.wow
-          //-   h2 Продукт 2
-          //-   p Разделенные каналы по передачи данных представляют собой пакетные конфигурации предоплаченного трафика при оптимальной скорости в негарантированном канале
-          .info-container.wow
+          //-   p Разделенные каналы по передачи данных представляют собой пакетные конфигурации предоплаченного трафика при оптимальной скорости в негарантированном канал
+          // choose product
+          .info-container.info-container--hidden.wow(js-choose-products)
             select
-              option(val="vl1-0" selected disabled) Выберите продукт
-              option(val="vl1-1") Продукт 1
-              option(val="vl1-2") Продукт 2
-          .info-container.wow
+              option(selected disabled) Выберите продукт
+          
+          // select tarif
+          .info-container.info-container--hidden.wow(js-choose-tarif)
             h2 Узнать тариф
             select
-              option(val="vl2-0" selected disabled) Выберите трафик в Гб
-              option(val="vl2-1") 5
-              option(val="vl2-2") 7
-          .info-container.wow
+          
+          // tarif summary
+          .info-container.info-container--hidden.wow
             h2 Поздравляем!
             .price
               p Продукт 1, Тарифный план 1
               p.bg-white Затраты в месяц 
                 span  18 762 ₽
-          .info-container.wow
+          
+          // options container
+          .info-container.info-container--hidden.wow(js-choose-options)
             h2 Выберите дополнительные опции
             p Опции можно приобрести как комплексно так и по отдельности.
             .checkbox__grid
@@ -170,7 +171,9 @@ block content
               .checkbox
                 label(for="checkbox_38") Детализация ПД
                 input.checkbox(type="checkbox" id="checkbox_38")
-          .info-container.wow
+        
+          // table
+          .info-container.info-container--hidden.wow(js-calc-table)
             .table
               .table__head
                 .table__head-green
@@ -198,11 +201,14 @@ block content
                 p Стоимость продукта:
                 p 7 762 ₽
             p Итоговую стоимость вашего продукта Вам сообщит менеджер. Отправьте запрос.
-          .buttons.wow
-            a.btn.open-popup(href="#order1" data-effect="mfp-zoom-in") Отправить запрос
-            a.btn(href="#") Сохранить подбор тарифа
-            a.btn.btn--grey(href="#") Вернуться на предыдущий шаг
-          p.p-mini *Предложение не является публичной офертой и для получения окончательного предложения обратитесь в коммерческую дирекцию с помощью опции «Отправить запрос».
-          a.btn.margin-button(href="#") Подходящее оборудование к выбранному тарифу
-                
-                
+          
+          // cta elements
+          .products__cta(js-calc-cta)
+            .buttons.wow
+              a.btn.open-popup(href="#order1" data-effect="mfp-zoom-in") Отправить запрос
+              a.btn(href="#") Сохранить подбор тарифа
+              a.btn.btn--grey(href="#") Вернуться на предыдущий шаг
+            p.p-mini *Предложение не является публичной офертой и для получения окончательного предложения обратитесь в коммерческую дирекцию с помощью опции «Отправить запрос».
+            a.btn.margin-button(href="#") Подходящее оборудование к выбранному тарифу
+                  
+                  
