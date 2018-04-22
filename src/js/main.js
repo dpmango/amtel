@@ -36,7 +36,8 @@ $(document).ready(function () {
     initSelectric();
     initValidate();
 
-    initCalc();
+    initCalcProduct();
+    initCalcEquipment();
 
     // development helper
     _window.on('resize', debounce(setBreakpoint, 200))
@@ -204,7 +205,18 @@ $(document).ready(function () {
       $(this).parent().toggleClass('is-active');
     });
 
-  function initCalc(){
+  // glbal object to be passed in form
+  var productObj = {
+    product: {
+      id: "",
+      name: ""
+    },
+    tarif: {},
+    options: [],
+    price: 0
+  }
+
+  function initCalcProduct(){
     // PRODUCTS
     var form = $('[js-products-form]');
     var typeInputs = form.find('input[name="type"]');
@@ -213,10 +225,12 @@ $(document).ready(function () {
     var chooseTarifsContainer = $('[js-choose-tarif]');
     var tarifSelect = chooseTarifsContainer.find('select');
     var availableTarifs = {};
-    var selectedTarif = {};
+    var calcSummaryContainer = $('[js-set-summary]');
     var calcOptionsContainer = $('[js-choose-options]');
+    var optionInputs = calcOptionsContainer.find('input[name="option"]')
     var calcTableContainer = $('[js-calc-table]');
     var calcCtaContainer = $('[js-calc-cta]');
+    var finalPrice = $('[js-calc-finalPrice]');
 
     // select type of product
     typeInputs.on('change', function(e){
@@ -242,6 +256,12 @@ $(document).ready(function () {
     })
     // select specific product
     productsSelect.on('change', function(e){
+      // store selected product
+      productObj.product = {
+        id: $(this).val(),
+        name: $(this).find('option:selected').text()
+      }
+      // process ajax
       $.ajax({
         'url': '/json/getTarifs.json',
         'data': {
@@ -260,10 +280,43 @@ $(document).ready(function () {
       var currentVal = $(this).val();
       $.each(availableTarifs, function(i, tarif){
         if ( tarif.id == currentVal ){
-          selectedTarif = tarif // find selected tarrif
-          displayOptions(); // and show containers
+          productObj.tarif = tarif // find selected tarrif
+          setSummary();
         }
       });
+
+    })
+
+    // select options
+    optionInputs.on('change', function(e){
+      // get array of options and build row
+      var selectedOptions = [];
+      var buildCalcTableOptionsRow = "";
+      var optionsPriceSummary = 0;
+
+      optionInputs.each(function(i,type){
+        var $type = $(type);
+        if ( $type.is(':checked') ){
+          var selectedName = $type.parent().find('label').text();
+          selectedOptions.push({
+            id: $type.val(),
+            name: selectedName,
+            price: $type.data('price')
+          });
+
+          optionsPriceSummary = optionsPriceSummary + parseInt($type.data('price'));
+          buildCalcTableOptionsRow = buildCalcTableOptionsRow + '<p class="g-check">'+ selectedName +'</p>'
+        }
+      });
+
+      // set table options
+      $('[js-calc-tableOptions]').html(buildCalcTableOptionsRow);
+
+      // update final price
+      setFinalPrice(optionsPriceSummary)
+
+      // update global's
+      productObj.options = selectedOptions;
 
     })
 
@@ -301,15 +354,55 @@ $(document).ready(function () {
       chooseTarifsContainer.slideDown();
     }
 
-    // display options
-    function displayOptions(){
+    // set summary
+    function setSummary(){
+      // update html
+      calcSummaryContainer.find('[js-set-summaryProduct]').text(productObj.product.name + ", " + productObj.tarif.name);
+      calcSummaryContainer.find('[js-set-summaryCosts]').text(formatPrice(productObj.tarif.price) + " Р");
+
+      // table summary
+      $('[js-calc-tableSummary]').html(
+        '<div class="table__head-item"><p>'+ productObj.tarif.id +'</p></div>' +
+        '<div class="table__head-item"><p>'+ productObj.tarif.speed +'</p></div>' +
+        '<div class="table__head-item"><p>'+ productObj.tarif.traffic +'</p></div>' +
+        '<div class="table__head-item"><p>'+ productObj.tarif.traffic_suf +'</p></div>'
+      )
+
+      // final price (initial)
+      setFinalPrice();
+
+      // show container
+      calcSummaryContainer.slideDown();
       calcOptionsContainer.slideDown();
       calcTableContainer.slideDown();
       calcCtaContainer.slideDown();
+    }
 
+    // set final price
+    function setFinalPrice(options){
+      var calcPrice = parseInt(productObj.tarif.price) // base price (from tarrif)
+
+      if ( options !== undefined ){
+        calcPrice = calcPrice + parseInt(options)
+      }
+
+      finalPrice.html(formatPrice(calcPrice) + " Р");
+
+      // update globals
+      productObj.price = calcPrice
+    }
+
+    // helper functions
+    function formatPrice(price){
+      return parseInt(price).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     }
 
 
+  }
+
+
+
+  function initCalcEquipment(){
     // EQUIPMENT
     var $cbs = $('input[price]');
     var $settingsForm = $('#settingsForm');

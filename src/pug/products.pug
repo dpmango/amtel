@@ -126,12 +126,12 @@ block content
             select
           
           // tarif summary
-          .info-container.info-container--hidden.wow
+          .info-container.info-container--hidden.wow(js-set-summary)
             h2 Поздравляем!
             .price
-              p Продукт 1, Тарифный план 1
+              p(js-set-summaryProduct) Продукт 1, Тарифный план 1
               p.bg-white Затраты в месяц 
-                span  18 762 ₽
+                span(js-set-summaryCosts)  18 762 ₽
           
           // options container
           .info-container.info-container--hidden.wow(js-choose-options)
@@ -139,38 +139,38 @@ block content
             p Опции можно приобрести как комплексно так и по отдельности.
             .checkbox__grid
               .checkbox
-                label(for="checkbox_31") Телефония (соединительные линии)
-                input.checkbox(type="checkbox" id="checkbox_31")
+                label(for="option_1") Телефония (соединительные линии)
+                input.checkbox(type="checkbox" name="option" id="option_1" data-price="1000")
               .checkbox
-                label(for="checkbox_32") Наземные каналы связи
-                input.checkbox(type="checkbox" id="checkbox_32")
+                label(for="option_2") Наземные каналы связи
+                input.checkbox(type="checkbox" name="option" id="option_2" data-price="1500")
               .checkbox
-                label(for="checkbox_33") Детализация ПД за прошедший период
-                input.checkbox(type="checkbox" id="checkbox_33")
+                label(for="option_3") Детализация ПД за прошедший период
+                input.checkbox(type="checkbox" name="option" id="option_3" data-price="900")
               .checkbox
-                label(for="checkbox_34") Телефония (идентификационные коды)
-                input.checkbox(type="checkbox" id="checkbox_34")
+                label(for="option_4") Телефония (идентификационные коды)
+                input.checkbox(type="checkbox" name="option" id="option_4" data-price="600")
               .checkbox
-                label(for="checkbox_35") Поддержка коммутационного оборудования
-                input.checkbox(type="checkbox" id="checkbox_35")
+                label(for="option_5") Поддержка коммутационного оборудования
+                input.checkbox(type="checkbox" name="option" id="option_5" data-price="2000")
               .checkbox
-                label(for="checkbox_36") ПДПГИ детализация разовая за прошедший период
-                input.checkbox(type="checkbox" id="checkbox_36")
+                label(for="option_6") ПДПГИ детализация разовая за прошедший период
+                input.checkbox(type="checkbox" name="option" id="option_6" data-price="3000")
               .checkbox
-                label(for="checkbox_37") МГМН (телематика)
-                input.checkbox(type="checkbox" id="checkbox_37")
+                label(for="option_7") МГМН (телематика)
+                input.checkbox(type="checkbox" name="option" id="option_7" data-price="1500")
               .checkbox
-                label(for="checkbox_38") Размещение оборудования в стойке оператора
-                input.checkbox(type="checkbox" id="checkbox_38")
+                label(for="option_8") Размещение оборудования в стойке оператора
+                input.checkbox(type="checkbox" name="option" id="option_8" data-price="10040")
               .checkbox
-                label(for="checkbox_38") ПДПГИ детализация ежемесячная
-                input.checkbox(type="checkbox" id="checkbox_38")
+                label(for="option_9") ПДПГИ детализация ежемесячная
+                input.checkbox(type="checkbox" name="option" id="option_9" data-price="1200")
               .checkbox
-                label(for="checkbox_38") Услуга фильтрации трафика
-                input.checkbox(type="checkbox" id="checkbox_38")
+                label(for="option_10") Услуга фильтрации трафика
+                input.checkbox(type="checkbox" name="option" id="option_10" data-price="300")
               .checkbox
-                label(for="checkbox_38") Детализация ПД
-                input.checkbox(type="checkbox" id="checkbox_38")
+                label(for="option_11") Детализация ПД
+                input.checkbox(type="checkbox" name="option" id="option_11" data-price="500")
         
           // table
           .info-container.info-container--hidden.wow(js-calc-table)
@@ -185,21 +185,18 @@ block content
                     p Объем трафика, Гб
                   .table__head-item
                     p Абонентская плата в месяц
-                .table__head-white
-                  .table__head-item
-                    p 5
-                  .table__head-item
-                    p 1024/512
-                  .table__head-item
-                    p 7
-                  .table__head-item
-                    p 7762 ₽
-              .table__middle
-                p.g-check МГМН (телематика)
-                p.g-check Размещение оборудования в стойке оператора
+                .table__head-white(js-calc-tableSummary)
+                  // to be set with js
+                  //- .table__head-item
+                  //-   p 5
+
+              .table__middle(js-calc-tableOptions)
+                // to be set with js
+                //- p.g-check МГМН (телематика)
+                //- p.g-check Размещение оборудования в стойке оператора
               .table__bottom
                 p Стоимость продукта:
-                p 7 762 ₽
+                p(js-calc-finalPrice) 7 762 ₽
             p Итоговую стоимость вашего продукта Вам сообщит менеджер. Отправьте запрос.
           
           // cta elements
