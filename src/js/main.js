@@ -46,10 +46,6 @@ $(document).ready(function () {
   // this is a master function which should have all functionality
   pageReady();
 
-  revealFooter();
-  _window.on('resize', debounce(revealFooter, 200));
-
-
   // some plugins work best with onload triggers
   _window.on('load', function () {
     // your functions
@@ -168,33 +164,6 @@ $(document).ready(function () {
         $(val).removeClass('is-active')
       }
     });
-  }
-
-
-  // FOOTER REVEAL
-  function revealFooter() {
-    var footer = _document.find('[js-reveal-footer]');
-    if (footer.length > 0) {
-      var footerHeight = footer.outerHeight();
-      var maxHeight = _window.height() - footerHeight > 100;
-      if (maxHeight && !msieversion() ) {
-        $('body').css({
-          'margin-bottom': footerHeight
-        });
-        footer.css({
-          'position': 'fixed',
-          'z-index': -10
-        });
-      } else {
-        $('body').css({
-          'margin-bottom': 0
-        });
-        footer.css({
-          'position': 'static',
-          'z-index': 10
-        });
-      }
-    }
   }
 
   //////////
@@ -785,8 +754,6 @@ $(document).ready(function () {
 
     pageReady();
     closeMobileMenu();
-
-    setTimeout(revealFooter, 300)
   });
 
   // some plugins get bindings onNewPage only that way
