@@ -80,8 +80,12 @@ footer.footer
   // Bottom
   .container
     .footer__wrapper.wow(data-animation-delay=".5s")
-      p © 2004 АО «АМТЕЛ-СВЯЗЬ»
-      p 125315, г. Москва, Ленинградский проспект, д. 80/37
+      .footer__left
+        p © 2004 АО «АМТЕЛ-СВЯЗЬ»
+        p 125315, г. Москва, Ленинградский проспект, д. 80/37
+      .footer__middle
+        a.phone(href="#") +7 (495) 983-04-04
+        a.mail(href="#") info@amtelcom.ru
       a.footer__sitemap(href='#') Карта сайта
       div.footer__icons
         a.footer__icon.fb-icon(href="#")

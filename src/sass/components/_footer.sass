@@ -35,6 +35,30 @@
   	border-radius: 50%
   	overflow: hidden
   	margin-left: 14px
+  &__left
+    text-align: left
+    p
+      text-align: left
+      margin: 4px 0
+  &__middle
+    display: flex
+    flex-wrap: wrap
+    max-width: 185px
+    flex: 1 0 185px
+    margin: 0 5px
+    a
+      display: inline-block
+      border-bottom: 1px solid transparent
+      transition: all $transitionSpeed ease-in-out
+      &.phone
+        font-size: 21px
+        &:hover
+          border-bottom: 1px solid #fff
+      &.mail
+        font-size: 11px
+        border-bottom: 1px solid #fff
+        &:hover
+          border-bottom: 1px solid transparent
 
 .ico
   position: relative
@@ -77,12 +101,20 @@ a.footer__icon
 		&__wrapper
 			flex-wrap: wrap
 			padding: 25px 0 15px 0
+      // align-items: flex-start
 			p
 				&:nth-child(2)
 					order: 3
 					margin: 10px 0
 					max-width: 232px
 					text-align: left
+  .footer__middle
+    display: none
+
++r($tablet)
+  .footer__wrapper
+    align-items: flex-start
+
 +r($mobile)
 	.footer
 		&__wrapper

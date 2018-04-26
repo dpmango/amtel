@@ -503,7 +503,7 @@ $(document).ready(function () {
     $('.main-slider').not('.slick-initialized').slick({
       dots: false,
       infinite: true,
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 4000,
       speed: 300,
       slidesToShow: 1,

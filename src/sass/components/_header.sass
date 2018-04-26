@@ -47,8 +47,8 @@
     flex-wrap: wrap
     justify-content: flex-end
     align-self: flex-start
-    flex: 1 0 180px
-    max-width: 180px
+    flex: 1 0 185px
+    max-width: 185px
     a
       display: inline-block
       color: #fff
@@ -78,7 +78,7 @@
         width: 100%
         border: 2px solid transparent
         &:focus
-          border: 2px solid #545b5e
+          border: 3px solid #545b5e
           box-shadow: inset -1px 1px 3px 1px rgba(0,0,0,0.2)
   &__prof-link
     font-size: 14px
@@ -99,6 +99,8 @@
       left: -25px
       top: 1px
       color: #fff
+      &.mobile-case
+        display: none
     &:hover
       span
         color: #545b5e
@@ -130,14 +132,14 @@ nav
     width: calc(100% + 20px)
     margin: 0 -10px
     li
-      margin: 0 4px
+      margin: 0 2px
       position: relative
       a
         font-size: 15px
         color: #575B5F
         line-height: 1.3
         // transition: all $transitionSpeed ease-in-out
-        border: 2px solid transparent
+        border: 3px solid transparent
         border-radius: 25px
         padding: 17px 10px
         justify-content: center
@@ -156,7 +158,7 @@ nav
           display: none
         span
           transition: all $transitionSpeed ease-in-out
-          border-bottom: 2px solid transparent
+          border-bottom: 1px solid transparent
         &:hover
           span
             color: $colorRed
@@ -195,10 +197,10 @@ nav
           .dropdown-list
             height: max-content
             overflow: hidden
-            border: 2px solid $colorRed
+            border: 3px solid $colorRed
           > a
             padding: 17px 10px
-            border: 2px solid $colorRed
+            border: 3px solid $colorRed
             border-bottom-left-radius: 0
             border-bottom-right-radius: 0
             // border-bottom: none
@@ -300,8 +302,9 @@ nav
       flex: 1
       .ui-input
         input
-          border: 2px solid $colorRed
+          border: 3px solid $colorRed
           font-size: 13px
+          padding: 8px 20px
     &__language
       align-self: center
       background: $colorRed
@@ -316,7 +319,12 @@ nav
         font-size: 20px
         left: 0px
         top: 1px
-        color: $colorRed
+        // color: $colorRed
+        color: transparent
+        background: svg-load('../img/case-icon-red.svg', fill=#000) left top no-repeat
+        &:hover
+          color: transparent
+          background: svg-load('../img/case-icon-red.svg', fill=#333) left top no-repeat
   nav
     width: calc(100% - 60px)
     border-right: 2px solid $colorRed
