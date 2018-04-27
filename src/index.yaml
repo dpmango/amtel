@@ -3,6 +3,8 @@ ProjectTitle: Amtel
 PageList:
 - file: homepage.html
   ready: 90
+- file: homepage-alt.html
+  ready: 90
 - file: promotions.html
   ready: 90
 - file: promotions-2.html

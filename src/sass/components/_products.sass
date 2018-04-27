@@ -121,6 +121,7 @@
         .button
           transform: rotate(180deg)
           // top: 5px
+
   .selectric
     border-radius: 21px
     background: #E94835
@@ -135,11 +136,16 @@
       right: 12px
       transition: all $transitionSpeed ease-in-out
   .selectricItems
-    background: #fff
-    overflow: hidden
+    background: #E94835
+    border-bottom-left-radius: 18px
+    border-bottom-right-radius: 18px
+    // overflow: hidden
+
     // margin-top: -48px
     position: static
     border: none
+    ul
+      background: #E94835
     li
       font-size: 16px
       font-family: Arial, sans-serif
@@ -148,7 +154,8 @@
       color: #E83E31
       border: none
       min-height: 0
-      &.hover
+      background: #fff
+      &:hover
         background: #fbfbfb
       &.selected
         background: #E83E31
