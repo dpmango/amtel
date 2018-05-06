@@ -308,6 +308,8 @@ $(document).ready(function () {
       container.append(appendedObj).hide().slideDown();
       chooseProductsContainer.slideDown();
 
+      initScrollMonitor();
+      triggerBody(false)
     }
 
     // set tarifs options
@@ -321,6 +323,8 @@ $(document).ready(function () {
 
       // show containers
       chooseTarifsContainer.slideDown();
+
+      triggerBody(false)
     }
 
     // set summary
@@ -345,6 +349,8 @@ $(document).ready(function () {
       calcOptionsContainer.slideDown();
       calcTableContainer.slideDown();
       calcCtaContainer.slideDown();
+
+      triggerBody(false)
     }
 
     // set final price
@@ -359,6 +365,8 @@ $(document).ready(function () {
 
       // update globals
       productObj.price = calcPrice
+
+      triggerBody(false)
     }
 
     // helper functions
@@ -757,8 +765,13 @@ $(document).ready(function () {
   });
 
   // some plugins get bindings onNewPage only that way
-  function triggerBody() {
-    _window.scrollTop(0)
+  function triggerBody(scrollTop) {
+    console.log(scrollTop)
+    if ( scrollTop == undefined ){
+      _window.scrollTop(0)
+    } else {
+      _window.scrollTop(_window.scrollTop() - 1)
+    }
     _window.scroll();
     _window.resize();
   }
